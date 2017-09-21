@@ -96,6 +96,7 @@
     <ProjectGuid>{b9cab172-0192-4a6f-aaed-164c138ef13a}</ProjectGuid>
     <RootNamespace>velocityConverterToCartesian</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <ProjectName>velocityConverterToCartesian</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|TwinCAT RT (x86)'" Label="Configuration">

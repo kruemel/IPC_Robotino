@@ -1395,8 +1395,8 @@ External Setpoint Generation:
 	<Project ProjectGUID="{65F7B117-B92E-4F3E-9321-4DD532767F50}" TargetNetId="5.49.201.214.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
 			<Settings MaxCpus="2" NonWinCpus="1">
-				<Cpu/>
-				<Cpu CpuId="1"/>
+				<Cpu BaseTime="5000"/>
+				<Cpu CpuId="1" BaseTime="5000"/>
 			</Settings>
 			<Licenses>
 				<Target BkhfOrder="VA3337379" CustomOrder="6104201">
@@ -1406,6 +1406,15 @@ External Setpoint Generation:
 			<Tasks>
 				<Task Id="5" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
+				</Task>
+				<Task Id="6" Priority="9" CycleTime="50000" AmsPort="351" AdtTasks="true">
+					<Name>updateIrSensors</Name>
+				</Task>
+				<Task Id="7" Priority="3" CycleTime="50000" AmsPort="352" AdtTasks="true">
+					<Name>velocityConverterToMotors</Name>
+				</Task>
+				<Task Id="8" Priority="5" CycleTime="50000" AmsPort="353" AdtTasks="true">
+					<Name>velocityConverterToCartesian</Name>
 				</Task>
 			</Tasks>
 		</System>
@@ -2387,7 +2396,7 @@ External Setpoint Generation:
 		<Cpp>
 			<Project GUID="{50308A4C-9FB3-48E8-A0AB-291FECDB0D82}" Name="irSensors" PrjFilePath="irSensors\irSensors.vcxproj" TmcFilePath="irSensors\irSensors.tmc">
 				<Instance Id="#x01010010" KeepUnrestoredLinks="2">
-					<Name>irSensors_Obj1 (updateIrSensors)</Name>
+					<Name>irSensors_Objekt</Name>
 					<TmcDesc GUID="{5D28B13F-F115-42C2-B285-7848321AF13C}">
 						<Name>updateIrSensors</Name>
 						<CLSID ClassFactory="irSensors">{5D28B13F-F115-42C2-B285-7848321AF13C}</CLSID>
@@ -2400,6 +2409,11 @@ External Setpoint Generation:
 						<Contexts>
 							<Context>
 								<Id>1</Id>
+								<ManualConfig>
+									<OTCID>#x02010060</OTCID>
+								</ManualConfig>
+								<Priority>9</Priority>
+								<CycleTime>5000000</CycleTime>
 							</Context>
 						</Contexts>
 						<Interfaces>
@@ -2491,6 +2505,9 @@ External Setpoint Generation:
 								<PTCID>#x03002060</PTCID>
 								<Name>CyclicCaller</Name>
 								<Type GUID="{0300001E-0000-0000-E000-000000000064}">ITcCyclicCaller</Type>
+								<Default>
+									<OTCID>#x02010060</OTCID>
+								</Default>
 							</InterfacePointer>
 						</InterfacePointers>
 						<Deployment>
@@ -2532,7 +2549,7 @@ External Setpoint Generation:
 						<InterfacePointerValues>
 							<Value>
 								<Name>CyclicCaller</Name>
-								<OTCID>#x00000000</OTCID>
+								<OTCID>#x02010060</OTCID>
 							</Value>
 						</InterfacePointerValues>
 					</TmcDesc>
@@ -2540,7 +2557,7 @@ External Setpoint Generation:
 			</Project>
 			<Project GUID="{B9CAB172-0192-4A6F-AAED-164C138EF13A}" Name="velocityConverterToCartesian" PrjFilePath="velocityConverterToCartesian\velocityConverterToCartesian.vcxproj" TmcFilePath="velocityConverterToCartesian\velocityConverterToCartesian.tmc">
 				<Instance Id="#x01010020" KeepUnrestoredLinks="2">
-					<Name>velocityConverterToCartesian_Obj1 (velocityConverterToCartesian)</Name>
+					<Name>velocityConverterToCartesian_Objekt</Name>
 					<TmcDesc GUID="{567D3EAE-B93E-4490-BADE-9BB56FBDBABF}">
 						<Name>velocityConverterToCartesian</Name>
 						<CLSID ClassFactory="velocityConverterToCartesian">{567D3EAE-B93E-4490-BADE-9BB56FBDBABF}</CLSID>
@@ -2553,6 +2570,11 @@ External Setpoint Generation:
 						<Contexts>
 							<Context>
 								<Id>1</Id>
+								<ManualConfig>
+									<OTCID>#x02010080</OTCID>
+								</ManualConfig>
+								<Priority>5</Priority>
+								<CycleTime>5000000</CycleTime>
 							</Context>
 						</Contexts>
 						<Interfaces>
@@ -2678,6 +2700,9 @@ External Setpoint Generation:
 								<PTCID>#x03002060</PTCID>
 								<Name>CyclicCaller</Name>
 								<Type GUID="{0300001E-0000-0000-E000-000000000064}">ITcCyclicCaller</Type>
+								<Default>
+									<OTCID>#x02010080</OTCID>
+								</Default>
 							</InterfacePointer>
 						</InterfacePointers>
 						<Deployment>
@@ -2719,7 +2744,7 @@ External Setpoint Generation:
 						<InterfacePointerValues>
 							<Value>
 								<Name>CyclicCaller</Name>
-								<OTCID>#x00000000</OTCID>
+								<OTCID>#x02010080</OTCID>
 							</Value>
 						</InterfacePointerValues>
 					</TmcDesc>
@@ -2727,7 +2752,7 @@ External Setpoint Generation:
 			</Project>
 			<Project GUID="{CEB71B1F-3C29-4303-A908-DF5C59A0A919}" Name="velocityConverterToMotors" PrjFilePath="velocityConverterToMotors\velocityConverterToMotors.vcxproj" TmcFilePath="velocityConverterToMotors\velocityConverterToMotors.tmc">
 				<Instance Id="#x01010030" KeepUnrestoredLinks="2">
-					<Name>velocityConverterToMotors_Obj1 (velocityConverterToMotors)</Name>
+					<Name>velocityConverterToMotors_Objekt</Name>
 					<TmcDesc GUID="{68110CA8-61E2-4695-A7CA-1F93CD519B65}">
 						<Name>velocityConverterToMotors</Name>
 						<CLSID ClassFactory="velocityConverterToMotors">{68110CA8-61E2-4695-A7CA-1F93CD519B65}</CLSID>
@@ -2740,6 +2765,11 @@ External Setpoint Generation:
 						<Contexts>
 							<Context>
 								<Id>1</Id>
+								<ManualConfig>
+									<OTCID>#x02010070</OTCID>
+								</ManualConfig>
+								<Priority>3</Priority>
+								<CycleTime>5000000</CycleTime>
 							</Context>
 						</Contexts>
 						<Interfaces>
@@ -2865,6 +2895,9 @@ External Setpoint Generation:
 								<PTCID>#x03002060</PTCID>
 								<Name>CyclicCaller</Name>
 								<Type GUID="{0300001E-0000-0000-E000-000000000064}">ITcCyclicCaller</Type>
+								<Default>
+									<OTCID>#x02010070</OTCID>
+								</Default>
 							</InterfacePointer>
 						</InterfacePointers>
 						<Deployment>
@@ -2906,7 +2939,7 @@ External Setpoint Generation:
 						<InterfacePointerValues>
 							<Value>
 								<Name>CyclicCaller</Name>
-								<OTCID>#x00000000</OTCID>
+								<OTCID>#x02010070</OTCID>
 							</Value>
 						</InterfacePointerValues>
 					</TmcDesc>
