@@ -2419,7 +2419,7 @@ External Setpoint Generation:
 					<ImageId>1000</ImageId>
 					<EtherCAT PdiType="#x0100" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04b02c52" RevisionNo="#x00001388" InfoDataState="false" PortPhys="49" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1200-5000 EtherCAT Netzteil (2A E-Bus)" Desc="EK1200" PortABoxInfo="#x00ffffff"/>
 					<Box BoxType="9099" Id="2">
-						<Name>Klemme 2 (EL7342)</Name>
+						<Name>Motorcontroller 1</Name>
 						<ImageId>1001</ImageId>
 						<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x1cae3052" RevisionNo="#x00150000" InfoDataAddr="true" InfoDataSoeDS401="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL7342 2K. DC-Motor-Endstufe (50V, 3.5A)" Desc="EL7342" PortABoxInfo="#x01000001">
 							<SyncMan>001080002600010001000000400080008000001026010000</SyncMan>
@@ -3164,7 +3164,7 @@ External Setpoint Generation:
 						</EtherCAT>
 					</Box>
 					<Box BoxType="9099" Id="3">
-						<Name>Klemme 3 (EL7342)</Name>
+						<Name>Motorcontroller 2</Name>
 						<ImageId>1001</ImageId>
 						<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x1cae3052" RevisionNo="#x00150000" InfoDataAddr="true" InfoDataSoeDS401="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL7342 2K. DC-Motor-Endstufe (50V, 3.5A)" Desc="EL7342" PortABoxInfo="#x01000002">
 							<SyncMan>001080002600010001000000400080008000001026010000</SyncMan>
@@ -3909,38 +3909,38 @@ External Setpoint Generation:
 						</EtherCAT>
 					</Box>
 					<Box BoxType="9099" Id="4">
-						<Name>Klemme 4 (EL1008)</Name>
+						<Name>8 Kanal Digital Input</Name>
 						<ImageId>7</ImageId>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03f03052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1008 8K. Dig. Eingang 24V, 3ms" Desc="EL1008" PortABoxInfo="#x01000003">
 							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
 							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
 							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6000" Sub="#x01">
+								<Entry Name="Näherungssensor" Index="#x6000" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6010" Sub="#x01">
+								<Entry Name="Bumper Sensor" Index="#x6010" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6020" Sub="#x01">
+								<Entry Name="Ladekontakt 1" Index="#x6020" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6030" Sub="#x01">
+								<Entry Name="Ladekontakt 2" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6040" Sub="#x01">
+								<Entry Name="Greifer Endlage" Index="#x6040" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6050" Sub="#x01">
+								<Entry Name="Greifer Lichtschranke" Index="#x6050" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -3950,14 +3950,14 @@ External Setpoint Generation:
 								</Entry>
 							</Pdo>
 							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
-								<Entry Name="Input" Index="#x6070" Sub="#x01">
+								<Entry Name="Shutdown" Index="#x6070" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
 						</EtherCAT>
 					</Box>
 					<Box BoxType="9099" Id="5">
-						<Name>Klemme 5 (EL2004)</Name>
+						<Name>4 Kanal Digital Output</Name>
 						<ImageId>1002</ImageId>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x07d43052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2004 4K. Dig. Ausgang 24V, 0.5A" Desc="EL2004" PortABoxInfo="#x01000004">
 							<SyncMan>000f01004400010003000000000000000000000f44090000</SyncMan>
@@ -3985,7 +3985,7 @@ External Setpoint Generation:
 						</EtherCAT>
 					</Box>
 					<Box BoxType="9099" Id="6">
-						<Name>Klemme 6 (EL3068)</Name>
+						<Name>8 Kanal Analog Input</Name>
 						<ImageId>1003</ImageId>
 						<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="7" FoeType="1" VendorId="#x00000002" ProductCode="#x0bfc3052" RevisionNo="#x00140000" InfoDataAddr="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL3068 8K. Ana. Eingang 0-10V" Desc="EL3068" PortABoxInfo="#x01000005">
 							<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
@@ -4047,7 +4047,7 @@ Bit1: Value bigger/equal Limit2]]>
 										<![CDATA[Bit toggles everytime when new value available]]>
 									</Comment>
 								</Entry>
-								<Entry Name="Value" Index="#x6000" Sub="#x11" Flags="#x00020000">
+								<Entry Name="IR Sensor 1" Index="#x6000" Sub="#x11" Flags="#x00020000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -4109,7 +4109,7 @@ Bit1: Value bigger/equal Limit2]]>
 										<![CDATA[Bit toggles everytime when new value available]]>
 									</Comment>
 								</Entry>
-								<Entry Name="Value" Index="#x6010" Sub="#x11" Flags="#x00020000">
+								<Entry Name="IR Sensor 2" Index="#x6010" Sub="#x11" Flags="#x00020000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -4171,7 +4171,7 @@ Bit1: Value bigger/equal Limit2]]>
 										<![CDATA[Bit toggles everytime when new value available]]>
 									</Comment>
 								</Entry>
-								<Entry Name="Value" Index="#x6020" Sub="#x11" Flags="#x00020000">
+								<Entry Name="IR Sensor 3" Index="#x6020" Sub="#x11" Flags="#x00020000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -4233,7 +4233,7 @@ Bit1: Value bigger/equal Limit2]]>
 										<![CDATA[Bit toggles everytime when new value available]]>
 									</Comment>
 								</Entry>
-								<Entry Name="Value" Index="#x6030" Sub="#x11" Flags="#x00020000">
+								<Entry Name="IR Sensor 4" Index="#x6030" Sub="#x11" Flags="#x00020000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -4295,7 +4295,7 @@ Bit1: Value bigger/equal Limit2]]>
 										<![CDATA[Bit toggles everytime when new value available]]>
 									</Comment>
 								</Entry>
-								<Entry Name="Value" Index="#x6040" Sub="#x11" Flags="#x00020000">
+								<Entry Name="IR Sensor 5" Index="#x6040" Sub="#x11" Flags="#x00020000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -4357,7 +4357,7 @@ Bit1: Value bigger/equal Limit2]]>
 										<![CDATA[Bit toggles everytime when new value available]]>
 									</Comment>
 								</Entry>
-								<Entry Name="Value" Index="#x6050" Sub="#x11" Flags="#x00020000">
+								<Entry Name="IR Sensor 6" Index="#x6050" Sub="#x11" Flags="#x00020000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -4419,7 +4419,7 @@ Bit1: Value bigger/equal Limit2]]>
 										<![CDATA[Bit toggles everytime when new value available]]>
 									</Comment>
 								</Entry>
-								<Entry Name="Value" Index="#x6060" Sub="#x11" Flags="#x00020000">
+								<Entry Name="IR Sensor 7" Index="#x6060" Sub="#x11" Flags="#x00020000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -4481,7 +4481,7 @@ Bit1: Value bigger/equal Limit2]]>
 										<![CDATA[Bit toggles everytime when new value available]]>
 									</Comment>
 								</Entry>
-								<Entry Name="Value" Index="#x6070" Sub="#x11" Flags="#x00020000">
+								<Entry Name="IR Sensor 8" Index="#x6070" Sub="#x11" Flags="#x00020000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -4502,7 +4502,7 @@ Bit1: Value bigger/equal Limit2]]>
 						</EtherCAT>
 					</Box>
 					<Box BoxType="9099" Id="7">
-						<Name>Klemme 7 (EL3064)</Name>
+						<Name>4 Kanal Analog Input</Name>
 						<ImageId>1003</ImageId>
 						<EtherCAT SlaveType="2" PdiType="#x0005" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="7" FoeType="1" VendorId="#x00000002" ProductCode="#x0bf83052" RevisionNo="#x00140000" InfoDataAddr="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL3064 4K.Ana. Eingang 0-10V" Desc="EL3064" PortABoxInfo="#x01000006">
 							<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
@@ -4564,7 +4564,7 @@ Bit1: Value bigger/equal Limit2]]>
 										<![CDATA[Bit toggles everytime when new value available]]>
 									</Comment>
 								</Entry>
-								<Entry Name="Value" Index="#x6000" Sub="#x11" Flags="#x00020000">
+								<Entry Name="IR Sensor 9" Index="#x6000" Sub="#x11" Flags="#x00020000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -4626,7 +4626,7 @@ Bit1: Value bigger/equal Limit2]]>
 										<![CDATA[Bit toggles everytime when new value available]]>
 									</Comment>
 								</Entry>
-								<Entry Name="Value" Index="#x6010" Sub="#x11" Flags="#x00020000">
+								<Entry Name="AkkuPack Spannung 1" Index="#x6010" Sub="#x11" Flags="#x00020000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -4688,7 +4688,7 @@ Bit1: Value bigger/equal Limit2]]>
 										<![CDATA[Bit toggles everytime when new value available]]>
 									</Comment>
 								</Entry>
-								<Entry Name="Value" Index="#x6020" Sub="#x11" Flags="#x00020000">
+								<Entry Name="AkkuPack Spannung 2" Index="#x6020" Sub="#x11" Flags="#x00020000">
 									<Type>INT</Type>
 								</Entry>
 							</Pdo>
@@ -4767,7 +4767,7 @@ Bit1: Value bigger/equal Limit2]]>
 						</EtherCAT>
 					</Box>
 					<Box BoxType="9099" Id="8">
-						<Name>Klemme 8 (EL9505)</Name>
+						<Name>Netzteilklemme 5V</Name>
 						<ImageId>1004</ImageId>
 						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x25213052" RevisionNo="#x00110000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9505 Netzteilklemme 5V" Desc="EL9505" PortABoxInfo="#x01000007">
 							<SyncMan>001001000000010004000000000000000000001000000000</SyncMan>
@@ -4810,11 +4810,11 @@ Bit1: Value bigger/equal Limit2]]>
 		</Io>
 	</Project>
 	<Mappings>
+		<MappingInfo Identifier="{00000000-0011-0101-4020-500840000403}" Id="#x02030030"/>
 		<MappingInfo Identifier="{00000000-0010-0304-3000-040310000403}" Id="#x02030010"/>
-		<MappingInfo Identifier="{00000000-2041-0850-4020-500840000403}" Id="#x02030030"/>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500840000403}" Id="#x02030020"/>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 1">
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL7342)">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 1">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Moving negative" Size="1" OffsA="5"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Moving positive" Size="1" OffsA="4"/>
@@ -4853,7 +4853,7 @@ Bit1: Value bigger/equal Limit2]]>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 2">
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL7342)">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 1">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Moving negative" Size="1" OffsA="5"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Moving positive" Size="1" OffsA="4"/>
@@ -4892,7 +4892,7 @@ Bit1: Value bigger/equal Limit2]]>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 3">
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL7342)">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 2">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Moving negative" Size="1" OffsA="5"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Moving positive" Size="1" OffsA="4"/>
@@ -4931,7 +4931,7 @@ Bit1: Value bigger/equal Limit2]]>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 4">
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL7342)">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 2">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Moving negative" Size="1" OffsA="5"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Moving positive" Size="1" OffsA="4"/>
@@ -4970,13 +4970,13 @@ Bit1: Value bigger/equal Limit2]]>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^LED_test^LED_test Instance">
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL2004)">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^4 Kanal Digital Output">
 				<Link VarA="PlcTask Outputs^MAIN.bLED1" VarB="Channel 1^Output"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^Shutdown^Shutdown Instance">
-			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1008)">
-				<Link VarA="PlcTask Inputs^Shutdown.bStart" VarB="Channel 1^Input"/>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^8 Kanal Digital Input">
+				<Link VarA="PlcTask Inputs^Shutdown.bStart" VarB="Channel 8^Shutdown"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>
