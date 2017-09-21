@@ -1394,6 +1394,10 @@ External Setpoint Generation:
 	</ImageDatas>
 	<Project ProjectGUID="{65F7B117-B92E-4F3E-9321-4DD532767F50}" TargetNetId="5.49.201.214.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
+			<Settings MaxCpus="2" NonWinCpus="1">
+				<Cpu/>
+				<Cpu CpuId="1"/>
+			</Settings>
 			<Licenses>
 				<Target BkhfOrder="VA3337379" CustomOrder="6104201">
 					<ManualSelect>{73C71EBD-104A-4EE6-955D-ADE86A37EFC3}</ManualSelect>
@@ -2380,6 +2384,535 @@ External Setpoint Generation:
 				</Instance>
 			</Project>
 		</Plc>
+		<Cpp>
+			<Project GUID="{50308A4C-9FB3-48E8-A0AB-291FECDB0D82}" Name="irSensors" PrjFilePath="irSensors\irSensors.vcxproj" TmcFilePath="irSensors\irSensors.tmc">
+				<Instance Id="#x01010010" KeepUnrestoredLinks="2">
+					<Name>irSensors_Obj1 (updateIrSensors)</Name>
+					<TmcDesc GUID="{5D28B13F-F115-42C2-B285-7848321AF13C}">
+						<Name>updateIrSensors</Name>
+						<CLSID ClassFactory="irSensors">{5D28B13F-F115-42C2-B285-7848321AF13C}</CLSID>
+						<Licenses>
+							<License>
+								<LicenseId>{304D006A-8299-4560-AB79-438534B50288}</LicenseId>
+							</License>
+						</Licenses>
+						<InitSequence>SO</InitSequence>
+						<Contexts>
+							<Context>
+								<Id>1</Id>
+							</Context>
+						</Contexts>
+						<Interfaces>
+							<Interface>
+								<Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{03000010-0000-0000-E000-000000000064}">ITcCyclic</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{03000012-0000-0000-E000-000000000064}">ITcADI</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{03000018-0000-0000-E000-000000000064}">ITcWatchSource</Type>
+							</Interface>
+						</Interfaces>
+						<Parameters>
+							<Parameter HideParameter="true">
+								<Name>TraceLevelMax</Name>
+								<Comment>
+									<![CDATA[Controls the amount of log messages.]]>
+								</Comment>
+								<BitSize>32</BitSize>
+								<BaseType GUID="{8007AE3B-86BB-40F2-B385-EF87FCC239A4}">TcTraceLevel</BaseType>
+								<PTCID>#x03002103</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+							<Parameter>
+								<Name>Parameter</Name>
+								<BitSize>128</BitSize>
+								<SubItem>
+									<Name>data1</Name>
+									<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>0</BitOffs>
+								</SubItem>
+								<SubItem>
+									<Name>data2</Name>
+									<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>32</BitOffs>
+								</SubItem>
+								<SubItem>
+									<Name>data3</Name>
+									<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+									<BitSize>64</BitSize>
+									<BitOffs>64</BitOffs>
+								</SubItem>
+								<PTCID>#x00000001</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+						</Parameters>
+						<DataAreas>
+							<DataArea>
+								<AreaNo AreaType="InputDst">0</AreaNo>
+								<Name>Inputs</Name>
+								<ContextId>1</ContextId>
+								<ByteSize>18</ByteSize>
+								<Symbol>
+									<Name>irInputData</Name>
+									<BitSize>144</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
+									<ArrayInfo>
+										<LBound>0</LBound>
+										<Elements>9</Elements>
+									</ArrayInfo>
+									<BitOffs>0</BitOffs>
+								</Symbol>
+							</DataArea>
+							<DataArea>
+								<AreaNo AreaType="OutputSrc">1</AreaNo>
+								<Name>Outputs</Name>
+								<ContextId>1</ContextId>
+								<ByteSize>72</ByteSize>
+								<Symbol>
+									<Name>irDistance</Name>
+									<BitSize>576</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<ArrayInfo>
+										<LBound>0</LBound>
+										<Elements>9</Elements>
+									</ArrayInfo>
+									<BitOffs>0</BitOffs>
+								</Symbol>
+							</DataArea>
+						</DataAreas>
+						<InterfacePointers>
+							<InterfacePointer>
+								<PTCID>#x03002060</PTCID>
+								<Name>CyclicCaller</Name>
+								<Type GUID="{0300001E-0000-0000-E000-000000000064}">ITcCyclicCaller</Type>
+							</InterfacePointer>
+						</InterfacePointers>
+						<Deployment>
+							<FileEntry TargetPlatform="TwinCAT RT (x86)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x86)\%CLASSFACTORYNAME%.sys</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.sys</DestinationFile>
+							</FileEntry>
+							<FileEntry TargetPlatform="TwinCAT RT (x86)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x86)\%CLASSFACTORYNAME%.pdb</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.pdb</DestinationFile>
+							</FileEntry>
+							<FileEntry TargetPlatform="TwinCAT RT (x64)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x64)\%CLASSFACTORYNAME%.sys</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.sys</DestinationFile>
+							</FileEntry>
+							<FileEntry TargetPlatform="TwinCAT RT (x64)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x64)\%CLASSFACTORYNAME%.pdb</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.pdb</DestinationFile>
+							</FileEntry>
+						</Deployment>
+						<ParameterValues>
+							<Value>
+								<Name>TraceLevelMax</Name>
+								<EnumText>tlAlways</EnumText>
+							</Value>
+							<Value>
+								<Name>Parameter.data1</Name>
+								<Value>0</Value>
+							</Value>
+							<Value>
+								<Name>Parameter.data2</Name>
+								<Value>0</Value>
+							</Value>
+							<Value>
+								<Name>Parameter.data3</Name>
+								<Value>0</Value>
+							</Value>
+						</ParameterValues>
+						<InterfacePointerValues>
+							<Value>
+								<Name>CyclicCaller</Name>
+								<OTCID>#x00000000</OTCID>
+							</Value>
+						</InterfacePointerValues>
+					</TmcDesc>
+				</Instance>
+			</Project>
+			<Project GUID="{B9CAB172-0192-4A6F-AAED-164C138EF13A}" Name="velocityConverterToCartesian" PrjFilePath="velocityConverterToCartesian\velocityConverterToCartesian.vcxproj" TmcFilePath="velocityConverterToCartesian\velocityConverterToCartesian.tmc">
+				<Instance Id="#x01010020" KeepUnrestoredLinks="2">
+					<Name>velocityConverterToCartesian_Obj1 (velocityConverterToCartesian)</Name>
+					<TmcDesc GUID="{567D3EAE-B93E-4490-BADE-9BB56FBDBABF}">
+						<Name>velocityConverterToCartesian</Name>
+						<CLSID ClassFactory="velocityConverterToCartesian">{567D3EAE-B93E-4490-BADE-9BB56FBDBABF}</CLSID>
+						<Licenses>
+							<License>
+								<LicenseId>{304D006A-8299-4560-AB79-438534B50288}</LicenseId>
+							</License>
+						</Licenses>
+						<InitSequence>SO</InitSequence>
+						<Contexts>
+							<Context>
+								<Id>1</Id>
+							</Context>
+						</Contexts>
+						<Interfaces>
+							<Interface>
+								<Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{03000010-0000-0000-E000-000000000064}">ITcCyclic</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{03000012-0000-0000-E000-000000000064}">ITcADI</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{03000018-0000-0000-E000-000000000064}">ITcWatchSource</Type>
+							</Interface>
+						</Interfaces>
+						<Parameters>
+							<Parameter HideParameter="true">
+								<Name>TraceLevelMax</Name>
+								<Comment>
+									<![CDATA[Controls the amount of log messages.]]>
+								</Comment>
+								<BitSize>32</BitSize>
+								<BaseType GUID="{8007AE3B-86BB-40F2-B385-EF87FCC239A4}">TcTraceLevel</BaseType>
+								<PTCID>#x03002103</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+							<Parameter>
+								<Name>Parameter</Name>
+								<BitSize>128</BitSize>
+								<SubItem>
+									<Name>data1</Name>
+									<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>0</BitOffs>
+								</SubItem>
+								<SubItem>
+									<Name>data2</Name>
+									<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>32</BitOffs>
+								</SubItem>
+								<SubItem>
+									<Name>data3</Name>
+									<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+									<BitSize>64</BitSize>
+									<BitOffs>64</BitOffs>
+								</SubItem>
+								<PTCID>#x00000001</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+						</Parameters>
+						<DataAreas>
+							<DataArea>
+								<AreaNo AreaType="InputDst">0</AreaNo>
+								<Name>Inputs</Name>
+								<ContextId>1</ContextId>
+								<ByteSize>27</ByteSize>
+								<Symbol>
+									<Name>velocityMotor0</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>0</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>velocityMotor1</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>64</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>velocityMotor2</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>128</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>directionMotor0</Name>
+									<BitSize>8</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+									<BitOffs>192</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>directionMotor1</Name>
+									<BitSize>8</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+									<BitOffs>200</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>directionMotor2</Name>
+									<BitSize>8</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+									<BitOffs>208</BitOffs>
+								</Symbol>
+							</DataArea>
+							<DataArea>
+								<AreaNo AreaType="OutputSrc">1</AreaNo>
+								<Name>Outputs</Name>
+								<ContextId>1</ContextId>
+								<ByteSize>24</ByteSize>
+								<Symbol>
+									<Name>velocityX</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>0</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>velocityY</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>64</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>theta</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>128</BitOffs>
+								</Symbol>
+							</DataArea>
+						</DataAreas>
+						<InterfacePointers>
+							<InterfacePointer>
+								<PTCID>#x03002060</PTCID>
+								<Name>CyclicCaller</Name>
+								<Type GUID="{0300001E-0000-0000-E000-000000000064}">ITcCyclicCaller</Type>
+							</InterfacePointer>
+						</InterfacePointers>
+						<Deployment>
+							<FileEntry TargetPlatform="TwinCAT RT (x86)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x86)\%CLASSFACTORYNAME%.sys</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.sys</DestinationFile>
+							</FileEntry>
+							<FileEntry TargetPlatform="TwinCAT RT (x86)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x86)\%CLASSFACTORYNAME%.pdb</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.pdb</DestinationFile>
+							</FileEntry>
+							<FileEntry TargetPlatform="TwinCAT RT (x64)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x64)\%CLASSFACTORYNAME%.sys</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.sys</DestinationFile>
+							</FileEntry>
+							<FileEntry TargetPlatform="TwinCAT RT (x64)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x64)\%CLASSFACTORYNAME%.pdb</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.pdb</DestinationFile>
+							</FileEntry>
+						</Deployment>
+						<ParameterValues>
+							<Value>
+								<Name>TraceLevelMax</Name>
+								<EnumText>tlAlways</EnumText>
+							</Value>
+							<Value>
+								<Name>Parameter.data1</Name>
+								<Value>0</Value>
+							</Value>
+							<Value>
+								<Name>Parameter.data2</Name>
+								<Value>0</Value>
+							</Value>
+							<Value>
+								<Name>Parameter.data3</Name>
+								<Value>0</Value>
+							</Value>
+						</ParameterValues>
+						<InterfacePointerValues>
+							<Value>
+								<Name>CyclicCaller</Name>
+								<OTCID>#x00000000</OTCID>
+							</Value>
+						</InterfacePointerValues>
+					</TmcDesc>
+				</Instance>
+			</Project>
+			<Project GUID="{CEB71B1F-3C29-4303-A908-DF5C59A0A919}" Name="velocityConverterToMotors" PrjFilePath="velocityConverterToMotors\velocityConverterToMotors.vcxproj" TmcFilePath="velocityConverterToMotors\velocityConverterToMotors.tmc">
+				<Instance Id="#x01010030" KeepUnrestoredLinks="2">
+					<Name>velocityConverterToMotors_Obj1 (velocityConverterToMotors)</Name>
+					<TmcDesc GUID="{68110CA8-61E2-4695-A7CA-1F93CD519B65}">
+						<Name>velocityConverterToMotors</Name>
+						<CLSID ClassFactory="velocityConverterToMotors">{68110CA8-61E2-4695-A7CA-1F93CD519B65}</CLSID>
+						<Licenses>
+							<License>
+								<LicenseId>{304D006A-8299-4560-AB79-438534B50288}</LicenseId>
+							</License>
+						</Licenses>
+						<InitSequence>SO</InitSequence>
+						<Contexts>
+							<Context>
+								<Id>1</Id>
+							</Context>
+						</Contexts>
+						<Interfaces>
+							<Interface>
+								<Type GUID="{00000012-0000-0000-E000-000000000064}">ITComObject</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{03000010-0000-0000-E000-000000000064}">ITcCyclic</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{03000012-0000-0000-E000-000000000064}">ITcADI</Type>
+							</Interface>
+							<Interface>
+								<Type GUID="{03000018-0000-0000-E000-000000000064}">ITcWatchSource</Type>
+							</Interface>
+						</Interfaces>
+						<Parameters>
+							<Parameter HideParameter="true">
+								<Name>TraceLevelMax</Name>
+								<Comment>
+									<![CDATA[Controls the amount of log messages.]]>
+								</Comment>
+								<BitSize>32</BitSize>
+								<BaseType GUID="{8007AE3B-86BB-40F2-B385-EF87FCC239A4}">TcTraceLevel</BaseType>
+								<PTCID>#x03002103</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+							<Parameter>
+								<Name>Parameter</Name>
+								<BitSize>128</BitSize>
+								<SubItem>
+									<Name>data1</Name>
+									<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>0</BitOffs>
+								</SubItem>
+								<SubItem>
+									<Name>data2</Name>
+									<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+									<BitSize>32</BitSize>
+									<BitOffs>32</BitOffs>
+								</SubItem>
+								<SubItem>
+									<Name>data3</Name>
+									<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+									<BitSize>64</BitSize>
+									<BitOffs>64</BitOffs>
+								</SubItem>
+								<PTCID>#x00000001</PTCID>
+								<ContextId>1</ContextId>
+							</Parameter>
+						</Parameters>
+						<DataAreas>
+							<DataArea>
+								<AreaNo AreaType="InputDst">0</AreaNo>
+								<Name>Inputs</Name>
+								<ContextId>1</ContextId>
+								<ByteSize>24</ByteSize>
+								<Symbol>
+									<Name>velocityX</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>0</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>velocityY</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>64</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>theta</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>128</BitOffs>
+								</Symbol>
+							</DataArea>
+							<DataArea>
+								<AreaNo AreaType="OutputSrc">1</AreaNo>
+								<Name>Outputs</Name>
+								<ContextId>1</ContextId>
+								<ByteSize>27</ByteSize>
+								<Symbol>
+									<Name>velocityMotor0</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>0</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>velocityMotor1</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>64</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>velocityMotor2</Name>
+									<BitSize>64</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+									<BitOffs>128</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>directionMotor0</Name>
+									<BitSize>8</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+									<BitOffs>192</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>directionMotor1</Name>
+									<BitSize>8</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+									<BitOffs>200</BitOffs>
+								</Symbol>
+								<Symbol>
+									<Name>directionMotor2</Name>
+									<BitSize>8</BitSize>
+									<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+									<BitOffs>208</BitOffs>
+								</Symbol>
+							</DataArea>
+						</DataAreas>
+						<InterfacePointers>
+							<InterfacePointer>
+								<PTCID>#x03002060</PTCID>
+								<Name>CyclicCaller</Name>
+								<Type GUID="{0300001E-0000-0000-E000-000000000064}">ITcCyclicCaller</Type>
+							</InterfacePointer>
+						</InterfacePointers>
+						<Deployment>
+							<FileEntry TargetPlatform="TwinCAT RT (x86)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x86)\%CLASSFACTORYNAME%.sys</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.sys</DestinationFile>
+							</FileEntry>
+							<FileEntry TargetPlatform="TwinCAT RT (x86)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x86)\%CLASSFACTORYNAME%.pdb</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.pdb</DestinationFile>
+							</FileEntry>
+							<FileEntry TargetPlatform="TwinCAT RT (x64)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x64)\%CLASSFACTORYNAME%.sys</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.sys</DestinationFile>
+							</FileEntry>
+							<FileEntry TargetPlatform="TwinCAT RT (x64)">
+								<SourceFile>%SOLUTIONDEPLOYMENTPATH%TwinCAT RT (x64)\%CLASSFACTORYNAME%.pdb</SourceFile>
+								<DestinationFile>%TC_DRIVERAUTOINSTALLPATH%%CLASSFACTORYNAME%.pdb</DestinationFile>
+							</FileEntry>
+						</Deployment>
+						<ParameterValues>
+							<Value>
+								<Name>TraceLevelMax</Name>
+								<EnumText>tlAlways</EnumText>
+							</Value>
+							<Value>
+								<Name>Parameter.data1</Name>
+								<Value>0</Value>
+							</Value>
+							<Value>
+								<Name>Parameter.data2</Name>
+								<Value>0</Value>
+							</Value>
+							<Value>
+								<Name>Parameter.data3</Name>
+								<Value>0</Value>
+							</Value>
+						</ParameterValues>
+						<InterfacePointerValues>
+							<Value>
+								<Name>CyclicCaller</Name>
+								<OTCID>#x00000000</OTCID>
+							</Value>
+						</InterfacePointerValues>
+					</TmcDesc>
+				</Instance>
+			</Project>
+		</Cpp>
 		<Io>
 			<Device DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="5.49.201.214.2.1" RemoteName="Gerät 1 (EtherCAT)" Id="1">
 				<Name>Gerät 1 (EtherCAT)</Name>

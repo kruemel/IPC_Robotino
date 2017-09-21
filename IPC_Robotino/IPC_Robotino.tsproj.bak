@@ -1394,6 +1394,10 @@ External Setpoint Generation:
 	</ImageDatas>
 	<Project ProjectGUID="{65F7B117-B92E-4F3E-9321-4DD532767F50}" TargetNetId="5.49.201.214.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
+			<Settings MaxCpus="2" NonWinCpus="1">
+				<Cpu/>
+				<Cpu CpuId="1"/>
+			</Settings>
 			<Licenses>
 				<Target BkhfOrder="VA3337379" CustomOrder="6104201">
 					<ManualSelect>{73C71EBD-104A-4EE6-955D-ADE86A37EFC3}</ManualSelect>
@@ -2364,7 +2368,7 @@ External Setpoint Generation:
 				</Instance>
 			</Project>
 			<Project GUID="{07A0B356-4A80-4A52-8191-BE2577F1E050}" Name="Shutdown" PrjFilePath="Shutdown\Shutdown.plcproj" TmcFilePath="Shutdown\Shutdown.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e">
-				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Shutdown\Shutdown.tmc">
 					<Name>Shutdown Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -2375,11 +2379,16 @@ External Setpoint Generation:
 						</Var>
 					</Vars>
 					<TaskPouOids>
-						<TaskPouOid Prio="20" OTCID="#x01010011"/>
+						<TaskPouOid Prio="20" OTCID="#x08502041"/>
 					</TaskPouOids>
 				</Instance>
 			</Project>
 		</Plc>
+		<Cpp>
+			<Project GUID="{50308A4C-9FB3-48E8-A0AB-291FECDB0D82}" Name="irSensors" PrjFilePath="irSensors\irSensors.vcxproj" TmcFilePath="irSensors\irSensors.tmc"/>
+			<Project GUID="{B9CAB172-0192-4A6F-AAED-164C138EF13A}" Name="velocityConverterToCartesian" PrjFilePath="velocityConverterToCartesian\velocityConverterToCartesian.vcxproj" TmcFilePath="velocityConverterToCartesian\velocityConverterToCartesian.tmc"/>
+			<Project GUID="{CEB71B1F-3C29-4303-A908-DF5C59A0A919}" Name="velocityConverterToMotors" PrjFilePath="velocityConverterToMotors\velocityConverterToMotors.vcxproj" TmcFilePath="velocityConverterToMotors\velocityConverterToMotors.tmc"/>
+		</Cpp>
 		<Io>
 			<Device DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="5.49.201.214.2.1" RemoteName="Gerät 1 (EtherCAT)" Id="1">
 				<Name>Gerät 1 (EtherCAT)</Name>
@@ -4810,8 +4819,8 @@ Bit1: Value bigger/equal Limit2]]>
 		</Io>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{00000000-0011-0101-4020-500840000403}" Id="#x02030030"/>
 		<MappingInfo Identifier="{00000000-0010-0304-3000-040310000403}" Id="#x02030010"/>
+		<MappingInfo Identifier="{00000000-2041-0850-4020-500840000403}" Id="#x02030030"/>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500840000403}" Id="#x02030020"/>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 1">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 1">
