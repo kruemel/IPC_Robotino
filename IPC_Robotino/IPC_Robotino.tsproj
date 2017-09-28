@@ -1394,9 +1394,11 @@ External Setpoint Generation:
 	</ImageDatas>
 	<Project ProjectGUID="{65F7B117-B92E-4F3E-9321-4DD532767F50}" TargetNetId="5.49.201.214.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
-			<Settings MaxCpus="2" NonWinCpus="1">
+			<Settings MaxCpus="4" NonWinCpus="1">
 				<Cpu BaseTime="5000"/>
 				<Cpu CpuId="1" BaseTime="5000"/>
+				<Cpu CpuId="2" BaseTime="5000"/>
+				<Cpu CpuId="3" BaseTime="5000"/>
 			</Settings>
 			<Licenses>
 				<Target BkhfOrder="VA3337379" CustomOrder="6104201">
@@ -2979,6 +2981,9 @@ External Setpoint Generation:
 				</Image>
 				<Image Id="4" AddrType="10" ImageType="3">
 					<Name>Prozessabbild-2</Name>
+				</Image>
+				<Image Id="6" AddrType="10" ImageType="3">
+					<Name>Prozessabbild-3</Name>
 				</Image>
 				<Box BoxType="9099" Id="1">
 					<Name>Klemme 1 (EK1200)</Name>
@@ -5377,8 +5382,22 @@ Bit1: Value bigger/equal Limit2]]>
 	</Project>
 	<Mappings>
 		<MappingInfo Identifier="{00000000-0010-0304-3000-040310000403}" Id="#x02030010"/>
-		<MappingInfo Identifier="{00000000-2041-0850-4020-500840000403}" Id="#x02030030"/>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500840000403}" Id="#x02030020"/>
+		<MappingInfo Identifier="{00000000-2041-0850-4020-500860000403}" Id="#x02030040"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500860000403}" Id="#x02030030"/>
+		<MappingInfo Identifier="{00000000-0040-0304-1000-010140000403}" Id="#x02030020"/>
+		<OwnerA Name="TIID^Device 1 (EtherCAT)">
+			<OwnerB Name="TIXC^irSensors^irSensors_Objekt">
+				<Link VarA="Term 1 (EK1200)^4 Kanal Analog Input^AI Standard Channel 1^IR Sensor 9" VarB="Inputs^irInputData[8]"/>
+				<Link VarA="Term 1 (EK1200)^8 Kanal Analog Input^AI Standard Channel 1^IR Sensor 1" VarB="Inputs^irInputData[0]"/>
+				<Link VarA="Term 1 (EK1200)^8 Kanal Analog Input^AI Standard Channel 2^IR Sensor 2" VarB="Inputs^irInputData[1]"/>
+				<Link VarA="Term 1 (EK1200)^8 Kanal Analog Input^AI Standard Channel 3^IR Sensor 3" VarB="Inputs^irInputData[2]"/>
+				<Link VarA="Term 1 (EK1200)^8 Kanal Analog Input^AI Standard Channel 4^IR Sensor 4" VarB="Inputs^irInputData[3]"/>
+				<Link VarA="Term 1 (EK1200)^8 Kanal Analog Input^AI Standard Channel 5^IR Sensor 5" VarB="Inputs^irInputData[4]"/>
+				<Link VarA="Term 1 (EK1200)^8 Kanal Analog Input^AI Standard Channel 6^IR Sensor 6" VarB="Inputs^irInputData[5]"/>
+				<Link VarA="Term 1 (EK1200)^8 Kanal Analog Input^AI Standard Channel 7^IR Sensor 7" VarB="Inputs^irInputData[6]"/>
+				<Link VarA="Term 1 (EK1200)^8 Kanal Analog Input^AI Standard Channel 8^IR Sensor 8" VarB="Inputs^irInputData[7]"/>
+			</OwnerB>
+		</OwnerA>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 1">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 1">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Error" Size="1" OffsA="3"/>
