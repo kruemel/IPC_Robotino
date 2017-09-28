@@ -1702,6 +1702,9 @@ External Setpoint Generation:
 				<Task Id="8" Priority="5" CycleTime="50000" AmsPort="353" AdtTasks="true">
 					<Name>velocityConverterToCartesian</Name>
 				</Task>
+				<Task Id="9" Priority="2" CycleTime="500000" AmsPort="354" AdtTasks="true">
+					<Name>Regler</Name>
+				</Task>
 			</Tasks>
 			<Modules>
 				<Module Id="#x01010030" KeepUnrestoredLinks="2">
@@ -1722,6 +1725,11 @@ External Setpoint Generation:
 						<Contexts>
 							<Context>
 								<Id>0</Id>
+								<ManualConfig>
+									<OTCID>#x02010090</OTCID>
+								</ManualConfig>
+								<Priority>2</Priority>
+								<CycleTime>50000000</CycleTime>
 							</Context>
 						</Contexts>
 						<Interfaces>
@@ -1793,13 +1801,13 @@ External Setpoint Generation:
 								<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
 								<PTCID>#x00000008</PTCID>
 							</Parameter>
-							<Parameter>
+							<Parameter ShowSubItems="true">
 								<Name>Input</Name>
 								<BitSize>384</BitSize>
 								<BaseType GUID="{077813F1-F781-92F5-5CC8-3C40D563B6D5}">ExtU_regler_T</BaseType>
 								<PTCID>#x80000000</PTCID>
 							</Parameter>
-							<Parameter>
+							<Parameter ShowSubItems="true">
 								<Name>ModelParameters</Name>
 								<BitSize>448</BitSize>
 								<BaseType GUID="{9DAD7530-398D-A091-E954-0EAF500363E9}">P_regler_T</BaseType>
@@ -1838,7 +1846,7 @@ External Setpoint Generation:
 						</Parameters>
 						<DataAreas>
 							<DataArea>
-								<AreaNo AreaType="InputDst" CreateSymbols="true">0</AreaNo>
+								<AreaNo AreaType="InputDst" CreateSymbols="true" ShowSymbols="true">0</AreaNo>
 								<Name>Input</Name>
 								<ContextId>0</ContextId>
 								<ByteSize>48</ByteSize>
@@ -2275,19 +2283,19 @@ External Setpoint Generation:
 							</Value>
 							<Value>
 								<Name>ContextInfoArr_0_TaskOid</Name>
-								<Value>0</Value>
+								<Value>33620112</Value>
 							</Value>
 							<Value>
 								<Name>ContextInfoArr_0_TaskPriority</Name>
-								<Value>0</Value>
+								<Value>2</Value>
 							</Value>
 							<Value>
 								<Name>ContextInfoArr_0_TaskCycleTimeNs</Name>
-								<Value>0</Value>
+								<Value>50000000</Value>
 							</Value>
 							<Value>
 								<Name>ContextInfoArr_0_TaskPort</Name>
-								<Value>0</Value>
+								<Value>354</Value>
 							</Value>
 							<Value>
 								<Name>ContextInfoArr_0_TaskSortOrder</Name>
