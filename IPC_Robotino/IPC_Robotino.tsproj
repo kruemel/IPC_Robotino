@@ -2324,11 +2324,13 @@ External Setpoint Generation:
 				<Axis CreateSymbols="true" AxisType="1" Id="1">
 					<Name>Achse 1</Name>
 					<AxisPara>
+						<Velo Maximum="20000"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
-						<EncPara MaxCount="#x0000ffff">
-							<Inc RefSoftSyncMask="#x0000ffff"/>
+						<EncPara ScaleFactorNumerator="0.01125" MaxCount="#x0000ffff">
+							<Inc RefMode="2" RefSoftSyncMask="#x0000ffff"/>
+							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Eingänge</Name>
@@ -2397,7 +2399,7 @@ External Setpoint Generation:
 					</Encoder>
 					<Drive Name="Drive" DrvType="23">
 						<DrvPara>
-							<Analog ScaleFactorActTorque="0.1"/>
+							<Analog VeloReferenz="21600" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
 						</DrvPara>
 						<Vars VarGrpType="1">
@@ -2487,6 +2489,7 @@ Drive Status 4 (manually linked):
 					</Drive>
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
+							<PosDiffControl Enable="false"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -2553,11 +2556,13 @@ External Setpoint Generation:
 				<Axis CreateSymbols="true" AxisType="1" Id="2">
 					<Name>Achse 2</Name>
 					<AxisPara>
+						<Velo Maximum="20000"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
-						<EncPara MaxCount="#x0000ffff">
+						<EncPara ScaleFactorNumerator="0.01125" MaxCount="#x0000ffff">
 							<Inc RefSoftSyncMask="#x0000ffff"/>
+							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Eingänge</Name>
@@ -2626,7 +2631,7 @@ External Setpoint Generation:
 					</Encoder>
 					<Drive Name="Drive" DrvType="23">
 						<DrvPara>
-							<Analog ScaleFactorActTorque="0.1"/>
+							<Analog VeloReferenz="21600" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
 						</DrvPara>
 						<Vars VarGrpType="1">
@@ -2716,6 +2721,7 @@ Drive Status 4 (manually linked):
 					</Drive>
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
+							<PosDiffControl Enable="false"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -2784,11 +2790,13 @@ External Setpoint Generation:
 				<Axis CreateSymbols="true" AxisType="1" Id="3">
 					<Name>Achse 3</Name>
 					<AxisPara>
+						<Velo Maximum="20000"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
-						<EncPara MaxCount="#x0000ffff">
+						<EncPara ScaleFactorNumerator="0.01125" MaxCount="#x0000ffff">
 							<Inc RefSoftSyncMask="#x0000ffff"/>
+							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Eingänge</Name>
@@ -2857,7 +2865,7 @@ External Setpoint Generation:
 					</Encoder>
 					<Drive Name="Drive" DrvType="23">
 						<DrvPara>
-							<Analog ScaleFactorActTorque="0.1"/>
+							<Analog VeloReferenz="21600" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
 						</DrvPara>
 						<Vars VarGrpType="1">
@@ -2947,6 +2955,7 @@ Drive Status 4 (manually linked):
 					</Drive>
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
+							<PosDiffControl Enable="false"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -3961,13 +3970,13 @@ External Setpoint Generation:
 								<Entry Name="Control__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
 								</Entry>
-								<Entry Name="Control__Enable latch extern on positive edge" Index="#x7000" Sub="#x02">
+								<Entry Name="Control__Enable latch extern on positive edge" Index="#x7000" Sub="#x02" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Control__Set counter" Index="#x7000" Sub="#x03">
+								<Entry Name="Control__Set counter" Index="#x7000" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Control__Enable latch extern on negative edge" Index="#x7000" Sub="#x04">
+								<Entry Name="Control__Enable latch extern on negative edge" Index="#x7000" Sub="#x04" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Control__">
