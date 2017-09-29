@@ -2329,7 +2329,7 @@ External Setpoint Generation:
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
 						<EncPara ScaleFactorNumerator="0.01125" MaxCount="#x0000ffff">
-							<Inc RefSoftSyncMask="#x0000ffff"/>
+							<Inc RefMode="2" RefSoftSyncMask="#x0000ffff"/>
 							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
 						</EncPara>
 						<Vars VarGrpType="1">
@@ -2792,8 +2792,6 @@ External Setpoint Generation:
 					<AxisPara>
 						<Velo Maximum="20000"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
-						<ParameterChanged>39</ParameterChanged>
-						<ParameterChanged>257</ParameterChanged>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
 						<EncPara ScaleFactorNumerator="0.01125" MaxCount="#x0000ffff">
@@ -3972,13 +3970,13 @@ External Setpoint Generation:
 								<Entry Name="Control__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
 								</Entry>
-								<Entry Name="Control__Enable latch extern on positive edge" Index="#x7000" Sub="#x02">
+								<Entry Name="Control__Enable latch extern on positive edge" Index="#x7000" Sub="#x02" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Control__Set counter" Index="#x7000" Sub="#x03">
+								<Entry Name="Control__Set counter" Index="#x7000" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Control__Enable latch extern on negative edge" Index="#x7000" Sub="#x04">
+								<Entry Name="Control__Enable latch extern on negative edge" Index="#x7000" Sub="#x04" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Control__">
