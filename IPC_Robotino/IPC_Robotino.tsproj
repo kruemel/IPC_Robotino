@@ -1420,7 +1420,7 @@ External Setpoint Generation:
 		</System>
 		<Motion>
 			<NC>
-				<SafTask Priority="4" CycleTime="20000" AmsPort="501" IoAtBegin="true">
+				<SafTask Priority="4" CycleTime="20000" AmsPort="501" IoAtBegin="true" AmsNetId="192.168.0.109.1.1">
 					<Name>NC-Task 1 SAF</Name>
 					<Vars VarGrpType="1" InsertType="1">
 						<Name>Eingänge</Name>
@@ -2401,6 +2401,12 @@ External Setpoint Generation:
 					</TaskPouOids>
 				</Instance>
 			</Project>
+			<Project GUID="{95533C61-2616-46BE-92F7-38CC80CE9359}" Name="UDP" PrjFilePath="UDP\UDP.plcproj" TmcFilePath="UDP\UDP.tmc" ReloadTmc="true" AmsPort="853" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502080" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+					<Name>UDP Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+				</Instance>
+			</Project>
 		</Plc>
 		<Cpp>
 			<Project GUID="{50308A4C-9FB3-48E8-A0AB-291FECDB0D82}" Name="irSensors" PrjFilePath="irSensors\irSensors.vcxproj" TmcFilePath="irSensors\irSensors.tmc">
@@ -2571,29 +2577,11 @@ External Setpoint Generation:
 			<Device DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="5.49.201.214.2.1" RemoteName="Gerät 1 (EtherCAT)" Id="1">
 				<Name>Gerät 1 (EtherCAT)</Name>
 				<AddressInfo>
-					<Ccat>
-						<Address>-801112064</Address>
-						<Offset>131072</Offset>
-						<Size>8192</Size>
-						<BaseAddr>0</BaseAddr>
-						<BusNo>3</BusNo>
-						<SlotNo>0</SlotNo>
-						<VendorId>5612</VendorId>
-						<DeviceId>20480</DeviceId>
-						<Dma>
-							<Address>0</Address>
-							<Offset>4096</Offset>
-							<Size>12288</Size>
-							<BaseAddr>2</BaseAddr>
-							<RxChn>0</RxChn>
-							<TxChn>1</TxChn>
-						</Dma>
-						<Identification>
-							<Value>1795167326</Value>
-							<Version>1</Version>
-							<Size>256</Size>
-						</Identification>
-					</Ccat>
+					<Pnp>
+						<DeviceDesc>LAN-Verbindung (TwinCAT-Intel PCI Ethernet Adapter </DeviceDesc>
+						<DeviceName>\DEVICE\{132D5A97-8E31-46C4-8581-E22CB880FE58}</DeviceName>
+						<DeviceData>0019997c86ed</DeviceData>
+					</Pnp>
 				</AddressInfo>
 				<Image Id="1" AddrType="9" ImageType="3">
 					<Name>Prozessabbild</Name>
@@ -4978,7 +4966,7 @@ Bit1: Value bigger/equal Limit2]]>
 						<EtherCAT CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x23333050" InfoDataState="false" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL9011 Endklemme" Desc="EL9011" PortABoxInfo="#x01000008"/>
 					</Box>
 				</Box>
-				<EtherCAT/>
+				<EtherCAT DeviceDesc="LAN-Verbindung (TwinCAT-Intel PCI Ethernet Adapter (Gigabit))"/>
 			</Device>
 		</Io>
 	</Project>
