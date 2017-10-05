@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
   <POU Name="TestEchoServer" Id="{908d85d7-bdec-44b4-8e91-5a81c664be5d}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK TestEchoServer IMPLEMENTS ITcIoUdpProtocolRecv
+    <Declaration><![CDATA[{attribute 'c++_compatible'}
+FUNCTION_BLOCK TestEchoServer IMPLEMENTS ITcIoUdpProtocolRecv
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -78,10 +79,12 @@ END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="ReceiveData" Id="{2f7b2000-e86c-4728-a38c-c65fb7de05f5}">
-      <Declaration><![CDATA[{attribute 'c++_compatible'}
-{attribute 'minimal_input_size' := '4'}
+      <Declaration><![CDATA[{attribute 'object_name' := 'ReceiveData'}
+{attribute 'c++_compatible'}
+{attribute 'signature_flag' := '33554688'}
 {attribute 'pack_mode' := '4'}
-{warning 'Methodenimplementierung hinzufügen'}
+{attribute 'show'}
+{attribute 'minimal_input_size' := '4'}
 METHOD ReceiveData : HRESULT
 VAR_INPUT
 	ipAddr	: UDINT;
@@ -93,7 +96,11 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[nReceivedPakets := nReceivedPakets+1;
+// lastReceivedIP.ipadrIPStack := ipAddr;
+IF ipUdp <> 0 THEN
+	ipUdp.SendData(ipAddr, udpSrcPort, udpDestPort, nData, pData, TRUE, 0); // send data back
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="TcAddRef" Id="{b7e7da53-14ba-4e6a-a78f-5c64e2c860c5}">
@@ -151,6 +158,7 @@ METHOD TcRelease : UDINT
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="TestEchoServer.ReceiveData">
+      <LineId Id="29" Count="3" />
       <LineId Id="15" Count="0" />
     </LineIds>
     <LineIds Name="TestEchoServer.TcAddRef">
