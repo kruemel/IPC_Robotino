@@ -8,7 +8,9 @@
 *.sln.docstates
 *.tclrq
 *.tclrs
-*.project.~u
+*.~u
+Port_851*
+Port_852*
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

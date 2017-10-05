@@ -24,13 +24,6 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Visualisierungsmanager.TcVMO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="VISUs\LED_visu.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
@@ -93,11 +86,6 @@
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_Module</Namespace>
     </PlaceholderReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="LED_test.tmc">
-      <SubType>Content</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <LibraryReference Include="VisuSymbols,3.5.10.0,System">
