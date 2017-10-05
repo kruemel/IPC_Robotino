@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <GVL Name="UDPVariablen" Id="{d035a088-9d17-440a-afb8-4ba9d899d630}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	sPaketinhalt	: LREAL;
+	nPaketlaenge	: UDINT;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

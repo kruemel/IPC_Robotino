@@ -11,7 +11,7 @@ VAR
 	{attribute 'TcInitSymbol'}
     oid:              OTCID; 
     ipUdp:            ITcIoUdpProtocol;
-    updPort:          UINT := 10000;
+    updPort:          UINT := 25000;
     nReceivedPakets:  UINT;
     hrInit :          HRESULT;
     hrSend :          HRESULT;
@@ -20,7 +20,9 @@ END_VAR
     <Implementation>
       <ST><![CDATA[IF ipUdp <> 0 THEN
     ipUdp.CheckReceived();
-END_IF]]></ST>
+END_IF
+
+]]></ST>
     </Implementation>
     <Method Name="FB_exit" Id="{91b28bdb-201a-42a2-b295-09a526170ca2}">
       <Declaration><![CDATA[METHOD FB_exit : BOOL
@@ -94,13 +96,17 @@ VAR_INPUT
 	pData	: PVOID;
 	pVlan	: POINTER TO ETYPE_VLAN_HEADER := 0;
 END_VAR
+
+VAR
+	nEmpfangen		: UINT;
+
+END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[nReceivedPakets := nReceivedPakets+1;
-// lastReceivedIP.ipadrIPStack := ipAddr;
-IF ipUdp <> 0 THEN
-	ipUdp.SendData(ipAddr, udpSrcPort, udpDestPort, nData, pData, TRUE, 0); // send data back
-END_IF]]></ST>
+
+memcpy(ADR(UDPVariablen.sPaketinhalt),pData,8);
+UDPVariablen.nPaketlaenge := nData;]]></ST>
       </Implementation>
     </Method>
     <Method Name="TcAddRef" Id="{b7e7da53-14ba-4e6a-a78f-5c64e2c860c5}">
@@ -143,6 +149,8 @@ METHOD TcRelease : UDINT
     <LineIds Name="TestEchoServer">
       <LineId Id="17" Count="1" />
       <LineId Id="9" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="35" Count="0" />
     </LineIds>
     <LineIds Name="TestEchoServer.FB_exit">
       <LineId Id="7" Count="5" />
@@ -158,8 +166,10 @@ METHOD TcRelease : UDINT
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="TestEchoServer.ReceiveData">
-      <LineId Id="29" Count="3" />
-      <LineId Id="15" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="56" Count="0" />
     </LineIds>
     <LineIds Name="TestEchoServer.TcAddRef">
       <LineId Id="7" Count="0" />

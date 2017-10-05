@@ -5905,7 +5905,7 @@ Bit1: Value bigger/equal Limit2]]>
 								<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
 								<PTCID>#x03011131</PTCID>
 							</Parameter>
-							<Parameter OnlineParameter="true">
+							<Parameter OnlineParameter="true" ShowSubItems="true">
 								<Name>IpStackDiagnosis</Name>
 								<BitSize>768</BitSize>
 								<BaseType GUID="{38621CD5-4239-4327-97F7-35F1414B7265}">IpStackDiagnosis</BaseType>

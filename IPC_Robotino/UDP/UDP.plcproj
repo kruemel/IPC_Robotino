@@ -15,6 +15,10 @@
     <LibraryReferences>{71050ad5-0f29-43c5-89ae-66ec3d991b78}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GVLs\UDPVariablen.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
