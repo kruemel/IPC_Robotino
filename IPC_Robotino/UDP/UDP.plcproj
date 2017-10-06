@@ -25,7 +25,7 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\TestEchoServer.TcPOU">
+    <Compile Include="POUs\UDP_Communication.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
