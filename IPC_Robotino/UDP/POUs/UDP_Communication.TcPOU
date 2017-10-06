@@ -98,16 +98,24 @@ VAR_INPUT
 END_VAR
 
 VAR
-	nEmpfangen		: UINT;
-
+	i		:	UINT;
+	ptByte	: POINTER TO LREAL;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[nReceivedPakets := nReceivedPakets+1;
 
-UDPVariablen.nPaketlaenge := nData; //Auslesen der Datenlänge des gesendeten UDP-Pakets
+UDP.nPaketlaenge := nData; //Auslesen der Datenlänge des gesendeten UDP-Pakets
 
-memcpy(ADR(UDPVariablen.sPaketinhalt),pData,8); 
+UDP.firstByte := pData;
+UDP.nextByte := UDP.firstByte + 8;
+
+memcpy(ADR(UDP.x[1]),pData,8); 
+memcpy(ADR(UDP.y[1]),pData+UDP.nextByte,8); 
+memcpy(ADR(UDP.theta[1]),pData+2*SIZEOF(ptByte^),8); 
+
+
+
 ]]></ST>
       </Implementation>
     </Method>
@@ -170,6 +178,11 @@ METHOD TcRelease : UDINT
     <LineIds Name="UDP_Communication.ReceiveData">
       <LineId Id="29" Count="0" />
       <LineId Id="77" Count="1" />
+      <LineId Id="107" Count="0" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="99" Count="2" />
+      <LineId Id="103" Count="1" />
+      <LineId Id="102" Count="0" />
       <LineId Id="53" Count="0" />
       <LineId Id="47" Count="0" />
       <LineId Id="56" Count="0" />
