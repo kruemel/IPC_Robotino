@@ -3112,7 +3112,7 @@ External Setpoint Generation:
 				</Instance>
 			</Project>
 			<Project GUID="{95533C61-2616-46BE-92F7-38CC80CE9359}" Name="UDP" PrjFilePath="UDP\UDP.plcproj" TmcFilePath="UDP\UDP.tmc" ReloadTmc="true" AmsPort="853" FileArchiveSettings="#x000e">
-				<Instance Id="#x08502080" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+				<Instance Id="#x08502080" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="UDP\UDP.tmc">
 					<Name>UDP Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<InitSymbols>
@@ -3123,7 +3123,7 @@ External Setpoint Generation:
 						</InitSymbol>
 					</InitSymbols>
 					<TaskPouOids>
-						<TaskPouOid Prio="20" OTCID="#x01010031"/>
+						<TaskPouOid Prio="20" OTCID="#x08502081"/>
 					</TaskPouOids>
 				</Instance>
 			</Project>
