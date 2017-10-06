@@ -110,13 +110,22 @@ UDP.nPaketlaenge := nData; //Auslesen der Datenlänge des gesendeten UDP-Pakets
 UDP.firstByte := pData;
 UDP.nextByte := UDP.firstByte + 8;
 
+
 memcpy(ADR(UDP.x[1]),pData,8); 
-memcpy(ADR(UDP.y[1]),pData+UDP.nextByte,8); 
-memcpy(ADR(UDP.theta[1]),pData+2*SIZEOF(ptByte^),8); 
+memcpy(ADR(UDP.y[1]),pData+8,8); 
+memcpy(ADR(UDP.theta[1]),pData+16,8); 
 
+memcpy(ADR(UDP.x[2]),pData+24,8); 
+memcpy(ADR(UDP.y[2]),pData+32,8); 
+memcpy(ADR(UDP.theta[2]),pData+40,8); 
 
+memcpy(ADR(UDP.x[3]),pData+48,8); 
+memcpy(ADR(UDP.y[3]),pData+56,8); 
+memcpy(ADR(UDP.theta[3]),pData+64,8); 
 
-]]></ST>
+memcpy(ADR(UDP.x[4]),pData+72,8); 
+memcpy(ADR(UDP.y[4]),pData+80,8); 
+memcpy(ADR(UDP.theta[4]),pData+88,8); ]]></ST>
       </Implementation>
     </Method>
     <Method Name="TcAddRef" Id="{b7e7da53-14ba-4e6a-a78f-5c64e2c860c5}">
@@ -180,12 +189,16 @@ METHOD TcRelease : UDINT
       <LineId Id="77" Count="1" />
       <LineId Id="107" Count="0" />
       <LineId Id="106" Count="0" />
-      <LineId Id="99" Count="2" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="108" Count="0" />
+      <LineId Id="100" Count="1" />
       <LineId Id="103" Count="1" />
-      <LineId Id="102" Count="0" />
-      <LineId Id="53" Count="0" />
-      <LineId Id="47" Count="0" />
-      <LineId Id="56" Count="0" />
+      <LineId Id="112" Count="2" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="117" Count="2" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="121" Count="2" />
+      <LineId Id="120" Count="0" />
     </LineIds>
     <LineIds Name="UDP_Communication.TcAddRef">
       <LineId Id="7" Count="0" />

@@ -10,6 +10,7 @@ VAR_GLOBAL
 	nPaketlaenge	: UDINT;
 	firstByte		: ULINT;
 	nextByte		: ULINT;
+	sizeLREAL		: ULINT;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
