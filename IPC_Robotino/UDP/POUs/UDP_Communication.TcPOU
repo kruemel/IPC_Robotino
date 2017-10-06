@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
-  <POU Name="TestEchoServer" Id="{908d85d7-bdec-44b4-8e91-5a81c664be5d}" SpecialFunc="None">
+  <POU Name="UDP_Communication" Id="{908d85d7-bdec-44b4-8e91-5a81c664be5d}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'c++_compatible'}
-FUNCTION_BLOCK TestEchoServer IMPLEMENTS ITcIoUdpProtocolRecv
+FUNCTION_BLOCK UDP_Communication IMPLEMENTS ITcIoUdpProtocolRecv
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -105,8 +105,10 @@ END_VAR
       <Implementation>
         <ST><![CDATA[nReceivedPakets := nReceivedPakets+1;
 
-memcpy(ADR(UDPVariablen.sPaketinhalt),pData,8);
-UDPVariablen.nPaketlaenge := nData;]]></ST>
+UDPVariablen.nPaketlaenge := nData; //Auslesen der Datenlänge des gesendeten UDP-Pakets
+
+memcpy(ADR(UDPVariablen.sPaketinhalt),pData,8); 
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="TcAddRef" Id="{b7e7da53-14ba-4e6a-a78f-5c64e2c860c5}">
@@ -146,38 +148,39 @@ METHOD TcRelease : UDINT
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <LineIds Name="TestEchoServer">
+    <LineIds Name="UDP_Communication">
       <LineId Id="17" Count="1" />
       <LineId Id="9" Count="0" />
       <LineId Id="37" Count="0" />
       <LineId Id="35" Count="0" />
     </LineIds>
-    <LineIds Name="TestEchoServer.FB_exit">
+    <LineIds Name="UDP_Communication.FB_exit">
       <LineId Id="7" Count="5" />
       <LineId Id="6" Count="0" />
     </LineIds>
-    <LineIds Name="TestEchoServer.FB_init">
+    <LineIds Name="UDP_Communication.FB_init">
       <LineId Id="12" Count="7" />
       <LineId Id="21" Count="5" />
       <LineId Id="7" Count="0" />
     </LineIds>
-    <LineIds Name="TestEchoServer.FB_reinit">
+    <LineIds Name="UDP_Communication.FB_reinit">
       <LineId Id="6" Count="1" />
       <LineId Id="5" Count="0" />
     </LineIds>
-    <LineIds Name="TestEchoServer.ReceiveData">
+    <LineIds Name="UDP_Communication.ReceiveData">
       <LineId Id="29" Count="0" />
+      <LineId Id="77" Count="1" />
       <LineId Id="53" Count="0" />
       <LineId Id="47" Count="0" />
       <LineId Id="56" Count="0" />
     </LineIds>
-    <LineIds Name="TestEchoServer.TcAddRef">
+    <LineIds Name="UDP_Communication.TcAddRef">
       <LineId Id="7" Count="0" />
     </LineIds>
-    <LineIds Name="TestEchoServer.TcQueryInterface">
+    <LineIds Name="UDP_Communication.TcQueryInterface">
       <LineId Id="11" Count="0" />
     </LineIds>
-    <LineIds Name="TestEchoServer.TcRelease">
+    <LineIds Name="UDP_Communication.TcRelease">
       <LineId Id="7" Count="0" />
     </LineIds>
   </POU>
