@@ -2214,9 +2214,10 @@ External Setpoint Generation:
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
-						<EncPara ScaleFactorNumerator="0.01125" MaxCount="#x0000ffff">
+						<EncPara ScaleFactorNumerator="0.18" MaxCount="#x0000ffff">
 							<Inc RefMode="2" RefSoftSyncMask="#x0000ffff"/>
 							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
+							<ParameterChanged>35</ParameterChanged>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Eingänge</Name>
@@ -2446,9 +2447,10 @@ External Setpoint Generation:
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
-						<EncPara ScaleFactorNumerator="0.01125" MaxCount="#x0000ffff">
+						<EncPara ScaleFactorNumerator="0.18" MaxCount="#x0000ffff">
 							<Inc RefSoftSyncMask="#x0000ffff"/>
 							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
+							<ParameterChanged>35</ParameterChanged>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Eingänge</Name>
@@ -2680,9 +2682,10 @@ External Setpoint Generation:
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
-						<EncPara ScaleFactorNumerator="0.01125" MaxCount="#x0000ffff">
+						<EncPara ScaleFactorNumerator="0.18" MaxCount="#x0000ffff">
 							<Inc RefSoftSyncMask="#x0000ffff"/>
 							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
+							<ParameterChanged>35</ParameterChanged>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Eingänge</Name>
