@@ -98,18 +98,18 @@ VAR_INPUT
 END_VAR
 
 VAR
-	nEmpfangen		: UINT;
-
-	UDPVariablen: INT;
+	i	: ULINT := 0;
 END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[nReceivedPakets := nReceivedPakets+1;
 UDP.nPaketlaenge := nData;
 
-memcpy(ADR(UDP.x[1]),pData,8);
-memcpy(ADR(UDP.y[1]),pData+8,8);
-memcpy(ADR(UDP.theta[1]),pData+16,8);]]></ST>
+FOR i := 0 TO 3 DO
+	memcpy(ADR(UDP.x[i+1]),pData+((i*3)*8),8);
+	memcpy(ADR(UDP.y[i+1]),pData+((i*3+1)*8),8);
+	memcpy(ADR(UDP.theta[i+1]),pData+((i*3+2)*8),8);
+END_FOR;]]></ST>
       </Implementation>
     </Method>
     <Method Name="TcAddRef" Id="{b7e7da53-14ba-4e6a-a78f-5c64e2c860c5}">
@@ -171,9 +171,11 @@ METHOD TcRelease : UDINT
     <LineIds Name="UDPConnect.ReceiveData">
       <LineId Id="29" Count="0" />
       <LineId Id="56" Count="0" />
+      <LineId Id="103" Count="0" />
       <LineId Id="79" Count="0" />
       <LineId Id="77" Count="0" />
       <LineId Id="80" Count="1" />
+      <LineId Id="104" Count="0" />
     </LineIds>
     <LineIds Name="UDPConnect.TcAddRef">
       <LineId Id="7" Count="0" />
