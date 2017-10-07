@@ -3,7 +3,7 @@
 
 # Ignore all files except those starting with "!"
 
-*
+*.*
 !.gitignore
 !.gitattributes
 !readme.md
