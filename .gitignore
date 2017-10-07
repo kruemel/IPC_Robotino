@@ -15,6 +15,13 @@
 !*.TcVis
 !*.TcVMO
 !*.TcGTLO
+!*.h
+!*.cpp
+!*.vcxproj
+!*.vcxproj.filters
+!*.def
+!*.idl
+!*.cd
 
 
 # User-specific files
