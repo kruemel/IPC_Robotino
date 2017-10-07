@@ -3,9 +3,7 @@
   <POU Name="MAIN" Id="{83da6505-1eb3-48a2-b593-db0aa655616f}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	udp1 : TestEchoServer;
-	sPaketinhalt	: STRING;
-	pDataString: T_MaxString;
+	udp1 : UDPConnect;
 END_VAR
 ]]></Declaration>
     <Implementation>

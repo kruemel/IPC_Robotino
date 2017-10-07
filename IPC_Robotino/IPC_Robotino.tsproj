@@ -6121,7 +6121,6 @@ Bit1: Value bigger/equal Limit2]]>
 	<Mappings>
 		<MappingInfo Identifier="{00000000-0010-0304-3000-040310000403}" Id="#x02030010"/>
 		<MappingInfo Identifier="{00000000-2041-0850-4020-500850000403}" Id="#x02030040"/>
-		<MappingInfo Identifier="{00000000-2001-0850-0020-500850000403}" Id="#x02030030"/>
 		<MappingInfo Identifier="{00000000-0040-0304-1000-010140000403}" Id="#x02030020"/>
 		<OwnerA Name="TIID^Device 1 (EtherCAT)">
 			<OwnerB Name="TIXC^irSensors^irSensors_Obj1 (updateIrSensors)">

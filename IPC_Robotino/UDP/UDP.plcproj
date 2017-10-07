@@ -15,7 +15,7 @@
     <LibraryReferences>{71050ad5-0f29-43c5-89ae-66ec3d991b78}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GVLs\UDPVariablen.TcGVL">
+    <Compile Include="GVLs\UDP.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
@@ -25,7 +25,7 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\TestEchoServer.TcPOU">
+    <Compile Include="POUs\UDPConnect.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
