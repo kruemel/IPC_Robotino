@@ -1,14 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.36">
-  <POU Name="MAIN" Id="{e82fe949-bc40-4bc0-b1a4-f8ef83395fe3}">
-    <Declaration>
-      <![CDATA[PROGRAM MAIN
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <POU Name="MAIN" Id="{e82fe949-bc40-4bc0-b1a4-f8ef83395fe3}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
 VAR
-END_VAR
-]]>
-    </Declaration>
+	axis1: AXIS_REF;
+	axis2: AXIS_REF;
+	axis3: AXIS_REF;
+	
+	powerAxis1: MC_Power;
+	moveAxis1: MC_MoveVelocity;
+	resetAxis1: MC_Reset;
+	
+	enableControl: BOOL;
+	enablePos: BOOL;
+	enableNeg: BOOL;
+	override: LREAL;
+	active: BOOL;
+	direction: INT;
+END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[axis1.ReadStatus();
+//axis2.ReadStatus();
+//axis3.ReadStatus();
+
+enableControl:=1;
+enablePos:=1;
+enableNeg:=1;
+override:=100;
+
+
+powerAxis1(Axis:=axis1,Enable:=enableControl,Enable_Positive:=enablePos,Enable_Negative:=enableNeg,Override:=override);
+
+IF powerAxis1.Active THEN
+	moveAxis1(Axis:=axis1,Velocity:=250,Direction:=MC_Positive_Direction,Execute:=1,BufferMode:=MC_Buffered);
+END_IF
+
+IF powerAxis1.Error OR powerAxis1.Active THEN
+	resetAxis1(Axis:=axis1,Execute:=1);
+END_IF
+]]></ST>
     </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="174" Count="0" />
+      <LineId Id="228" Count="0" />
+      <LineId Id="223" Count="3" />
+      <LineId Id="239" Count="0" />
+      <LineId Id="216" Count="0" />
+      <LineId Id="215" Count="0" />
+      <LineId Id="165" Count="0" />
+      <LineId Id="162" Count="0" />
+      <LineId Id="241" Count="0" />
+      <LineId Id="166" Count="0" />
+      <LineId Id="236" Count="0" />
+      <LineId Id="242" Count="0" />
+      <LineId Id="244" Count="0" />
+      <LineId Id="234" Count="0" />
+      <LineId Id="246" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>
