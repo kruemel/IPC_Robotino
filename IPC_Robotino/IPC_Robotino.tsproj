@@ -2118,20 +2118,20 @@ External Setpoint Generation:
 			</Licenses>
 			<Tasks>
 				<Task Id="5" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
-					<Name>PlcTask</Name>
+					<Name>Plc_Task</Name>
 				</Task>
 				<Task Id="6" Priority="9" CycleTime="50000" AmsPort="351" AdtTasks="true">
-					<Name>updateIrSensors</Name>
+					<Name>IrSensor_Task</Name>
 				</Task>
 				<Task Id="9" Priority="10" CycleTime="100000" AmsPort="354" AdtTasks="true">
-					<Name>UDP Task</Name>
+					<Name>UDP_Task</Name>
 				</Task>
 			</Tasks>
 		</System>
 		<Motion>
 			<NC>
 				<SafTask Priority="4" CycleTime="20000" AmsPort="501" IoAtBegin="true">
-					<Name>NC-Task 1 SAF</Name>
+					<Name>Antriebe und Greifer</Name>
 					<Vars VarGrpType="1" InsertType="1">
 						<Name>Eingänge</Name>
 					</Vars>
@@ -2148,11 +2148,11 @@ External Setpoint Generation:
 				<Axis CreateSymbols="true" AxisType="1" Id="1">
 					<Name>Achse 1</Name>
 					<AxisPara>
-						<Velo Maximum="20000"/>
+						<Velo Maximum="15080"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
-						<EncPara ScaleFactorNumerator="0.01125" MaxCount="#x0000ffff">
+						<EncPara ScaleFactorNumerator="0.00778" MaxCount="#xffffffff">
 							<Inc RefMode="2" RefSoftSyncMask="#x0000ffff"/>
 							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
 						</EncPara>
@@ -2223,7 +2223,7 @@ External Setpoint Generation:
 					</Encoder>
 					<Drive Name="Drive" DrvType="23">
 						<DrvPara>
-							<Analog VeloReferenz="21600" ScaleFactorActTorque="0.1"/>
+							<Analog VeloReferenz="15080" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
 						</DrvPara>
 						<Vars VarGrpType="1">
@@ -2314,6 +2314,7 @@ Drive Status 4 (manually linked):
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
 							<PosDiffControl Enable="false"/>
+							<PID PosKp="5"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -2380,11 +2381,11 @@ External Setpoint Generation:
 				<Axis CreateSymbols="true" AxisType="1" Id="2">
 					<Name>Achse 2</Name>
 					<AxisPara>
-						<Velo Maximum="20000"/>
+						<Velo Maximum="15080"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
-						<EncPara ScaleFactorNumerator="0.01125" MaxCount="#x0000ffff">
+						<EncPara ScaleFactorNumerator="0.00778" MaxCount="#xffffffff">
 							<Inc RefSoftSyncMask="#x0000ffff"/>
 							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
 						</EncPara>
@@ -2455,7 +2456,7 @@ External Setpoint Generation:
 					</Encoder>
 					<Drive Name="Drive" DrvType="23">
 						<DrvPara>
-							<Analog VeloReferenz="21600" ScaleFactorActTorque="0.1"/>
+							<Analog VeloReferenz="15080" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
 						</DrvPara>
 						<Vars VarGrpType="1">
@@ -2546,6 +2547,7 @@ Drive Status 4 (manually linked):
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
 							<PosDiffControl Enable="false"/>
+							<PID PosKp="5"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -2614,11 +2616,11 @@ External Setpoint Generation:
 				<Axis CreateSymbols="true" AxisType="1" Id="3">
 					<Name>Achse 3</Name>
 					<AxisPara>
-						<Velo Maximum="20000"/>
+						<Velo Maximum="15080"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="4">
-						<EncPara ScaleFactorNumerator="0.01125" MaxCount="#x0000ffff">
+						<EncPara ScaleFactorNumerator="0.00778" MaxCount="#xffffffff">
 							<Inc RefSoftSyncMask="#x0000ffff"/>
 							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
 						</EncPara>
@@ -2689,7 +2691,7 @@ External Setpoint Generation:
 					</Encoder>
 					<Drive Name="Drive" DrvType="23">
 						<DrvPara>
-							<Analog VeloReferenz="21600" ScaleFactorActTorque="0.1"/>
+							<Analog VeloReferenz="15080" ScaleFactorActTorque="0.1"/>
 							<TimeComp TaskDelayCycles="1"/>
 						</DrvPara>
 						<Vars VarGrpType="1">
@@ -3324,8 +3326,8 @@ External Setpoint Generation:
 						<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x1cae3052" RevisionNo="#x00150000" InfoDataAddr="true" InfoDataSoeDS401="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL7342 2K. DC-Motor-Endstufe (50V, 3.5A)" Desc="EL7342" PortABoxInfo="#x01000001">
 							<SyncMan>001080002600010001000000400080008000001026010000</SyncMan>
 							<SyncMan>801080002200010002000000400080008000801022010000</SyncMan>
-							<SyncMan>001110002400010003000000000000001000001124010000</SyncMan>
-							<SyncMan>001210002000010004000000000000001000001220010000</SyncMan>
+							<SyncMan>001114002400010003000000000000001000001124010000</SyncMan>
+							<SyncMan>001218002000010004000000000000001000001220010000</SyncMan>
 							<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
 							<Fmmu>0000000000000000001200010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
@@ -3333,7 +3335,7 @@ External Setpoint Generation:
 							<DcMode>53796e6368726f6e00000000000000004672656552756e2f534d2d53796e6368726f6e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<MBoxUserCmdData>004003000c0000000000000003000000000000000000000000000000000000002081f001040000000000150000</MBoxUserCmdData>
-							<Pdo Name="ENC Status compact Channel 1" Index="#x1a00" Flags="#x0010" SyncMan="3">
+							<Pdo Name="ENC Status compact Channel 1" Index="#x1a00" Flags="#x0010">
 								<ExcludePdo>#x1a01</ExcludePdo>
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -3384,7 +3386,7 @@ External Setpoint Generation:
 									<Type>UINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Status Channel 1" Index="#x1a01" Flags="#x0010">
+							<Pdo Name="ENC Status Channel 1" Index="#x1a01" Flags="#x0010" SyncMan="3">
 								<ExcludePdo>#x1a00</ExcludePdo>
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -3440,7 +3442,7 @@ External Setpoint Generation:
 									<Type>UDINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Status compact Channel 2" Index="#x1a03" Flags="#x0010" SyncMan="3">
+							<Pdo Name="ENC Status compact Channel 2" Index="#x1a03" Flags="#x0010">
 								<ExcludePdo>#x1a04</ExcludePdo>
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -3491,7 +3493,7 @@ External Setpoint Generation:
 									<Type>UINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Status Channel 2" Index="#x1a04" Flags="#x0010">
+							<Pdo Name="ENC Status Channel 2" Index="#x1a04" Flags="#x0010" SyncMan="3">
 								<ExcludePdo>#x1a03</ExcludePdo>
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -3548,25 +3550,25 @@ External Setpoint Generation:
 								</Entry>
 							</Pdo>
 							<Pdo Name="DCM Status Channel 1" Index="#x1a06" Flags="#x0010" SyncMan="3">
-								<Entry Name="Status__Ready to enable" Index="#x6020" Sub="#x01">
+								<Entry Name="Status__Ready to enable" Index="#x6020" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Ready" Index="#x6020" Sub="#x02">
+								<Entry Name="Status__Ready" Index="#x6020" Sub="#x02" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Warning" Index="#x6020" Sub="#x03">
+								<Entry Name="Status__Warning" Index="#x6020" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Error" Index="#x6020" Sub="#x04">
+								<Entry Name="Status__Error" Index="#x6020" Sub="#x04" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Moving positive" Index="#x6020" Sub="#x05">
+								<Entry Name="Status__Moving positive" Index="#x6020" Sub="#x05" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Moving negative" Index="#x6020" Sub="#x06">
+								<Entry Name="Status__Moving negative" Index="#x6020" Sub="#x06" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Torque reduced" Index="#x6020" Sub="#x07">
+								<Entry Name="Status__Torque reduced" Index="#x6020" Sub="#x07" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
@@ -3575,19 +3577,19 @@ External Setpoint Generation:
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000003}">ARRAY [0..2] OF BIT</Type>
 								</Entry>
-								<Entry Name="Status__Digital input 1" Index="#x6020" Sub="#x0c">
+								<Entry Name="Status__Digital input 1" Index="#x6020" Sub="#x0c" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Digital input 2" Index="#x6020" Sub="#x0d">
+								<Entry Name="Status__Digital input 2" Index="#x6020" Sub="#x0d" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Sync error" Index="#x6020" Sub="#x0e">
+								<Entry Name="Status__Sync error" Index="#x6020" Sub="#x0e" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
 								</Entry>
-								<Entry Name="Status__TxPDO Toggle" Index="#x6020" Sub="#x10">
+								<Entry Name="Status__TxPDO Toggle" Index="#x6020" Sub="#x10" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 							</Pdo>
@@ -3603,22 +3605,22 @@ External Setpoint Generation:
 								<Entry Name="Status__Ready to enable" Index="#x6030" Sub="#x01">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Ready" Index="#x6030" Sub="#x02">
+								<Entry Name="Status__Ready" Index="#x6030" Sub="#x02" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Warning" Index="#x6030" Sub="#x03">
+								<Entry Name="Status__Warning" Index="#x6030" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Error" Index="#x6030" Sub="#x04">
+								<Entry Name="Status__Error" Index="#x6030" Sub="#x04" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Moving positive" Index="#x6030" Sub="#x05">
+								<Entry Name="Status__Moving positive" Index="#x6030" Sub="#x05" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Moving negative" Index="#x6030" Sub="#x06">
+								<Entry Name="Status__Moving negative" Index="#x6030" Sub="#x06" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Torque reduced" Index="#x6030" Sub="#x07">
+								<Entry Name="Status__Torque reduced" Index="#x6030" Sub="#x07" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
@@ -3627,13 +3629,13 @@ External Setpoint Generation:
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000003}">ARRAY [0..2] OF BIT</Type>
 								</Entry>
-								<Entry Name="Status__Digital input 1" Index="#x6030" Sub="#x0c">
+								<Entry Name="Status__Digital input 1" Index="#x6030" Sub="#x0c" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Digital input 2" Index="#x6030" Sub="#x0d">
+								<Entry Name="Status__Digital input 2" Index="#x6030" Sub="#x0d" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Sync error" Index="#x6030" Sub="#x0e">
+								<Entry Name="Status__Sync error" Index="#x6030" Sub="#x0e" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
@@ -3789,7 +3791,7 @@ External Setpoint Generation:
 									<Type>UDINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Control compact Channel 1" Index="#x1600" InOut="1" Flags="#x0010" SyncMan="2">
+							<Pdo Name="ENC Control compact Channel 1" Index="#x1600" InOut="1" Flags="#x0010">
 								<ExcludePdo>#x1601</ExcludePdo>
 								<Entry Name="Control__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -3813,7 +3815,7 @@ External Setpoint Generation:
 									<Type>UINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Control Channel 1" Index="#x1601" InOut="1" Flags="#x0010">
+							<Pdo Name="ENC Control Channel 1" Index="#x1601" InOut="1" Flags="#x0010" SyncMan="2">
 								<ExcludePdo>#x1600</ExcludePdo>
 								<Entry Name="Control__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -3837,18 +3839,18 @@ External Setpoint Generation:
 									<Type>UDINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Control compact Channel 2" Index="#x1602" InOut="1" Flags="#x0010" SyncMan="2">
+							<Pdo Name="ENC Control compact Channel 2" Index="#x1602" InOut="1" Flags="#x0010">
 								<ExcludePdo>#x1603</ExcludePdo>
 								<Entry Name="Control__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
 								</Entry>
-								<Entry Name="Control__Enable latch extern on positive edge" Index="#x7010" Sub="#x02">
+								<Entry Name="Control__Enable latch extern on positive edge" Index="#x7010" Sub="#x02" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Control__Set counter" Index="#x7010" Sub="#x03">
+								<Entry Name="Control__Set counter" Index="#x7010" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Control__Enable latch extern on negative edge" Index="#x7010" Sub="#x04">
+								<Entry Name="Control__Enable latch extern on negative edge" Index="#x7010" Sub="#x04" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Control__">
@@ -3861,7 +3863,7 @@ External Setpoint Generation:
 									<Type>UINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Control Channel 2" Index="#x1603" InOut="1" Flags="#x0010">
+							<Pdo Name="ENC Control Channel 2" Index="#x1603" InOut="1" Flags="#x0010" SyncMan="2">
 								<ExcludePdo>#x1602</ExcludePdo>
 								<Entry Name="Control__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -3886,13 +3888,13 @@ External Setpoint Generation:
 								</Entry>
 							</Pdo>
 							<Pdo Name="DCM Control Channel 1" Index="#x1604" InOut="1" Flags="#x0010" SyncMan="2">
-								<Entry Name="Control__Enable" Index="#x7020" Sub="#x01">
+								<Entry Name="Control__Enable" Index="#x7020" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Control__Reset" Index="#x7020" Sub="#x02">
+								<Entry Name="Control__Reset" Index="#x7020" Sub="#x02" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Control__Reduce torque" Index="#x7020" Sub="#x03">
+								<Entry Name="Control__Reduce torque" Index="#x7020" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Control__">
@@ -3919,13 +3921,13 @@ External Setpoint Generation:
 								</Entry>
 							</Pdo>
 							<Pdo Name="DCM Control Channel 2" Index="#x1607" InOut="1" Flags="#x0010" SyncMan="2">
-								<Entry Name="Control__Enable" Index="#x7030" Sub="#x01">
+								<Entry Name="Control__Enable" Index="#x7030" Sub="#x01" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Control__Reset" Index="#x7030" Sub="#x02">
+								<Entry Name="Control__Reset" Index="#x7030" Sub="#x02" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Control__Reduce torque" Index="#x7030" Sub="#x03">
+								<Entry Name="Control__Reduce torque" Index="#x7030" Sub="#x03" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Control__">
@@ -4069,8 +4071,8 @@ External Setpoint Generation:
 						<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="39" FoeType="1" VendorId="#x00000002" ProductCode="#x1cae3052" RevisionNo="#x00150000" InfoDataAddr="true" InfoDataSoeDS401="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL7342 2K. DC-Motor-Endstufe (50V, 3.5A)" Desc="EL7342" PortABoxInfo="#x01000002">
 							<SyncMan>001080002600010001000000400080008000001026010000</SyncMan>
 							<SyncMan>801080002200010002000000400080008000801022010000</SyncMan>
-							<SyncMan>001110002400010003000000000000001000001124010000</SyncMan>
-							<SyncMan>001210002000010004000000000000001000001220010000</SyncMan>
+							<SyncMan>001114002400010003000000000000001000001124010000</SyncMan>
+							<SyncMan>001218002000010004000000000000001000001220010000</SyncMan>
 							<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
 							<Fmmu>0000000000000000001200010100000002000000000000000000000000000000</Fmmu>
 							<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
@@ -4078,7 +4080,7 @@ External Setpoint Generation:
 							<DcMode>53796e6368726f6e00000000000000004672656552756e2f534d2d53796e6368726f6e00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<DcMode>4443000000000000000000000000000044432d53796e6368726f6e000000000000000000000000000000000000000000000000000000000000000000000000030100000000000000000000000000000000000000000000000000000000000000</DcMode>
 							<MBoxUserCmdData>004003000c0000000000000003000000000000000000000000000000000000002081f001040000000000150000</MBoxUserCmdData>
-							<Pdo Name="ENC Status compact Channel 1" Index="#x1a00" Flags="#x0010" SyncMan="3">
+							<Pdo Name="ENC Status compact Channel 1" Index="#x1a00" Flags="#x0010">
 								<ExcludePdo>#x1a01</ExcludePdo>
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -4129,7 +4131,7 @@ External Setpoint Generation:
 									<Type>UINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Status Channel 1" Index="#x1a01" Flags="#x0010">
+							<Pdo Name="ENC Status Channel 1" Index="#x1a01" Flags="#x0010" SyncMan="3">
 								<ExcludePdo>#x1a00</ExcludePdo>
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -4185,7 +4187,7 @@ External Setpoint Generation:
 									<Type>UDINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Status compact Channel 2" Index="#x1a03" Flags="#x0010" SyncMan="3">
+							<Pdo Name="ENC Status compact Channel 2" Index="#x1a03" Flags="#x0010">
 								<ExcludePdo>#x1a04</ExcludePdo>
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -4236,7 +4238,7 @@ External Setpoint Generation:
 									<Type>UINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Status Channel 2" Index="#x1a04" Flags="#x0010">
+							<Pdo Name="ENC Status Channel 2" Index="#x1a04" Flags="#x0010" SyncMan="3">
 								<ExcludePdo>#x1a03</ExcludePdo>
 								<Entry Name="Status__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -4534,7 +4536,7 @@ External Setpoint Generation:
 									<Type>UDINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Control compact Channel 1" Index="#x1600" InOut="1" Flags="#x0010" SyncMan="2">
+							<Pdo Name="ENC Control compact Channel 1" Index="#x1600" InOut="1" Flags="#x0010">
 								<ExcludePdo>#x1601</ExcludePdo>
 								<Entry Name="Control__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -4558,7 +4560,7 @@ External Setpoint Generation:
 									<Type>UINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Control Channel 1" Index="#x1601" InOut="1" Flags="#x0010">
+							<Pdo Name="ENC Control Channel 1" Index="#x1601" InOut="1" Flags="#x0010" SyncMan="2">
 								<ExcludePdo>#x1600</ExcludePdo>
 								<Entry Name="Control__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -4582,7 +4584,7 @@ External Setpoint Generation:
 									<Type>UDINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Control compact Channel 2" Index="#x1602" InOut="1" Flags="#x0010" SyncMan="2">
+							<Pdo Name="ENC Control compact Channel 2" Index="#x1602" InOut="1" Flags="#x0010">
 								<ExcludePdo>#x1603</ExcludePdo>
 								<Entry Name="Control__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -4606,7 +4608,7 @@ External Setpoint Generation:
 									<Type>UINT</Type>
 								</Entry>
 							</Pdo>
-							<Pdo Name="ENC Control Channel 2" Index="#x1603" InOut="1" Flags="#x0010">
+							<Pdo Name="ENC Control Channel 2" Index="#x1603" InOut="1" Flags="#x0010" SyncMan="2">
 								<ExcludePdo>#x1602</ExcludePdo>
 								<Entry Name="Control__">
 									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
@@ -6135,7 +6137,7 @@ Bit1: Value bigger/equal Limit2]]>
 				<Link VarA="Term 1 (EK1200)^8 Kanal Analog Input^AI Standard Channel 8^IR Sensor 8" VarB="Inputs^irInputData[7]"/>
 			</OwnerB>
 		</OwnerA>
-		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 1">
+		<OwnerA Name="TINC^Antriebe und Greifer^Axes^Achse 1">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 1">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Moving negative" Size="1" OffsA="5"/>
@@ -6154,27 +6156,27 @@ Bit1: Value bigger/equal Limit2]]>
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="DCM Control Channel 1^Control^Reduce torque" Size="1" OffsA="2"/>
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="DCM Control Channel 1^Control^Reset" Size="1" OffsA="1"/>
 				<Link VarA="Drive^Outputs^Out^nDataOut2[0]" VarB="DCM Velocity Channel 1^Velocity"/>
-				<Link VarA="Enc^Inputs^In^nDataIn1[0]" VarB="ENC Status compact Channel 1^Counter value"/>
-				<Link VarA="Enc^Inputs^In^nDataIn2[0]" VarB="ENC Status compact Channel 1^Latch value"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 1^Status^Counter overflow" Size="1" OffsA="4"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 1^Status^Counter underflow" Size="1" OffsA="3"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 1^Status^Extrapolation stall" Size="1" OffsA="7"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 1^Status^Latch extern valid" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 1^Status^Set counter done" Size="1" OffsA="2"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 1^Status^Status of extern latch" Size="1" OffsA="4"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 1^Status^Status of input A"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 1^Status^Status of input B" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 1^Status^Sync error" Size="1" OffsA="5"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 1^Status^TxPDO Toggle" Size="1" OffsA="7"/>
+				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="ENC Status Channel 1^Counter value"/>
+				<Link VarA="Enc^Inputs^In^nDataIn2" VarB="ENC Status Channel 1^Latch value"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 1^Status^Counter overflow" Size="1" OffsA="4"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 1^Status^Counter underflow" Size="1" OffsA="3"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 1^Status^Extrapolation stall" Size="1" OffsA="7"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 1^Status^Latch extern valid" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 1^Status^Set counter done" Size="1" OffsA="2"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 1^Status^Status of extern latch" Size="1" OffsA="4"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 1^Status^Status of input A"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 1^Status^Status of input B" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 1^Status^Sync error" Size="1" OffsA="5"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 1^Status^TxPDO Toggle" Size="1" OffsA="7"/>
 				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
 				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^WcState"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 1^Control^Enable latch extern on negative edge" Size="1" OffsA="3"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 1^Control^Enable latch extern on positive edge" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 1^Control^Set counter" Size="1" OffsA="2"/>
-				<Link VarA="Enc^Outputs^Out^nDataOut1[0]" VarB="ENC Control compact Channel 1^Set counter value"/>
+				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control Channel 1^Control^Enable latch extern on negative edge" Size="1" OffsA="3"/>
+				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control Channel 1^Control^Enable latch extern on positive edge" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control Channel 1^Control^Set counter" Size="1" OffsA="2"/>
+				<Link VarA="Enc^Outputs^Out^nDataOut1" VarB="ENC Control Channel 1^Set counter value"/>
 			</OwnerB>
 		</OwnerA>
-		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 2">
+		<OwnerA Name="TINC^Antriebe und Greifer^Axes^Achse 2">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 1">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Moving negative" Size="1" OffsA="5"/>
@@ -6193,27 +6195,27 @@ Bit1: Value bigger/equal Limit2]]>
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="DCM Control Channel 2^Control^Reduce torque" Size="1" OffsA="2"/>
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="DCM Control Channel 2^Control^Reset" Size="1" OffsA="1"/>
 				<Link VarA="Drive^Outputs^Out^nDataOut2[0]" VarB="DCM Velocity Channel 2^Velocity"/>
-				<Link VarA="Enc^Inputs^In^nDataIn1[0]" VarB="ENC Status compact Channel 2^Counter value"/>
-				<Link VarA="Enc^Inputs^In^nDataIn2[0]" VarB="ENC Status compact Channel 2^Latch value"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 2^Status^Counter overflow" Size="1" OffsA="4"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 2^Status^Counter underflow" Size="1" OffsA="3"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 2^Status^Extrapolation stall" Size="1" OffsA="7"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 2^Status^Latch extern valid" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 2^Status^Set counter done" Size="1" OffsA="2"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 2^Status^Status of extern latch" Size="1" OffsA="4"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 2^Status^Status of input A"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 2^Status^Status of input B" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 2^Status^Sync error" Size="1" OffsA="5"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 2^Status^TxPDO Toggle" Size="1" OffsA="7"/>
+				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="ENC Status Channel 2^Counter value"/>
+				<Link VarA="Enc^Inputs^In^nDataIn2" VarB="ENC Status Channel 2^Latch value"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 2^Status^Counter overflow" Size="1" OffsA="4"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 2^Status^Counter underflow" Size="1" OffsA="3"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 2^Status^Extrapolation stall" Size="1" OffsA="7"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 2^Status^Latch extern valid" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 2^Status^Set counter done" Size="1" OffsA="2"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 2^Status^Status of extern latch" Size="1" OffsA="4"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 2^Status^Status of input A"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 2^Status^Status of input B" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 2^Status^Sync error" Size="1" OffsA="5"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 2^Status^TxPDO Toggle" Size="1" OffsA="7"/>
 				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
 				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^WcState"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 2^Control^Enable latch extern on negative edge" Size="1" OffsA="3"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 2^Control^Enable latch extern on positive edge" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 2^Control^Set counter" Size="1" OffsA="2"/>
-				<Link VarA="Enc^Outputs^Out^nDataOut1[0]" VarB="ENC Control compact Channel 2^Set counter value"/>
+				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control Channel 2^Control^Enable latch extern on negative edge" Size="1" OffsA="3"/>
+				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control Channel 2^Control^Enable latch extern on positive edge" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control Channel 2^Control^Set counter" Size="1" OffsA="2"/>
+				<Link VarA="Enc^Outputs^Out^nDataOut1" VarB="ENC Control Channel 2^Set counter value"/>
 			</OwnerB>
 		</OwnerA>
-		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 3">
+		<OwnerA Name="TINC^Antriebe und Greifer^Axes^Achse 3">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 2">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Moving negative" Size="1" OffsA="5"/>
@@ -6232,27 +6234,27 @@ Bit1: Value bigger/equal Limit2]]>
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="DCM Control Channel 1^Control^Reduce torque" Size="1" OffsA="2"/>
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="DCM Control Channel 1^Control^Reset" Size="1" OffsA="1"/>
 				<Link VarA="Drive^Outputs^Out^nDataOut2[0]" VarB="DCM Velocity Channel 1^Velocity"/>
-				<Link VarA="Enc^Inputs^In^nDataIn1[0]" VarB="ENC Status compact Channel 1^Counter value"/>
-				<Link VarA="Enc^Inputs^In^nDataIn2[0]" VarB="ENC Status compact Channel 1^Latch value"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 1^Status^Counter overflow" Size="1" OffsA="4"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 1^Status^Counter underflow" Size="1" OffsA="3"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 1^Status^Extrapolation stall" Size="1" OffsA="7"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 1^Status^Latch extern valid" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 1^Status^Set counter done" Size="1" OffsA="2"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 1^Status^Status of extern latch" Size="1" OffsA="4"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 1^Status^Status of input A"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 1^Status^Status of input B" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 1^Status^Sync error" Size="1" OffsA="5"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 1^Status^TxPDO Toggle" Size="1" OffsA="7"/>
+				<Link VarA="Enc^Inputs^In^nDataIn1" VarB="ENC Status Channel 1^Counter value"/>
+				<Link VarA="Enc^Inputs^In^nDataIn2" VarB="ENC Status Channel 1^Latch value"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 1^Status^Counter overflow" Size="1" OffsA="4"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 1^Status^Counter underflow" Size="1" OffsA="3"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 1^Status^Extrapolation stall" Size="1" OffsA="7"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 1^Status^Latch extern valid" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status Channel 1^Status^Set counter done" Size="1" OffsA="2"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 1^Status^Status of extern latch" Size="1" OffsA="4"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 1^Status^Status of input A"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 1^Status^Status of input B" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 1^Status^Sync error" Size="1" OffsA="5"/>
+				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status Channel 1^Status^TxPDO Toggle" Size="1" OffsA="7"/>
 				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
 				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^WcState"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 1^Control^Enable latch extern on negative edge" Size="1" OffsA="3"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 1^Control^Enable latch extern on positive edge" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 1^Control^Set counter" Size="1" OffsA="2"/>
-				<Link VarA="Enc^Outputs^Out^nDataOut1[0]" VarB="ENC Control compact Channel 1^Set counter value"/>
+				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control Channel 1^Control^Enable latch extern on negative edge" Size="1" OffsA="3"/>
+				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control Channel 1^Control^Enable latch extern on positive edge" Size="1" OffsA="1"/>
+				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control Channel 1^Control^Set counter" Size="1" OffsA="2"/>
+				<Link VarA="Enc^Outputs^Out^nDataOut1" VarB="ENC Control Channel 1^Set counter value"/>
 			</OwnerB>
 		</OwnerA>
-		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 4">
+		<OwnerA Name="TINC^Antriebe und Greifer^Axes^Achse 4">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 2">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Moving negative" Size="1" OffsA="5"/>
@@ -6271,24 +6273,8 @@ Bit1: Value bigger/equal Limit2]]>
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="DCM Control Channel 2^Control^Reduce torque" Size="1" OffsA="2"/>
 				<Link VarA="Drive^Outputs^Out^nCtrl1" VarB="DCM Control Channel 2^Control^Reset" Size="1" OffsA="1"/>
 				<Link VarA="Drive^Outputs^Out^nDataOut2[0]" VarB="DCM Velocity Channel 2^Velocity"/>
-				<Link VarA="Enc^Inputs^In^nDataIn1[0]" VarB="ENC Status compact Channel 2^Counter value"/>
-				<Link VarA="Enc^Inputs^In^nDataIn2[0]" VarB="ENC Status compact Channel 2^Latch value"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 2^Status^Counter overflow" Size="1" OffsA="4"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 2^Status^Counter underflow" Size="1" OffsA="3"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 2^Status^Extrapolation stall" Size="1" OffsA="7"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 2^Status^Latch extern valid" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nState1" VarB="ENC Status compact Channel 2^Status^Set counter done" Size="1" OffsA="2"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 2^Status^Status of extern latch" Size="1" OffsA="4"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 2^Status^Status of input A"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 2^Status^Status of input B" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 2^Status^Sync error" Size="1" OffsA="5"/>
-				<Link VarA="Enc^Inputs^In^nState2" VarB="ENC Status compact Channel 2^Status^TxPDO Toggle" Size="1" OffsA="7"/>
 				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^InputToggle" Size="1" OffsA="1"/>
 				<Link VarA="Enc^Inputs^In^nState4" VarB="WcState^WcState"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 2^Control^Enable latch extern on negative edge" Size="1" OffsA="3"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 2^Control^Enable latch extern on positive edge" Size="1" OffsA="1"/>
-				<Link VarA="Enc^Outputs^Out^nCtrl1" VarB="ENC Control compact Channel 2^Control^Set counter" Size="1" OffsA="2"/>
-				<Link VarA="Enc^Outputs^Out^nDataOut1[0]" VarB="ENC Control compact Channel 2^Set counter value"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^Shutdown^Shutdown Instance">
