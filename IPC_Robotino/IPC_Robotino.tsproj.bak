@@ -2118,20 +2118,20 @@ External Setpoint Generation:
 			</Licenses>
 			<Tasks>
 				<Task Id="5" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
-					<Name>PlcTask</Name>
+					<Name>Plc_Task</Name>
 				</Task>
 				<Task Id="6" Priority="9" CycleTime="50000" AmsPort="351" AdtTasks="true">
-					<Name>updateIrSensors</Name>
+					<Name>IrSensor_Task</Name>
 				</Task>
 				<Task Id="9" Priority="10" CycleTime="100000" AmsPort="354" AdtTasks="true">
-					<Name>UDP Task</Name>
+					<Name>UDP_Task</Name>
 				</Task>
 			</Tasks>
 		</System>
 		<Motion>
 			<NC>
 				<SafTask Priority="4" CycleTime="20000" AmsPort="501" IoAtBegin="true">
-					<Name>NC-Task 1 SAF</Name>
+					<Name>Antriebe und Greifer</Name>
 					<Vars VarGrpType="1" InsertType="1">
 						<Name>Eingänge</Name>
 					</Vars>
@@ -2388,7 +2388,6 @@ External Setpoint Generation:
 						<EncPara ScaleFactorNumerator="0.00778" MaxCount="#xffffffff">
 							<Inc RefSoftSyncMask="#x0000ffff"/>
 							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
-							<ParameterChanged>35</ParameterChanged>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Eingänge</Name>
@@ -2548,6 +2547,7 @@ Drive Status 4 (manually linked):
 					<Controller Name="Ctrl" CtrType="1">
 						<CtrPara PriorControlFactor="1">
 							<PosDiffControl Enable="false"/>
+							<PID PosKp="5"/>
 							<Observer BandWidth="20"/>
 						</CtrPara>
 					</Controller>
@@ -2623,7 +2623,6 @@ External Setpoint Generation:
 						<EncPara ScaleFactorNumerator="0.00778" MaxCount="#xffffffff">
 							<Inc RefSoftSyncMask="#x0000ffff"/>
 							<TimeComp TimeCompMode="1" EncDelayCycles="4"/>
-							<ParameterChanged>35</ParameterChanged>
 						</EncPara>
 						<Vars VarGrpType="1">
 							<Name>Eingänge</Name>
@@ -3636,7 +3635,7 @@ External Setpoint Generation:
 								<Entry Name="Status__Digital input 2" Index="#x6030" Sub="#x0d" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Sync error" Index="#x6030" Sub="#x0e">
+								<Entry Name="Status__Sync error" Index="#x6030" Sub="#x0e" Flags="#x00008020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
@@ -6138,7 +6137,7 @@ Bit1: Value bigger/equal Limit2]]>
 				<Link VarA="Term 1 (EK1200)^8 Kanal Analog Input^AI Standard Channel 8^IR Sensor 8" VarB="Inputs^irInputData[7]"/>
 			</OwnerB>
 		</OwnerA>
-		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 1">
+		<OwnerA Name="TINC^Antriebe und Greifer^Axes^Achse 1">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 1">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Moving negative" Size="1" OffsA="5"/>
@@ -6177,7 +6176,7 @@ Bit1: Value bigger/equal Limit2]]>
 				<Link VarA="Enc^Outputs^Out^nDataOut1" VarB="ENC Control Channel 1^Set counter value"/>
 			</OwnerB>
 		</OwnerA>
-		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 2">
+		<OwnerA Name="TINC^Antriebe und Greifer^Axes^Achse 2">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 1">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Moving negative" Size="1" OffsA="5"/>
@@ -6216,7 +6215,7 @@ Bit1: Value bigger/equal Limit2]]>
 				<Link VarA="Enc^Outputs^Out^nDataOut1" VarB="ENC Control Channel 2^Set counter value"/>
 			</OwnerB>
 		</OwnerA>
-		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 3">
+		<OwnerA Name="TINC^Antriebe und Greifer^Axes^Achse 3">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 2">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 1^Status^Moving negative" Size="1" OffsA="5"/>
@@ -6255,7 +6254,7 @@ Bit1: Value bigger/equal Limit2]]>
 				<Link VarA="Enc^Outputs^Out^nDataOut1" VarB="ENC Control Channel 1^Set counter value"/>
 			</OwnerB>
 		</OwnerA>
-		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Achse 4">
+		<OwnerA Name="TINC^Antriebe und Greifer^Axes^Achse 4">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Motorcontroller 2">
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Error" Size="1" OffsA="3"/>
 				<Link VarA="Drive^Inputs^In^nState1" VarB="DCM Status Channel 2^Status^Moving negative" Size="1" OffsA="5"/>
