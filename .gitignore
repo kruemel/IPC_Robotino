@@ -24,6 +24,7 @@
 !*.cd
 !*.sys
 !*.pdb
+!*.tmc
 
 # User-specific files
 *.suo
