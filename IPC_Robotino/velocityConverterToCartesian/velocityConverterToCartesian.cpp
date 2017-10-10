@@ -191,31 +191,15 @@ HRESULT CvelocityConverterToCartesian::CycleUpdate(ITcTask* ipTask, ITcUnknown* 
 %          theta     (rotational velocity in milimeters per second)
 
 
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmItem" TcSmVersion="1.0" TcVersion="3.1.4022.0" ClassName="CVarDef" SubType="0"><TreeItem><Name>velocityMotor1</Name><Type>LREAL</Type><BitOffs>64</BitOffs><InOut>1</InOut><ExternalAddress>64</ExternalAddress><AdsInfo><AmsAddress><AmsNetId>5.49.201.214.1.1</AmsNetId><AmsPort>350</AmsPort></AmsAddress><IndexGroup>16842800</IndexGroup><IndexOffset>-2130706424</IndexOffset><Length>8</Length></AdsInfo></TreeItem><Mappings><OwnerA Name="__THIS__"><OwnerB Name="TIPC^Motoransteuerung^Motoransteuerung Instance"><Link VarA="TIXC^velocityConverterToMotors^velocityConverterToMotors_Obj^Outputs^velocityMotor1" VarB="PlcTask Inputs^MAIN.velocity2"/></OwnerB></OwnerA></Mappings></TcSmItem>
 % assembly of absolute motor velocity and rotating direction to %
 % longitudinal, lateral & rotational velocity for every motor   %
 */
 
-	if (m_Inputs.directionMotor0 == 3) {
-		v0 = -m_Inputs.velocityMotor0;
-	}
-	else {
-		v0 = m_Inputs.velocityMotor0;
-	}
-
-	if (m_Inputs.directionMotor1 == 3) {
-		v1 = -m_Inputs.velocityMotor1;
-	}
-	else {
-		v1 = m_Inputs.velocityMotor1;
-	}
-
-	if (m_Inputs.directionMotor2 == 3) {
-		v2 = -m_Inputs.velocityMotor2;
-	}
-	else {
-		v2 = m_Inputs.velocityMotor2;
-	}
-
+	v0 = -m_Inputs.velocityMotor0;//Konvertierung auf Umrechnungsformeln
+	v1 = -m_Inputs.velocityMotor1;//Konvertierung auf Umrechnungsformeln
+	v2 = -m_Inputs.velocityMotor2;//Konvertierung auf Umrechnungsformeln
 /*
 % conversion from three separate motor velocities to longitudinal,
 % lateral & rotational velocity

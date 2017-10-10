@@ -24,17 +24,12 @@ typedef struct _velocityConverterToCartesianParameter
 	double data3;
 } velocityConverterToCartesianParameter, *PvelocityConverterToCartesianParameter;
 
-#pragma pack(push,1)
 typedef struct _velocityConverterToCartesianInputs
 {
 	double velocityMotor0;
 	double velocityMotor1;
 	double velocityMotor2;
-	SHORT directionMotor0;
-	SHORT directionMotor1;
-	SHORT directionMotor2;
 } velocityConverterToCartesianInputs, *PvelocityConverterToCartesianInputs;
-#pragma pack(pop)
 
 typedef struct _velocityConverterToCartesianOutputs
 {
