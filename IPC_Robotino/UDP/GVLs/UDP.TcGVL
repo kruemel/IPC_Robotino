@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
   <GVL Name="UDP" Id="{d035a088-9d17-440a-afb8-4ba9d899d630}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	sPaketinhalt	: LREAL;
 	nPaketlaenge	: UDINT;
 	
-	x		: ARRAY[1..4] OF LREAL;
-	y		: ARRAY[1..4] OF LREAL;
-	theta	: ARRAY[1..4] OF LREAL;
+	x	  AT%Q*	: ARRAY[1..4] OF LREAL;
+	y	  AT%Q*	: ARRAY[1..4] OF LREAL;
+	theta AT%Q*	: ARRAY[1..4] OF LREAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
