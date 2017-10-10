@@ -195,21 +195,21 @@ HRESULT CvelocityConverterToCartesian::CycleUpdate(ITcTask* ipTask, ITcUnknown* 
 % longitudinal, lateral & rotational velocity for every motor   %
 */
 
-	if (m_Inputs.directionMotor0 == 0) {
+	if (m_Inputs.directionMotor0 == 3) {
 		v0 = -m_Inputs.velocityMotor0;
 	}
 	else {
 		v0 = m_Inputs.velocityMotor0;
 	}
 
-	if (m_Inputs.directionMotor1 == 0) {
+	if (m_Inputs.directionMotor1 == 3) {
 		v1 = -m_Inputs.velocityMotor1;
 	}
 	else {
 		v1 = m_Inputs.velocityMotor1;
 	}
 
-	if (m_Inputs.directionMotor2 == 0) {
+	if (m_Inputs.directionMotor2 == 3) {
 		v2 = -m_Inputs.velocityMotor2;
 	}
 	else {
