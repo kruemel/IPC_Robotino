@@ -22,7 +22,8 @@
 !*.def
 !*.idl
 !*.cd
-
+!*.sys
+!*.pdb
 
 # User-specific files
 *.suo
