@@ -192,9 +192,9 @@ HRESULT CvelocityConverterToMotors::CycleUpdate(ITcTask* ipTask, ITcUnknown* ipC
 	%			velocityMotor1
 	%			velocityMotor2
 
-	%			directionMotor0 (rotating direction of motor1, 3 := counter-clockwise, 1 := clockwise)
-	%			directionMotor1 (rotating direction of motor2, 3 := counter-clockwise, 1 := clockwise)
-	%			directionMotor2 (rotating direction of motor3, 3 := counter-clockwise, 1 := clockwise)
+	%			directionMotor0 (rotating direction of motor1, 1 := positiveDirection, 3 := negartiveDirection)
+	%			directionMotor1 (rotating direction of motor2, 1 := positiveDirection, 3 := negartiveDirection)
+	%			directionMotor2 (rotating direction of motor3, 1 := positiveDirection, 3 := negartiveDirection)
 
 
 	% conversion from longitudinal, lateral & rotational velocity to the
@@ -234,29 +234,29 @@ HRESULT CvelocityConverterToMotors::CycleUpdate(ITcTask* ipTask, ITcUnknown* ipC
 	% direction
 	*/
 	if (v0 < 0) {
-		m_Outputs.directionMotor0 = 3;
+		m_Outputs.directionMotor0 = 1;
 		m_Outputs.velocityMotor0 = -v0;
 	}
 	else {
-		m_Outputs.directionMotor0 = 1;
+		m_Outputs.directionMotor0 = 3;
 		m_Outputs.velocityMotor0 = v0;
 	}
 
 	if (v1 < 0) {
-		m_Outputs.directionMotor1 = 3;
+		m_Outputs.directionMotor1 = 1;
 		m_Outputs.velocityMotor1 = -v1;
 	}
 	else {
-		m_Outputs.directionMotor1 = 1;
+		m_Outputs.directionMotor1 = 3;
 		m_Outputs.velocityMotor1 = v1;
 	}
 
 	if (v2 < 0) {
-		m_Outputs.directionMotor2 = 3;
+		m_Outputs.directionMotor2 = 1;
 		m_Outputs.velocityMotor2 = -v2;
 	}
 	else {
-		m_Outputs.directionMotor2 = 1;
+		m_Outputs.directionMotor2 = 3;
 		m_Outputs.velocityMotor2 = v2;
 	}
 	return hr;
