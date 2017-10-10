@@ -15,6 +15,9 @@
     <LibraryReferences>{20c038c2-2b55-451c-ab2a-f368c96c56d8}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\EnumState.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>

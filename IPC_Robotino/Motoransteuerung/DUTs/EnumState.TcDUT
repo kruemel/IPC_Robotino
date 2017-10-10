@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <DUT Name="EnumState" Id="{31591028-10a2-478a-84f1-4f97ed464496}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE EnumState :
+(
+	init,
+	drive1,
+	drive2,
+	reset
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

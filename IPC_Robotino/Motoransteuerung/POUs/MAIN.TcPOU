@@ -3,75 +3,163 @@
   <POU Name="MAIN" Id="{e82fe949-bc40-4bc0-b1a4-f8ef83395fe3}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	//Achsen Referenzen
 	axis1: AXIS_REF;
 	axis2: AXIS_REF;
 	axis3: AXIS_REF;
 	
-	delay: TON;
+	//Objekte um Achsen anzusteuern
 	powerAxis1: MC_Power;
-	moveAxis1: MC_MoveVelocity;
+	driveAxis11: MC_MoveVelocity;
+	driveAxis12: MC_MoveVelocity;
 	resetAxis1: MC_Reset;
 	
+	powerAxis2: MC_Power;
+	driveAxis21: MC_MoveVelocity;
+	driveAxis22: MC_MoveVelocity;
+	resetAxis2: MC_Reset;
+	
+	powerAxis3: MC_Power;
+	driveAxis31: MC_MoveVelocity;
+	driveAxis32: MC_MoveVelocity;
+	resetAxis3: MC_Reset;
+	
+	//Achse Freischalten, Regler Freischalten
 	enableControl: BOOL	:=0;
 	enablePos: BOOL		:=0;
 	enableNeg: BOOL		:=0;
-	override: LREAL		:=0;
-	active: BOOL		:=0;
-	direction: INT		:=0;
-	execute: BOOL		:=0;
-
-	state: INT			:=0;
-	nextState:INT		:=0;
-
+	override:  LREAL	:=0;
+	
+	//Fahrbefehl Ausführen
+	drive1Execute: BOOL	:=0;
+	drive2Execute: BOOL	:=0;
+	
+	//State Maschine
+	nextState:EnumState	:=EnumState.init;
+	state:EnumState		:=EnumState.init;
+	
+	//Stellgeschwindigkeit und Richtung
+	velocity1:	LREAL	:=0;
+	velocity2:	LREAL	:=0;
+	velocity3:	LREAL	:=0;
+	
+	direction1:	MC_Direction:=MC_Positive_Direction;
+	direction2:	MC_Direction:=MC_Positive_Direction;
+	direction3:	MC_Direction:=MC_Positive_Direction;
+	
+	delay:TON;
+	
 END_VAR]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-axis1.ReadStatus();
-//axis2.ReadStatus();
-//axis3.ReadStatus();
+      <ST><![CDATA[axis1.ReadStatus();
+axis2.ReadStatus();
+axis3.ReadStatus();
 
-enableControl:=1;
-enablePos:=1;
-enableNeg:=1;
-override:=100;
-execute:=0;
+//Zu Ersetzen mit SwitchCase
+//powerAxis1(Axis:=axis1,Enable:=enableControl,Enable_Positive:=enablePos,Enable_Negative:=enableNeg,Override:=override);
+//IF powerAxis1.Status THEN
+//	moveAxis1(Axis:=axis1,Velocity:=250,Direction:=MC_Positive_Direction,Execute:=1,BufferMode:=MC_Buffered);
+//END_IF
+//Zu Ersetzen mit SwitchCase
 
-powerAxis1(Axis:=axis1,Enable:=enableControl,Enable_Positive:=enablePos,Enable_Negative:=enableNeg,Override:=override);
-
-IF powerAxis1.Active THEN
-	delay(IN:=powerAxis1.Active,PT:=T#500MS);
-END_IF
-IF delay.Q THEN
-	execute:=1;
-	moveAxis1(Axis:=axis1,Velocity:=250,Direction:=MC_Positive_Direction,Execute:=execute,BufferMode:=MC_Buffered);
-END_IF
+CASE state OF
+	EnumState.init:
+		enableControl:=1;
+		enablePos:=1;
+		enableNeg:=1;
+		override:=100;
+		
+		powerAxis1(Axis:=axis1,Enable:=enableControl,Enable_Positive:=enablePos,Enable_Negative:=enableNeg,Override:=override);
+		powerAxis2(Axis:=axis2,Enable:=enableControl,Enable_Positive:=enablePos,Enable_Negative:=enableNeg,Override:=override);
+		powerAxis3(Axis:=axis3,Enable:=enableControl,Enable_Positive:=enablePos,Enable_Negative:=enableNeg,Override:=override);
+		
+		IF (powerAxis1.Status AND powerAxis2.Status AND powerAxis3.Status) THEN	
+			nextState:=EnumState.drive1; 
+			drive1Execute:=1;
+		END_IF
+		IF (powerAxis1.Error OR powerAxis2.Error OR powerAxis3.Error) THEN
+			nextState:=EnumState.reset;
+		END_IF
+		
+	EnumState.drive1:
+	
+		driveAxis11(Axis:=axis1,Velocity:=250,Direction:=direction1,Execute:=drive1Execute,BufferMode:=MC_Buffered);
+		driveAxis21(Axis:=axis2,Velocity:=250,Direction:=direction2,Execute:=drive1Execute,BufferMode:=MC_Buffered);
+		driveAxis31(Axis:=axis3,Velocity:=250,Direction:=direction3,Execute:=drive1Execute,BufferMode:=MC_Buffered);
+		
+		
+		IF (powerAxis1.Error OR powerAxis2.Error OR powerAxis3.Error) THEN
+			nextState:=EnumState.reset;
+		END_IF
+		
+	EnumState.drive2:
+	
+		driveAxis11(Axis:=axis1,Velocity:=900,Direction:=direction1,Execute:=drive2Execute,BufferMode:=MC_Buffered);
+		driveAxis21(Axis:=axis2,Velocity:=900,Direction:=direction2,Execute:=drive2Execute,BufferMode:=MC_Buffered);
+		driveAxis31(Axis:=axis3,Velocity:=900,Direction:=direction3,Execute:=drive2Execute,BufferMode:=MC_Buffered);
+		
+		IF (powerAxis1.Error OR powerAxis2.Error OR powerAxis3.Error) THEN
+			nextState:=EnumState.reset;
+		END_IF	
+	EnumState.reset:;
+	ELSE
+		nextState:=EnumState.reset;
+END_CASE
+state:=nextState;
 
 
 
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="315" Count="0" />
       <LineId Id="2" Count="0" />
       <LineId Id="124" Count="0" />
       <LineId Id="174" Count="0" />
-      <LineId Id="228" Count="0" />
-      <LineId Id="223" Count="3" />
       <LineId Id="239" Count="0" />
-      <LineId Id="216" Count="0" />
+      <LineId Id="375" Count="0" />
       <LineId Id="215" Count="0" />
-      <LineId Id="165" Count="0" />
-      <LineId Id="162" Count="0" />
-      <LineId Id="255" Count="0" />
-      <LineId Id="251" Count="0" />
       <LineId Id="254" Count="0" />
-      <LineId Id="249" Count="0" />
       <LineId Id="241" Count="0" />
       <LineId Id="166" Count="0" />
-      <LineId Id="268" Count="0" />
-      <LineId Id="295" Count="0" />
-      <LineId Id="260" Count="0" />
-      <LineId Id="246" Count="0" />
+      <LineId Id="369" Count="0" />
+      <LineId Id="362" Count="0" />
+      <LineId Id="357" Count="0" />
+      <LineId Id="363" Count="0" />
+      <LineId Id="406" Count="2" />
+      <LineId Id="404" Count="1" />
+      <LineId Id="401" Count="2" />
+      <LineId Id="409" Count="0" />
+      <LineId Id="415" Count="0" />
+      <LineId Id="430" Count="0" />
+      <LineId Id="442" Count="0" />
+      <LineId Id="431" Count="0" />
+      <LineId Id="416" Count="0" />
+      <LineId Id="432" Count="1" />
+      <LineId Id="414" Count="0" />
+      <LineId Id="365" Count="0" />
+      <LineId Id="460" Count="0" />
+      <LineId Id="419" Count="0" />
+      <LineId Id="421" Count="1" />
+      <LineId Id="434" Count="0" />
+      <LineId Id="475" Count="0" />
+      <LineId Id="437" Count="1" />
+      <LineId Id="420" Count="0" />
+      <LineId Id="470" Count="0" />
+      <LineId Id="366" Count="0" />
+      <LineId Id="466" Count="0" />
+      <LineId Id="463" Count="1" />
+      <LineId Id="461" Count="0" />
+      <LineId Id="467" Count="0" />
+      <LineId Id="471" Count="0" />
+      <LineId Id="468" Count="0" />
+      <LineId Id="462" Count="0" />
+      <LineId Id="368" Count="0" />
+      <LineId Id="367" Count="0" />
+      <LineId Id="458" Count="0" />
+      <LineId Id="364" Count="0" />
+      <LineId Id="412" Count="1" />
+      <LineId Id="358" Count="1" />
+      <LineId Id="356" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
