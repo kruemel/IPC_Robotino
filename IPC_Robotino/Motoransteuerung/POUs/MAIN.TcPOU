@@ -91,7 +91,7 @@ CASE state OF
 		switchDrive:=switchDrive+1;
 		
 		IF (switchDrive=2) THEN
-			//switchDrive:=0;
+			switchDrive:=0;
 			nextState:=EnumState.drive2;
 			driveExecute:=0;
 			driveAxis1(Axis:=axis1,Execute:=driveExecute);

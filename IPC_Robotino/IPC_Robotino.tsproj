@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4022.0">
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4020.32">
 	<DataTypes>
 		<DataType>
 			<Name GUID="{119729AD-8099-482A-9FEE-7DE2E19D43CE}">TctModuleCallByType</Name>
@@ -3421,6 +3421,68 @@ External Setpoint Generation:
 				<BitOffs>736</BitOffs>
 			</SubItem>
 		</DataType>
+		<DataType>
+			<Name GUID="{A39361D3-D4AC-4F67-8FEE-F366F3137B89}" Namespace="AX5000" PersistentType="true">E_AX5000_P_0275_ActiveFeedbackAndMemory</Name>
+			<BitSize>8</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<EnumInfo>
+				<Text>
+					<![CDATA[EAX5000_P_0275_MEMORY_NONE]]>
+				</Text>
+				<Enum>0</Enum>
+			</EnumInfo>
+			<EnumInfo>
+				<Text>
+					<![CDATA[EAX5000_P_0275_FEEDBACK1_MEMORY_ENCODER]]>
+				</Text>
+				<Enum>1</Enum>
+			</EnumInfo>
+			<EnumInfo>
+				<Text>
+					<![CDATA[EAX5000_P_0275_FEEDBACK1_MEMORY_DRIVE]]>
+				</Text>
+				<Enum>2</Enum>
+			</EnumInfo>
+			<EnumInfo>
+				<Text>
+					<![CDATA[EAX5000_P_0275_FEEDBACK2_MEMORY_ENCODER]]>
+				</Text>
+				<Enum>16</Enum>
+			</EnumInfo>
+			<EnumInfo>
+				<Text>
+					<![CDATA[EAX5000_P_0275_FEEDBACK2_MEMORY_DRIVE]]>
+				</Text>
+				<Enum>32</Enum>
+			</EnumInfo>
+			<Hides>
+				<Hide GUID="{F1A82E04-2D76-4E5D-BB15-437337214D25}"/>
+				<Hide GUID="{85DC3E7A-8ADA-435B-9479-25573909A7DB}"/>
+			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{A0791761-1F5D-414F-8699-E5B3472004F1}" Namespace="AX5000" PersistentType="true">ST_AX5000_P_0275</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>ActiveFeedbackAndMemory</Name>
+				<Type GUID="{A39361D3-D4AC-4F67-8FEE-F366F3137B89}" Namespace="AX5000">E_AX5000_P_0275_ActiveFeedbackAndMemory</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>InitializationErrorBehavior</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<Hides>
+				<Hide GUID="{0D1A14D3-018F-4F48-88A7-90B490A317B5}"/>
+				<Hide GUID="{43B3CFF1-FA94-4CC1-8B03-C73EF940373B}"/>
+				<Hide GUID="{81B09CD0-943C-4070-AA5B-0A6818251CEB}"/>
+				<Hide GUID="{B6598B95-DC2C-454C-9B12-DE628B32D897}"/>
+				<Hide GUID="{D7D16A25-71D5-48E0-882D-56AB4D826BC2}"/>
+			</Hides>
+		</DataType>
 	</DataTypes>
 	<ImageDatas>
 		<ImageData Id="1000">424d3603000000000000360000002800000010000000100000000100180000000000000300000000000000000000000000000000000023542c32784c31784b3077493076482f75462e74442d72422c71402b703e2a6e3c296c3a286b372769352667331d4a1e337b4f3d94833c93803a917d398f7a378d76358a7233886f31856a2f81662d7e612b7b5d29775827735424704f266733357d5340998a3f98873d97843c95813a927d389079368d75348a7032876c3083672d7f622b7c5d297859277454276935378056439e913c8f712e66232e66232e66232e66232e66232e66232e66232e66232e66232e66233d7c50297759286b3838835946a5982e6623419d8d409b893e98863c96823a927d388f78358c7333876f31836a2e7c622e6623468b6f296c3a3a855b4caa9e2e66234ba99b397e4f57ad9c42a08d409d883c99833a957d389178368d7333886d2e6623478c702a6e3c4289605eb5aa2e662360b7ac2b6421326a29519d7f43a390409e893d9a833b967e389078358c732e6623488f732b703f4a8f6670bfb52e662373c3b82c65225ea997326c36407e4953a996409e893d99833a947e378f782e66234a91782c724153936b81c9c02e662385ccc42d65237cc8be70c1b5488a6e31682a539b7c409d893d98833a937d2e66234b947b2d73435b987092d2c92e662397d6ce2e66238cd1c980cbc172c2b659a79a3473453977404fa28e3c96812e66234d967f2e7445629b74a2d9d22e6623a8ded72e65229ad9d18dd1c97ec9bf6dbeb25ab2a43d8d702a612a4d92712e66234e98822f7647699e77b1dfd92e6623bce6e02d6520abdfd89bd7d08acfc67bc5bc68baae55ad9f49a2923977532e66234b98833077496ea079bde4df87aa942e66232e66232e66232e66232e66232e66232e66232e66232e66232e662332794f3c928031784b6fa07ac2e6e1d3edead2ede9c2e7e2b1e0d9a0d8d08dcfc77bc5bb69bab056afa446a497439f91409a8a3d948332784c6d9f79bde3dec9e8e4c8e8e4bde3deadddd79dd5ce8bcdc57ac3ba67b9ae54aea247a59945a093419b8c3e958633794e3e66416f9f7973a27c73a27c6fa07a689d76609a7258956e4f9169468b633d865d388259378157367e54347b5123542d</ImageData>
@@ -3432,7 +3494,7 @@ External Setpoint Generation:
 		<ImageData Id="1006">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1007">424de6000000000000007600000028000000100000000e000000010004000000000070000000000000000000000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00ffffffffffffffffff788833338887ffff78883bb38887ffffffff3bb3ffffffffffff8778fffffffffffffffffffffffffffffffff999ffff78f78fffffffffff78f78ffff999ffff78f7888fffffffff78f78f78f999ffff78f78f78ffffffff78f7888ff999ffffffffffffffffff</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{65F7B117-B92E-4F3E-9321-4DD532767F50}" TargetNetId="5.49.201.214.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
+	<Project ProjectGUID="{9899E380-504B-484F-8B14-C5A3FFA12CC6}" TargetNetId="5.49.201.214.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
 		<System>
 			<Settings MaxCpus="2" NonWinCpus="1">
 				<Cpu BaseTime="5000"/>
@@ -3452,6 +3514,9 @@ External Setpoint Generation:
 				</Task>
 				<Task Id="9" Priority="10" CycleTime="100000" AmsPort="354">
 					<Name>UDP_Task</Name>
+				</Task>
+				<Task Id="7" Priority="1" CycleTime="500000" AmsPort="352">
+					<Name>Regler_Task</Name>
 				</Task>
 			</Tasks>
 			<Modules>
@@ -3473,6 +3538,11 @@ External Setpoint Generation:
 						<Contexts>
 							<Context>
 								<Id>0</Id>
+								<ManualConfig>
+									<OTCID>#x02010070</OTCID>
+								</ManualConfig>
+								<Priority>1</Priority>
+								<CycleTime>50000000</CycleTime>
 							</Context>
 						</Contexts>
 						<Interfaces>
@@ -7369,7 +7439,7 @@ External Setpoint Generation:
 							</Value>
 							<Value>
 								<Name>ModelParameters.var_cam_theta</Name>
-								<Value>9e-06</Value>
+								<Value>9e-006</Value>
 							</Value>
 							<Value>
 								<Name>ModelParameters.var_cam_x</Name>
@@ -8801,19 +8871,19 @@ External Setpoint Generation:
 							</Value>
 							<Value>
 								<Name>ContextInfoArr_0_TaskOid</Name>
-								<Value>0</Value>
+								<Value>33620080</Value>
 							</Value>
 							<Value>
 								<Name>ContextInfoArr_0_TaskPriority</Name>
-								<Value>0</Value>
+								<Value>1</Value>
 							</Value>
 							<Value>
 								<Name>ContextInfoArr_0_TaskCycleTimeNs</Name>
-								<Value>0</Value>
+								<Value>50000000</Value>
 							</Value>
 							<Value>
 								<Name>ContextInfoArr_0_TaskPort</Name>
-								<Value>0</Value>
+								<Value>352</Value>
 							</Value>
 							<Value>
 								<Name>ContextInfoArr_0_TaskSortOrder</Name>
@@ -9779,7 +9849,7 @@ External Setpoint Generation:
 		</Motion>
 		<Plc>
 			<Project GUID="{07A0B356-4A80-4A52-8191-BE2577F1E050}" Name="Shutdown" PrjFilePath="Shutdown\Shutdown.plcproj" TmcFilePath="Shutdown\Shutdown.tmc" ReloadTmc="true" AmsPort="852" FileArchiveSettings="#x000e">
-				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Shutdown\Shutdown.tmc">
+				<Instance Id="#x08502040" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
 					<Name>Shutdown Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -9795,7 +9865,7 @@ External Setpoint Generation:
 				</Instance>
 			</Project>
 			<Project GUID="{95533C61-2616-46BE-92F7-38CC80CE9359}" Name="UDP" PrjFilePath="UDP\UDP.plcproj" TmcFilePath="UDP\UDP.tmc" ReloadTmc="true" AmsPort="853" FileArchiveSettings="#x000e">
-				<Instance Id="#x08502080" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="UDP\UDP.tmc">
+				<Instance Id="#x08502080" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
 					<Name>UDP Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<InitSymbols>
@@ -9811,7 +9881,7 @@ External Setpoint Generation:
 				</Instance>
 			</Project>
 			<Project GUID="{D49F9991-9003-4846-8A0C-C057E5D4D029}" Name="Motoransteuerung" PrjFilePath="Motoransteuerung\Motoransteuerung.plcproj" TmcFilePath="Motoransteuerung\Motoransteuerung.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Motoransteuerung\Motoransteuerung.tmc">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
 					<Name>Motoransteuerung Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -13210,6 +13280,7 @@ Bit1: Value bigger/equal Limit2]]>
 		</Io>
 	</Project>
 	<Mappings>
+		<MappingInfo Identifier="{08502001-0050-0201-0020-500830000101}" Id="#x02030050" Watchdog="04000000040000000400000004000000"/>
 		<MappingInfo Identifier="{05000010-2001-0850-3000-040300205008}" Id="#x02030030" Watchdog="14000000040000000400000004000000"/>
 		<MappingInfo Identifier="{00000000-0010-0304-3000-040310000403}" Id="#x02030010"/>
 		<MappingInfo Identifier="{00000000-2041-0850-4020-500850000403}" Id="#x02030040"/>
@@ -13379,6 +13450,14 @@ Bit1: Value bigger/equal Limit2]]>
 			<OwnerB Name="TINC^Antriebe und Greifer^Axes^Achse 3">
 				<Link VarA="PlcTask Inputs^MAIN.axis3.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^MAIN.axis3.PlcToNc" VarB="Inputs^FromPlc"/>
+			</OwnerB>
+			<OwnerB Name="TIXC^velocityConverterToMotors^velocityConverterToMotors_Obj">
+				<Link VarA="PlcTask Inputs^MAIN.direction1" VarB="Outputs^directionMotor0"/>
+				<Link VarA="PlcTask Inputs^MAIN.direction2" VarB="Outputs^directionMotor1"/>
+				<Link VarA="PlcTask Inputs^MAIN.direction3" VarB="Outputs^directionMotor2"/>
+				<Link VarA="PlcTask Inputs^MAIN.velocity1" VarB="Outputs^velocityMotor0"/>
+				<Link VarA="PlcTask Inputs^MAIN.velocity2" VarB="Outputs^velocityMotor1"/>
+				<Link VarA="PlcTask Inputs^MAIN.velocity3" VarB="Outputs^velocityMotor2"/>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^Shutdown^Shutdown Instance">
