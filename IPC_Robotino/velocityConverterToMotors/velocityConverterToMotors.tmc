@@ -75,7 +75,7 @@
         <DataArea>
           <AreaNo AreaType="OutputSrc">1</AreaNo>
           <Name>Outputs</Name>
-          <ContextId>1</ContextId><Symbol><Name>velocityMotor0</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType></Symbol><Symbol><Name>velocityMotor1</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType></Symbol><Symbol><Name>velocityMotor2</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType></Symbol><Symbol><Name>directionMotor0</Name><BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType></Symbol><Symbol><Name>directionMotor1</Name><BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType></Symbol><Symbol><Name>directionMotor2</Name><BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType></Symbol>
+          <ContextId>1</ContextId><Symbol><Name>velocityMotor0</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType></Symbol><Symbol><Name>velocityMotor1</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType></Symbol><Symbol><Name>velocityMotor2</Name><BaseType GUID="{18071995-0000-0000-0000-00000000000e}">LREAL</BaseType></Symbol><Symbol><Name>directionMotor0</Name><BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType></Symbol><Symbol><Name>directionMotor1</Name><BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType></Symbol><Symbol><Name>directionMotor2</Name><BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType></Symbol>
         </DataArea>
       </DataAreas>
       <InterfacePointers>

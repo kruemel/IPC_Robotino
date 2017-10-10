@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
   <POU Name="MAIN" Id="{e82fe949-bc40-4bc0-b1a4-f8ef83395fe3}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -10,17 +10,17 @@ VAR
 	
 	//Objekte um Achsen anzusteuern
 	powerAxis1: MC_Power;
-	driveAxis11: MC_MoveVelocity;
+	driveAxis1: MC_MoveVelocity;
 	driveAxis12: MC_MoveVelocity;
 	resetAxis1: MC_Reset;
 	
 	powerAxis2: MC_Power;
-	driveAxis21: MC_MoveVelocity;
+	driveAxis2: MC_MoveVelocity;
 	driveAxis22: MC_MoveVelocity;
 	resetAxis2: MC_Reset;
 	
 	powerAxis3: MC_Power;
-	driveAxis31: MC_MoveVelocity;
+	driveAxis3: MC_MoveVelocity;
 	driveAxis32: MC_MoveVelocity;
 	resetAxis3: MC_Reset;
 	
@@ -31,23 +31,25 @@ VAR
 	override:  LREAL	:=0;
 	
 	//Fahrbefehl Ausführen
-	drive1Execute: BOOL	:=0;
-	drive2Execute: BOOL	:=0;
+	driveExecute: BOOL	:=0;
 	
 	//State Maschine
 	nextState:EnumState	:=EnumState.init;
 	state:EnumState		:=EnumState.init;
+	switchDrive:INT		:=0;
 	
-	//Stellgeschwindigkeit und Richtung
-	velocity1:	LREAL	:=0;
-	velocity2:	LREAL	:=0;
-	velocity3:	LREAL	:=0;
-	
-	direction1:	MC_Direction:=MC_Positive_Direction;
-	direction2:	MC_Direction:=MC_Positive_Direction;
-	direction3:	MC_Direction:=MC_Positive_Direction;
+
 	
 	delay:TON;
+END_VAR
+
+VAR_INPUT
+	velocity1 AT%I*: LREAL;
+	velocity2 AT%I*: LREAL;
+	velocity3 AT%I*: LREAL;
+	direction1 AT%I*: INT;
+	direction2 AT%I*: INT;
+	direction3 AT%I*: INT;
 	
 END_VAR]]></Declaration>
     <Implementation>
@@ -72,10 +74,9 @@ CASE state OF
 		powerAxis1(Axis:=axis1,Enable:=enableControl,Enable_Positive:=enablePos,Enable_Negative:=enableNeg,Override:=override);
 		powerAxis2(Axis:=axis2,Enable:=enableControl,Enable_Positive:=enablePos,Enable_Negative:=enableNeg,Override:=override);
 		powerAxis3(Axis:=axis3,Enable:=enableControl,Enable_Positive:=enablePos,Enable_Negative:=enableNeg,Override:=override);
-		
 		IF (powerAxis1.Status AND powerAxis2.Status AND powerAxis3.Status) THEN	
 			nextState:=EnumState.drive1; 
-			drive1Execute:=1;
+			driveExecute:=1;
 		END_IF
 		IF (powerAxis1.Error OR powerAxis2.Error OR powerAxis3.Error) THEN
 			nextState:=EnumState.reset;
@@ -83,10 +84,22 @@ CASE state OF
 		
 	EnumState.drive1:
 	
-		driveAxis11(Axis:=axis1,Velocity:=250,Direction:=direction1,Execute:=drive1Execute,BufferMode:=MC_Buffered);
-		driveAxis21(Axis:=axis2,Velocity:=250,Direction:=direction2,Execute:=drive1Execute,BufferMode:=MC_Buffered);
-		driveAxis31(Axis:=axis3,Velocity:=250,Direction:=direction3,Execute:=drive1Execute,BufferMode:=MC_Buffered);
+		driveAxis1(Axis:=axis1,Velocity:=velocity1,Direction:=direction1,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis2(Axis:=axis2,Velocity:=velocity2,Direction:=direction2,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis3(Axis:=axis3,Velocity:=velocity3,Direction:=direction3,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		//delay(IN:=1,PT:=T#500MS);
+		switchDrive:=switchDrive+1;
 		
+		IF (switchDrive=2) THEN
+			//switchDrive:=0;
+			nextState:=EnumState.drive2;
+			driveExecute:=0;
+			driveAxis1(Axis:=axis1,Execute:=driveExecute);
+			driveAxis2(Axis:=axis2,Execute:=driveExecute);
+			driveAxis3(Axis:=axis3,Execute:=driveExecute);
+			driveExecute:=1;
+			delay(IN:=0);
+		END_IF
 		
 		IF (powerAxis1.Error OR powerAxis2.Error OR powerAxis3.Error) THEN
 			nextState:=EnumState.reset;
@@ -94,22 +107,45 @@ CASE state OF
 		
 	EnumState.drive2:
 	
-		driveAxis11(Axis:=axis1,Velocity:=900,Direction:=direction1,Execute:=drive2Execute,BufferMode:=MC_Buffered);
-		driveAxis21(Axis:=axis2,Velocity:=900,Direction:=direction2,Execute:=drive2Execute,BufferMode:=MC_Buffered);
-		driveAxis31(Axis:=axis3,Velocity:=900,Direction:=direction3,Execute:=drive2Execute,BufferMode:=MC_Buffered);
+		driveAxis1(Axis:=axis1,Velocity:=velocity1,Direction:=direction1,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis2(Axis:=axis2,Velocity:=velocity2,Direction:=direction2,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis3(Axis:=axis3,Velocity:=velocity3,Direction:=direction3,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		//delay(IN:=1,PT:=T#500MS);
+		switchDrive:=switchDrive+1;
 		
+		IF (switchDrive=2) THEN
+			switchDrive:=0;
+			nextState:=EnumState.drive1;
+			driveExecute:=0;
+			driveAxis1(Axis:=axis1,Execute:=driveExecute);
+			driveAxis2(Axis:=axis2,Execute:=driveExecute);
+			driveAxis3(Axis:=axis3,Execute:=driveExecute);
+			driveExecute:=1;
+			//delay(IN:=0);
+		END_IF
 		IF (powerAxis1.Error OR powerAxis2.Error OR powerAxis3.Error) THEN
 			nextState:=EnumState.reset;
 		END_IF	
-	EnumState.reset:;
+	EnumState.reset:
+	
+		powerAxis1(Axis:=axis1,Enable:=0,Enable_Positive:=0,Enable_Negative:=0,Override:=0);
+		powerAxis2(Axis:=axis1,Enable:=0,Enable_Positive:=0,Enable_Negative:=0,Override:=0);
+		powerAxis3(Axis:=axis1,Enable:=0,Enable_Positive:=0,Enable_Negative:=0,Override:=0);
+		driveAxis1(Axis:=axis1,Velocity:=0,Direction:=0,Execute:=0,BufferMode:=MC_Aborting);
+		driveAxis2(Axis:=axis1,Velocity:=0,Direction:=0,Execute:=0,BufferMode:=MC_Aborting);
+		driveAxis3(Axis:=axis1,Velocity:=0,Direction:=0,Execute:=0,BufferMode:=MC_Aborting);
+	
+		resetAxis1(Axis:=axis1,Execute:=1);
+		resetAxis2(Axis:=axis2,Execute:=1);
+		resetAxis3(Axis:=axis3,Execute:=1);
+	
+		IF (resetAxis1.Done AND resetAxis2.Done AND resetAxis3.Done) THEN
+					;
+				END_IF	
 	ELSE
 		nextState:=EnumState.reset;
 END_CASE
-state:=nextState;
-
-
-
-]]></ST>
+state:=nextState;]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="2" Count="0" />
@@ -127,7 +163,7 @@ state:=nextState;
       <LineId Id="363" Count="0" />
       <LineId Id="406" Count="2" />
       <LineId Id="404" Count="1" />
-      <LineId Id="401" Count="2" />
+      <LineId Id="401" Count="1" />
       <LineId Id="409" Count="0" />
       <LineId Id="415" Count="0" />
       <LineId Id="430" Count="0" />
@@ -139,8 +175,19 @@ state:=nextState;
       <LineId Id="365" Count="0" />
       <LineId Id="460" Count="0" />
       <LineId Id="419" Count="0" />
-      <LineId Id="421" Count="1" />
+      <LineId Id="421" Count="0" />
+      <LineId Id="548" Count="0" />
       <LineId Id="434" Count="0" />
+      <LineId Id="566" Count="0" />
+      <LineId Id="527" Count="0" />
+      <LineId Id="557" Count="0" />
+      <LineId Id="525" Count="0" />
+      <LineId Id="528" Count="0" />
+      <LineId Id="532" Count="2" />
+      <LineId Id="547" Count="0" />
+      <LineId Id="546" Count="0" />
+      <LineId Id="526" Count="0" />
+      <LineId Id="524" Count="0" />
       <LineId Id="475" Count="0" />
       <LineId Id="437" Count="1" />
       <LineId Id="420" Count="0" />
@@ -149,16 +196,33 @@ state:=nextState;
       <LineId Id="466" Count="0" />
       <LineId Id="463" Count="1" />
       <LineId Id="461" Count="0" />
+      <LineId Id="549" Count="0" />
+      <LineId Id="567" Count="0" />
+      <LineId Id="536" Count="0" />
+      <LineId Id="559" Count="0" />
+      <LineId Id="537" Count="0" />
+      <LineId Id="539" Count="3" />
+      <LineId Id="550" Count="1" />
+      <LineId Id="543" Count="0" />
       <LineId Id="467" Count="0" />
       <LineId Id="471" Count="0" />
       <LineId Id="468" Count="0" />
       <LineId Id="462" Count="0" />
+      <LineId Id="583" Count="0" />
+      <LineId Id="578" Count="0" />
+      <LineId Id="584" Count="1" />
+      <LineId Id="573" Count="0" />
+      <LineId Id="587" Count="1" />
+      <LineId Id="581" Count="0" />
+      <LineId Id="577" Count="0" />
+      <LineId Id="568" Count="0" />
+      <LineId Id="574" Count="1" />
+      <LineId Id="569" Count="0" />
+      <LineId Id="571" Count="1" />
       <LineId Id="368" Count="0" />
       <LineId Id="367" Count="0" />
       <LineId Id="458" Count="0" />
       <LineId Id="364" Count="0" />
-      <LineId Id="412" Count="1" />
-      <LineId Id="358" Count="1" />
       <LineId Id="356" Count="0" />
     </LineIds>
   </POU>
