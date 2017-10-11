@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
   <POU Name="MAIN" Id="{e82fe949-bc40-4bc0-b1a4-f8ef83395fe3}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -50,6 +50,7 @@ VAR_INPUT
 	direction1 AT%I*: INT;
 	direction2 AT%I*: INT;
 	direction3 AT%I*: INT;
+	bumper	   AT%I*: BOOL;
 	
 END_VAR]]></Declaration>
     <Implementation>
@@ -123,7 +124,7 @@ CASE state OF
 			driveExecute:=1;
 			//delay(IN:=0);
 		END_IF
-		IF (powerAxis1.Error OR powerAxis2.Error OR powerAxis3.Error) THEN
+		IF (powerAxis1.Error OR powerAxis2.Error OR powerAxis3.Error OR bumper) THEN
 			nextState:=EnumState.reset;
 		END_IF	
 	EnumState.reset:
