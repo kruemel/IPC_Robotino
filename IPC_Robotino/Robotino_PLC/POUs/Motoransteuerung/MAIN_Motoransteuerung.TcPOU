@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
-  <POU Name="MAIN" Id="{e82fe949-bc40-4bc0-b1a4-f8ef83395fe3}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM MAIN
+  <POU Name="MAIN_Motoransteuerung" Id="{16a347dc-587d-4819-9a09-e734dabd6320}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN_Motoransteuerung
 VAR
 	//Achsen Referenzen
 	axis1: AXIS_REF;
@@ -38,21 +38,18 @@ VAR
 	state:EnumState		:=EnumState.init;
 	switchDrive:INT		:=0;
 	
-
-	
 	delay:TON;
-END_VAR
-
-VAR_INPUT
-	velocity1 AT%I*: LREAL;
-	velocity2 AT%I*: LREAL;
-	velocity3 AT%I*: LREAL;
-	direction1 AT%I*: INT;
-	direction2 AT%I*: INT;
-	direction3 AT%I*: INT;
-	bumper	   AT%I*: BOOL;
 	
-END_VAR]]></Declaration>
+	//Inputs
+	velocityToMotors1 AT%I*: LREAL;
+	velocityToMotors2 AT%I*: LREAL;
+	velocityToMotors3 AT%I*: LREAL;
+	directionToMotors1 AT%I*: INT;
+	directionToMotors2 AT%I*: INT;
+	directionToMotors3 AT%I*: INT;
+	bumper	   AT%I*: BOOL;
+END_VAR
+]]></Declaration>
     <Implementation>
       <ST><![CDATA[axis1.ReadStatus();
 axis2.ReadStatus();
@@ -85,9 +82,9 @@ CASE state OF
 		
 	EnumState.drive1:
 	
-		driveAxis1(Axis:=axis1,Velocity:=velocity1,Direction:=direction1,Execute:=driveExecute,BufferMode:=MC_Aborting);
-		driveAxis2(Axis:=axis2,Velocity:=velocity2,Direction:=direction2,Execute:=driveExecute,BufferMode:=MC_Aborting);
-		driveAxis3(Axis:=axis3,Velocity:=velocity3,Direction:=direction3,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis1(Axis:=axis1,Velocity:=velocityToMotors1,Direction:=directionToMotors1,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis2(Axis:=axis2,Velocity:=velocityToMotors2,Direction:=directionToMotors2,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis3(Axis:=axis3,Velocity:=velocityToMotors3,Direction:=directionToMotors3,Execute:=driveExecute,BufferMode:=MC_Aborting);
 		//delay(IN:=1,PT:=T#500MS);
 		switchDrive:=switchDrive+1;
 		
@@ -108,9 +105,9 @@ CASE state OF
 		
 	EnumState.drive2:
 	
-		driveAxis1(Axis:=axis1,Velocity:=velocity1,Direction:=direction1,Execute:=driveExecute,BufferMode:=MC_Aborting);
-		driveAxis2(Axis:=axis2,Velocity:=velocity2,Direction:=direction2,Execute:=driveExecute,BufferMode:=MC_Aborting);
-		driveAxis3(Axis:=axis3,Velocity:=velocity3,Direction:=direction3,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis1(Axis:=axis1,Velocity:=velocityToMotors1,Direction:=directionToMotors1,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis2(Axis:=axis2,Velocity:=velocityToMotors2,Direction:=directionToMotors2,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis3(Axis:=axis3,Velocity:=velocityToMotors3,Direction:=directionToMotors3,Execute:=driveExecute,BufferMode:=MC_Aborting);
 		//delay(IN:=1,PT:=T#500MS);
 		switchDrive:=switchDrive+1;
 		
@@ -148,7 +145,7 @@ CASE state OF
 END_CASE
 state:=nextState;]]></ST>
     </Implementation>
-    <LineIds Name="MAIN">
+    <LineIds Name="MAIN_Motoransteuerung">
       <LineId Id="2" Count="0" />
       <LineId Id="124" Count="0" />
       <LineId Id="174" Count="0" />

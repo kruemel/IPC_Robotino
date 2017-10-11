@@ -26,20 +26,20 @@ typedef struct _velocityConverterToMotorsParameter
 
 typedef struct _velocityConverterToMotorsInputs
 {
-	double velocityX;
-	double velocityY;
-	double theta;
+	double vXCartesianToMotors;
+	double vYCartesianToMotors;
+	double thetaCartesianToMotors;
 } velocityConverterToMotorsInputs, *PvelocityConverterToMotorsInputs;
 
 #pragma pack(push,1)
 typedef struct _velocityConverterToMotorsOutputs
 {
-	double velocityMotor0;
-	double velocityMotor1;
-	double velocityMotor2;
-	SHORT directionMotor0;
-	SHORT directionMotor1;
-	SHORT directionMotor2;
+	double velocityToMotors1;
+	double velocityToMotors2;
+	double velocityToMotors3;
+	SHORT directionToMotors1;
+	SHORT directionToMotors2;
+	SHORT directionToMotors3;
 } velocityConverterToMotorsOutputs, *PvelocityConverterToMotorsOutputs;
 #pragma pack(pop)
 

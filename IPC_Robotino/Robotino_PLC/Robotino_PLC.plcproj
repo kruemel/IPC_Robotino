@@ -3,39 +3,54 @@
   <PropertyGroup>
     <FileVersion>1.0.0.0</FileVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{95533c61-2616-46be-92f7-38cc80ce9359}</ProjectGuid>
+    <ProjectGuid>{a359db2b-ecfe-4c85-96d7-2f59337a58c7}</ProjectGuid>
     <SubObjectsSortedByName>True</SubObjectsSortedByName>
-    <Name>UDP</Name>
+    <Name>Robotino_PLC</Name>
     <ProgramVersion>3.1.4022.0</ProgramVersion>
-    <Application>{0f585800-e369-4f27-aed1-349b9eac9d96}</Application>
-    <TypeSystem>{25614011-cb05-4a53-bf10-6c6a4ab4a894}</TypeSystem>
-    <Implicit_Task_Info>{c5a0787b-6e0b-454d-9bcc-2beb7cafc869}</Implicit_Task_Info>
-    <Implicit_KindOfTask>{db9d6932-be68-418c-a30b-c07bb27ae8a2}</Implicit_KindOfTask>
-    <Implicit_Jitter_Distribution>{a09514d5-4408-40d8-8854-f15558ec1752}</Implicit_Jitter_Distribution>
-    <LibraryReferences>{71050ad5-0f29-43c5-89ae-66ec3d991b78}</LibraryReferences>
+    <Application>{3e6c807a-c7b7-40f3-b44a-9931536f8587}</Application>
+    <TypeSystem>{45f5ec78-45e0-430b-900f-e27dac5f215b}</TypeSystem>
+    <Implicit_Task_Info>{f82f44ae-1290-438a-8cd3-eb1195cbc34e}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{dc2e1a97-6a70-4cc8-b9db-876497b0155d}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{f76a22c5-779d-4ebc-a222-38a754a2f54d}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{313bb61d-f82f-4b61-9e83-f497b55778b5}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GVLs\UDP.TcGVL">
+    <Compile Include="DUTs\EnumState.TcDUT">
       <SubType>Code</SubType>
-      <LinkAlways>true</LinkAlways>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\MAIN.TcPOU">
+    <Compile Include="POUs\Motoransteuerung\MAIN_Motoransteuerung.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\UDPConnect.TcPOU">
+    <Compile Include="POUs\Shutdown\MAIN_Shutdown.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Shutdown\Shutdown.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\UDP\MAIN_UDP.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\UDP\UDPConnect.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\Motoransteuerung" />
+    <Folder Include="POUs\Shutdown" />
+    <Folder Include="POUs\UDP" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
+    <PlaceholderReference Include="Tc2_MC2">
+      <DefaultResolution>Tc2_MC2, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_MC2</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Tc2_Standard">
       <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_Standard</Namespace>
@@ -44,13 +59,17 @@
       <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_System</Namespace>
     </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Utilities">
+      <DefaultResolution>Tc2_Utilities, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Utilities</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Tc3_Module">
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_Module</Namespace>
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="UDP.tmc">
+    <None Include="Robotino_PLC.tmc">
       <SubType>Content</SubType>
     </None>
   </ItemGroup>
@@ -84,12 +103,6 @@
               <d n="Values" t="Hashtable" />
             </o>
           </d>
-          <d n="Values" t="Hashtable" />
-        </o>
-        <v>{8F99A816-E488-41E4-9FA3-846536012284}</v>
-        <o>
-          <v n="Name">"{8F99A816-E488-41E4-9FA3-846536012284}"</v>
-          <d n="SubKeys" t="Hashtable" />
           <d n="Values" t="Hashtable" />
         </o>
         <v>{40450F57-0AA3-4216-96F3-5444ECB29763}</v>

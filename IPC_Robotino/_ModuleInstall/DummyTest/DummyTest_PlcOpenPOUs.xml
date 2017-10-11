@@ -2,8 +2,8 @@
 <!-- Beckhoff Automation GmbH & Co. KG -->
 <!-- TwinCAT Target for MATLAB/Simulink 1.2.1229.0-->
 <project xmlns="http://www.plcopen.org/xml/tc6_0200">
-  <fileHeader companyName="Beckhoff Automation GmbH &amp; Co. KG" companyURL="www.beckhoff.com" productName="TwinCAT 3 Function - TE1400" productVersion="1.2.1229" creationDateTime="2017-10-11T08:11:13" />
-  <contentHeader name="TC3_TE1400_GeneratedModule_Gewerk3_Simulinkmodell_2017_10_09_Twincat_FB">
+  <fileHeader companyName="Beckhoff Automation GmbH &amp; Co. KG" companyURL="www.beckhoff.com" productName="TwinCAT 3 Function - TE1400" productVersion="1.2.1229" creationDateTime="2017-10-11T09:00:48" />
+  <contentHeader name="TC3_TE1400_GeneratedModule_DummyTest_FB">
     <coordinateInfo>
       <fbd>
         <scaling x="1" y="1" />
@@ -73,7 +73,7 @@
         </baseType>
         <addData/>
       </dataType>
-      <dataType name="ST_Gewerk3_Simulinkmodell_2017_10_09_Twincat_InitData">
+      <dataType name="ST_DummyTest_InitData">
         <baseType>
           <struct>
             	<variable name="Header">
@@ -128,7 +128,7 @@
 </variable>
 <variable name="ModelParameters">
 	<type>
-		<derived name="P_Gewerk3_Simulinkmodell_2017_T" />
+		<derived name="P_DummyTest_T" />
 	</type>
 </variable>
 <variable name="ContextInfoArr_0_TaskOidHdr">
@@ -192,71 +192,10 @@
           </data>
         </addData>
       </dataType>
- 			<dataType name = "ST_Gewerk3_Simulinkmodell_2017_10_09_Twincat_Input">
+ 			<dataType name = "ST_DummyTest_Output">
 				<baseType>
 					<struct>
-						<variable name="UDP">
-							<type>
-								<derived name="matrix_56_real_T" />
-							</type>
-						</variable>
-						<variable name="ProcessedData">
-							<type>
-								<derived name="matrix_15_real_T" />
-							</type>
-						</variable>
-					</struct>
-				</baseType>
-			</dataType>
-			<dataType name = "ST_Gewerk3_Simulinkmodell_2017_10_09_Twincat_Output">
-				<baseType>
-					<struct>
-						<variable name="cameradata">
-							<type>
-								<derived name="matrix_3_real_T" />
-							</type>
-						</variable>
-						<variable name="firstcameradatareceived">
-							<type>
-								<derived name="LREAL" />
-							</type>
-						</variable>
-						<variable name="cameradatavalid">
-							<type>
-								<derived name="LREAL" />
-							</type>
-						</variable>
-						<variable name="actualposition">
-							<type>
-								<derived name="matrix_3_real_T" />
-							</type>
-						</variable>
-						<variable name="L_theta">
-							<type>
-								<derived name="LREAL" />
-							</type>
-						</variable>
-						<variable name="L_x">
-							<type>
-								<derived name="LREAL" />
-							</type>
-						</variable>
-						<variable name="L_y">
-							<type>
-								<derived name="LREAL" />
-							</type>
-						</variable>
-						<variable name="v_x">
-							<type>
-								<derived name="LREAL" />
-							</type>
-						</variable>
-						<variable name="v_y">
-							<type>
-								<derived name="LREAL" />
-							</type>
-						</variable>
-						<variable name="v_theta">
+						<variable name="Out1">
 							<type>
 								<derived name="LREAL" />
 							</type>
@@ -1791,20 +1730,15 @@ State := eObjState;
           </data>
         </addData>
       </pou>
-      <pou name="FB_Gewerk3_Simulinkmodell_2017_10_09_Twincat" pouType="functionBlock">
+      <pou name="FB_DummyTest" pouType="functionBlock">
         <interface>
           <inputVars>
-            <variable name="stInput">
-	<type>
-		<derived name="ST_Gewerk3_Simulinkmodell_2017_10_09_Twincat_Input" />
-	</type>
-</variable>
-
+            
           </inputVars>
           <outputVars>
             <variable name="stOutput">
 	<type>
-		<derived name="ST_Gewerk3_Simulinkmodell_2017_10_09_Twincat_Output" />
+		<derived name="ST_DummyTest_Output" />
 	</type>
 </variable>
 
@@ -1812,13 +1746,13 @@ State := eObjState;
           <localVars>
             <variable name="stInitData">
               <type>
-                <derived name="ST_Gewerk3_Simulinkmodell_2017_10_09_Twincat_InitData" />
+                <derived name="ST_DummyTest_InitData" />
               </type>
             </variable>
             <variable name="arrDataAreas">
               <type>
                 <array>
-                  <dimension lower="1" upper="2"/>
+                  <dimension lower="1" upper="1"/>
                   <baseType>
                     <derived name="ST_TcMatSimObjectDataAreaInfo"/>
                   </baseType>
@@ -1839,7 +1773,7 @@ State := eObjState;
             </data>
             <data name="http://www.3s-software.com/plcopenxml/attributes" handleUnknown="implementation">
               <Attributes>
-                <Attribute Name="TcDependOnClassFactory" Value="Gewerk3_Simulinkmodell_2017_10_09_Twincat" />
+                <Attribute Name="TcDependOnClassFactory" Value="DummyTest" />
               </Attributes>
             </data>
           </addData>
@@ -1997,17 +1931,17 @@ SaveOnlineParametersForInit := SUPER^.SaveOnlineParametersForInit();
 bParametersVerified := false;
                     
 // set module class id for compatibility check
-clsId.Data1 := 16#0f6b4a77;
-clsId.Data2 := 16#f167;
-clsId.Data3 := 16#4149;
-clsId.Data4[0] := 16#a4;
-clsId.Data4[1] := 16#73;
-clsId.Data4[2] := 16#ec;
-clsId.Data4[3] := 16#20;
-clsId.Data4[4] := 16#b3;
-clsId.Data4[5] := 16#75;
-clsId.Data4[6] := 16#99;
-clsId.Data4[7] := 16#59;
+clsId.Data1 := 16#455cfd1b;
+clsId.Data2 := 16#22b1;
+clsId.Data3 := 16#4d6f;
+clsId.Data4[0] := 16#a7;
+clsId.Data4[1] := 16#58;
+clsId.Data4[2] := 16#8f;
+clsId.Data4[3] := 16#27;
+clsId.Data4[4] := 16#dc;
+clsId.Data4[5] := 16#be;
+clsId.Data4[6] := 16#46;
+clsId.Data4[7] := 16#b4;
 
 AssignClassId(clsId);
                     
@@ -2029,385 +1963,9 @@ stInitData.ExecuteModelCodeHdr.indexOffset := 16#00000007;
 stInitData.ExecuteModelCodeHdr.cbData := SIZEOF(stInitData.ExecuteModelCode);
 stInitData.ExecuteModelCode := 1;
 stInitData.ModelParametersHdr.indexGroup := 0;
-stInitData.ModelParametersHdr.indexOffset := 16#83000000;
+stInitData.ModelParametersHdr.indexOffset := 16#81000000;
 stInitData.ModelParametersHdr.cbData := SIZEOF(stInitData.ModelParameters);
-stInitData.ModelParameters.K_1 := 12;
-stInitData.ModelParameters.K_2 := 0.2;
-stInitData.ModelParameters.L_konst := 10;
-stInitData.ModelParameters.N := 12;
-stInitData.ModelParameters.T_R := 0.03;
-stInitData.ModelParameters.T_SP := 0.25;
-stInitData.ModelParameters.accuracy_R := 1;
-stInitData.ModelParameters.accuracy_Theta := 0.0174532925199433;
-stInitData.ModelParameters.b_L_theta := 0.015;
-stInitData.ModelParameters.b_L_x := 1.5;
-stInitData.ModelParameters.b_L_y := 1.5;
-stInitData.ModelParameters.m_L_theta := 0.01470360331117452;
-stInitData.ModelParameters.m_L_x := 0.01903270296627266;
-stInitData.ModelParameters.m_L_y := 0.01903270296627266;
-stInitData.ModelParameters.omega_max := 2;
-stInitData.ModelParameters.std_jitter := 0.011;
-stInitData.ModelParameters.t_cam := 0.15;
-stInitData.ModelParameters.t_cycle := 0.005;
-stInitData.ModelParameters.v_max := 500;
-stInitData.ModelParameters.var_cam_theta := 9e-06;
-stInitData.ModelParameters.var_cam_x := 0.09;
-stInitData.ModelParameters.var_cam_y := 0.09;
-stInitData.ModelParameters.CompareToConstant_const := 1;
-stInitData.ModelParameters.CompareToConstant1_const := 0;
-stInitData.ModelParameters.CompareToConstant2_const := -1;
-stInitData.ModelParameters.CompareToConstant3_const := 0;
-stInitData.ModelParameters.CompareToConstant4_const := 0;
-stInitData.ModelParameters.CompareToConstant_const_a := 1;
-stInitData.ModelParameters.CompareToConstant1_const_f := 0;
-stInitData.ModelParameters.CompareToConstant2_const_a := -1;
-stInitData.ModelParameters.CompareToConstant3_const_c := 0;
-stInitData.ModelParameters.CompareToConstant4_const_n := 0;
-stInitData.ModelParameters.CompareToConstant_const_az := 1;
-stInitData.ModelParameters.CompareToConstant1_const_p := 0;
-stInitData.ModelParameters.CompareToConstant2_const_g := -1;
-stInitData.ModelParameters.CompareToConstant3_const_n := 0;
-stInitData.ModelParameters.CompareToConstant4_const_c := 0;
-stInitData.ModelParameters.SRFlipFlop_initial_condition := 0;
-stInitData.ModelParameters.SRFlipFlop1_initial_condition := 0;
-stInitData.ModelParameters.driveforward_initial_condition := 0;
-stInitData.ModelParameters.stationreached_initial_conditio := 0;
-stInitData.ModelParameters.partavailable_initial_condition := 0;
-stInitData.ModelParameters.grabberinprocess_initial_condit := 0;
-stInitData.ModelParameters.opengrabber_initial_condition := 0;
-stInitData.ModelParameters.readRFID_initial_condition := 0;
-stInitData.ModelParameters.drivebackward_initial_condition := 0;
-stInitData.ModelParameters.deactivatecontroller_initial_co := 0;
-stInitData.ModelParameters.SRFlipFlop_initial_condition_f := 0;
-stInitData.ModelParameters.startingpositionreached_initial := 0;
-stInitData.ModelParameters.closegrabber_initial_condition := 0;
-stInitData.ModelParameters.DetectRisePositive1_vinit := 0;
-stInitData.ModelParameters.DetectRisePositive6_vinit := 0;
-stInitData.ModelParameters.DetectRisePositive3_vinit := 0;
-stInitData.ModelParameters.DetectRisePositive_vinit := 0;
-stInitData.ModelParameters.DetectRisePositive_vinit_k := 0;
-stInitData.ModelParameters.DetectRisePositive_vinit_p := 0;
-stInitData.ModelParameters.DetectRisePositive_vinit_e := 0;
-stInitData.ModelParameters.Gain2_Gain := 0.1591549430918953;
-stInitData.ModelParameters.Gain2_Gain_f := 0.1591549430918953;
-stInitData.ModelParameters.Constant_Value := 0;
-stInitData.ModelParameters.Constant_Value_e := 0;
-stInitData.ModelParameters.Constant_Value_o := 0;
-stInitData.ModelParameters.Constant5_Value := 0;
-stInitData.ModelParameters.Constant2_Value := 3.141592653589793;
-stInitData.ModelParameters.Constant3_Value := 6.283185307179586;
-stInitData.ModelParameters.Constant1_Value := 3.141592653589793;
-stInitData.ModelParameters.Constant5_Value_h[0] := -150;
-stInitData.ModelParameters.Constant5_Value_h[1] := 0;
-stInitData.ModelParameters.Constant5_Value_h[2] := 0;
-stInitData.ModelParameters.Constant_Value_m := 1;
-stInitData.ModelParameters.Memory1_X0 := 0;
-stInitData.ModelParameters.Switch2_Threshold := 0;
-stInitData.ModelParameters.Constant2_Value_c := 3.141592653589793;
-stInitData.ModelParameters.Constant3_Value_h := 6.283185307179586;
-stInitData.ModelParameters.Constant1_Value_o := 3.141592653589793;
-stInitData.ModelParameters.t_cycle_Delay := 0.5;
-stInitData.ModelParameters.t_cycle_InitOutput := 0;
-stInitData.ModelParameters.Constant_Value_l := 0;
-stInitData.ModelParameters.Constant_Value_j := 0;
-stInitData.ModelParameters.t_cycle_InitOutput_e := 0;
-stInitData.ModelParameters.t_cycle_InitOutput_n := 0;
-stInitData.ModelParameters.t_cycle_InitOutput_g := 0;
-stInitData.ModelParameters.t_cycle_InitOutput_b := 0;
-stInitData.ModelParameters.t_cycle_Delay_b := 0.5;
-stInitData.ModelParameters.t_cycle_InitOutput_n4 := 0;
-stInitData.ModelParameters.t_cycle_InitOutput_m := 0;
-stInitData.ModelParameters.t_cycle_InitOutput_p := 0;
-stInitData.ModelParameters.t_cycle_Delay_a := 0.5;
-stInitData.ModelParameters.t_cycle_InitOutput_f := 0;
-stInitData.ModelParameters.t_cycle_InitOutput_i := 0;
-stInitData.ModelParameters.t_cycle_InitOutput_k := 0;
-stInitData.ModelParameters.t_cycle_Delay_o := 2;
-stInitData.ModelParameters.t_cycle_InitOutput_a := 0;
-stInitData.ModelParameters.t_cycle_InitOutput_h := 0;
-stInitData.ModelParameters.Constant1_Value_m[0] := 150;
-stInitData.ModelParameters.Constant1_Value_m[1] := 0;
-stInitData.ModelParameters.Constant1_Value_m[2] := 0;
-stInitData.ModelParameters.Constant4_Value[0] := 0;
-stInitData.ModelParameters.Constant4_Value[1] := 0;
-stInitData.ModelParameters.Constant4_Value[2] := 0;
-stInitData.ModelParameters.u5sek_Delay := 0.5;
-stInitData.ModelParameters.u5sek_InitOutput := 0;
-stInitData.ModelParameters.Constant1_Value_oa := 3.141592653589793;
-stInitData.ModelParameters.Constant2_Value_h := 6.283185307179586;
-stInitData.ModelParameters.Constant3_Value_k := 3.141592653589793;
-stInitData.ModelParameters.Constant1_Value_f := 3.141592653589793;
-stInitData.ModelParameters.Constant2_Value_e := 6.283185307179586;
-stInitData.ModelParameters.Constant3_Value_c := 3.141592653589793;
-stInitData.ModelParameters.Constant2_Value_i := 6.283185307179586;
-stInitData.ModelParameters.UnitDelay2_InitialCondition := 0;
-stInitData.ModelParameters.UnitDelay2_InitialCondition_c := 0;
-stInitData.ModelParameters.cameradeadtime_InitOutput := 0;
-stInitData.ModelParameters.Constant2_Value_k[0] := 0;
-stInitData.ModelParameters.Constant2_Value_k[1] := 0;
-stInitData.ModelParameters.Constant2_Value_k[2] := 0;
-stInitData.ModelParameters.Constant2_Value_a := 6.283185307179586;
-stInitData.ModelParameters.Constant1_Value_i := 3.141592653589793;
-stInitData.ModelParameters.Constant2_Value_e3 := 6.283185307179586;
-stInitData.ModelParameters.Constant3_Value_kp := 3.141592653589793;
-stInitData.ModelParameters.Constant1_Value_n[0] := 0;
-stInitData.ModelParameters.Constant1_Value_n[1] := 0;
-stInitData.ModelParameters.Constant1_Value_n[2] := 0;
-stInitData.ModelParameters.Constant_Value_f := 0;
-stInitData.ModelParameters.Constant4_Value_d := 0;
-stInitData.ModelParameters.cameradeadtime_InitOutput_a := 0;
-stInitData.ModelParameters.Constant2_Value_d := 3.141592653589793;
-stInitData.ModelParameters.Constant3_Value_m := 6.283185307179586;
-stInitData.ModelParameters.Constant1_Value_mh := 3.141592653589793;
-stInitData.ModelParameters.Constant_Value_g := 0;
-stInitData.ModelParameters.cameradeadtime_InitOutput_b := 0;
-stInitData.ModelParameters.Constant_Value_d := 0;
-stInitData.ModelParameters.cameradeadtime_InitOutput_k := 0;
-stInitData.ModelParameters.u8sek_Delay := 0.8;
-stInitData.ModelParameters.u8sek_InitOutput := 0;
-stInitData.ModelParameters.t_cycle_InitOutput_bp := 0;
-stInitData.ModelParameters.Constant1_Value_g := 3.141592653589793;
-stInitData.ModelParameters.Constant2_Value_f := 6.283185307179586;
-stInitData.ModelParameters.Constant3_Value_e := 3.141592653589793;
-stInitData.ModelParameters.UnitDelay2_InitialCondition_m := 0;
-stInitData.ModelParameters.Constant1_Value_d := 3.141592653589793;
-stInitData.ModelParameters.Constant2_Value_fr := 6.283185307179586;
-stInitData.ModelParameters.Constant3_Value_cs := 3.141592653589793;
-stInitData.ModelParameters.Constant_Value_oc := 0;
-stInitData.ModelParameters.Constant1_Value_fq := 3.141592653589793;
-stInitData.ModelParameters.Constant2_Value_ak := 6.283185307179586;
-stInitData.ModelParameters.Constant3_Value_mf := 3.141592653589793;
-stInitData.ModelParameters.Switch2_Threshold_o := 0;
-stInitData.ModelParameters.Constant_Value_h := 0;
-stInitData.ModelParameters.Switch2_Threshold_c := 0;
-stInitData.ModelParameters.Constant_Value_ho := 0;
-stInitData.ModelParameters.Switch2_Threshold_d := 0;
-stInitData.ModelParameters.t_cycle_InitOutput_j := 0;
-stInitData.ModelParameters.ManualSwitch_CurrentSetting := 0;
-stInitData.ModelParameters.ManualSwitch_CurrentSetting_l := 0;
-stInitData.ModelParameters.ManualSwitch_CurrentSetting_ly := 0;
-stInitData.ModelParameters.UnitDelay_InitialCondition := 0;
-stInitData.ModelParameters.ManualSwitch_CurrentSetting_d := 0;
-stInitData.ModelParameters.Logic_table[0] := 0;
-stInitData.ModelParameters.Logic_table[1] := 1;
-stInitData.ModelParameters.Logic_table[2] := 0;
-stInitData.ModelParameters.Logic_table[3] := 0;
-stInitData.ModelParameters.Logic_table[4] := 1;
-stInitData.ModelParameters.Logic_table[5] := 1;
-stInitData.ModelParameters.Logic_table[6] := 0;
-stInitData.ModelParameters.Logic_table[7] := 0;
-stInitData.ModelParameters.Logic_table[8] := 1;
-stInitData.ModelParameters.Logic_table[9] := 0;
-stInitData.ModelParameters.Logic_table[10] := 1;
-stInitData.ModelParameters.Logic_table[11] := 1;
-stInitData.ModelParameters.Logic_table[12] := 0;
-stInitData.ModelParameters.Logic_table[13] := 0;
-stInitData.ModelParameters.Logic_table[14] := 0;
-stInitData.ModelParameters.Logic_table[15] := 0;
-stInitData.ModelParameters.Constant_Value_g4 := 0;
-stInitData.ModelParameters.Logic_table_c[0] := 0;
-stInitData.ModelParameters.Logic_table_c[1] := 1;
-stInitData.ModelParameters.Logic_table_c[2] := 0;
-stInitData.ModelParameters.Logic_table_c[3] := 0;
-stInitData.ModelParameters.Logic_table_c[4] := 1;
-stInitData.ModelParameters.Logic_table_c[5] := 1;
-stInitData.ModelParameters.Logic_table_c[6] := 0;
-stInitData.ModelParameters.Logic_table_c[7] := 0;
-stInitData.ModelParameters.Logic_table_c[8] := 1;
-stInitData.ModelParameters.Logic_table_c[9] := 0;
-stInitData.ModelParameters.Logic_table_c[10] := 1;
-stInitData.ModelParameters.Logic_table_c[11] := 1;
-stInitData.ModelParameters.Logic_table_c[12] := 0;
-stInitData.ModelParameters.Logic_table_c[13] := 0;
-stInitData.ModelParameters.Logic_table_c[14] := 0;
-stInitData.ModelParameters.Logic_table_c[15] := 0;
-stInitData.ModelParameters.UnitDelay_InitialCondition_a := 0;
-stInitData.ModelParameters.Logic_table_p[0] := 0;
-stInitData.ModelParameters.Logic_table_p[1] := 1;
-stInitData.ModelParameters.Logic_table_p[2] := 0;
-stInitData.ModelParameters.Logic_table_p[3] := 0;
-stInitData.ModelParameters.Logic_table_p[4] := 1;
-stInitData.ModelParameters.Logic_table_p[5] := 1;
-stInitData.ModelParameters.Logic_table_p[6] := 0;
-stInitData.ModelParameters.Logic_table_p[7] := 0;
-stInitData.ModelParameters.Logic_table_p[8] := 1;
-stInitData.ModelParameters.Logic_table_p[9] := 0;
-stInitData.ModelParameters.Logic_table_p[10] := 1;
-stInitData.ModelParameters.Logic_table_p[11] := 1;
-stInitData.ModelParameters.Logic_table_p[12] := 0;
-stInitData.ModelParameters.Logic_table_p[13] := 0;
-stInitData.ModelParameters.Logic_table_p[14] := 0;
-stInitData.ModelParameters.Logic_table_p[15] := 0;
-stInitData.ModelParameters.Logic_table_b[0] := 0;
-stInitData.ModelParameters.Logic_table_b[1] := 1;
-stInitData.ModelParameters.Logic_table_b[2] := 0;
-stInitData.ModelParameters.Logic_table_b[3] := 0;
-stInitData.ModelParameters.Logic_table_b[4] := 1;
-stInitData.ModelParameters.Logic_table_b[5] := 1;
-stInitData.ModelParameters.Logic_table_b[6] := 0;
-stInitData.ModelParameters.Logic_table_b[7] := 0;
-stInitData.ModelParameters.Logic_table_b[8] := 1;
-stInitData.ModelParameters.Logic_table_b[9] := 0;
-stInitData.ModelParameters.Logic_table_b[10] := 1;
-stInitData.ModelParameters.Logic_table_b[11] := 1;
-stInitData.ModelParameters.Logic_table_b[12] := 0;
-stInitData.ModelParameters.Logic_table_b[13] := 0;
-stInitData.ModelParameters.Logic_table_b[14] := 0;
-stInitData.ModelParameters.Logic_table_b[15] := 0;
-stInitData.ModelParameters.Logic_table_l[0] := 0;
-stInitData.ModelParameters.Logic_table_l[1] := 1;
-stInitData.ModelParameters.Logic_table_l[2] := 0;
-stInitData.ModelParameters.Logic_table_l[3] := 0;
-stInitData.ModelParameters.Logic_table_l[4] := 1;
-stInitData.ModelParameters.Logic_table_l[5] := 1;
-stInitData.ModelParameters.Logic_table_l[6] := 0;
-stInitData.ModelParameters.Logic_table_l[7] := 0;
-stInitData.ModelParameters.Logic_table_l[8] := 1;
-stInitData.ModelParameters.Logic_table_l[9] := 0;
-stInitData.ModelParameters.Logic_table_l[10] := 1;
-stInitData.ModelParameters.Logic_table_l[11] := 1;
-stInitData.ModelParameters.Logic_table_l[12] := 0;
-stInitData.ModelParameters.Logic_table_l[13] := 0;
-stInitData.ModelParameters.Logic_table_l[14] := 0;
-stInitData.ModelParameters.Logic_table_l[15] := 0;
-stInitData.ModelParameters.Logic_table_i[0] := 0;
-stInitData.ModelParameters.Logic_table_i[1] := 1;
-stInitData.ModelParameters.Logic_table_i[2] := 0;
-stInitData.ModelParameters.Logic_table_i[3] := 0;
-stInitData.ModelParameters.Logic_table_i[4] := 1;
-stInitData.ModelParameters.Logic_table_i[5] := 1;
-stInitData.ModelParameters.Logic_table_i[6] := 0;
-stInitData.ModelParameters.Logic_table_i[7] := 0;
-stInitData.ModelParameters.Logic_table_i[8] := 1;
-stInitData.ModelParameters.Logic_table_i[9] := 0;
-stInitData.ModelParameters.Logic_table_i[10] := 1;
-stInitData.ModelParameters.Logic_table_i[11] := 1;
-stInitData.ModelParameters.Logic_table_i[12] := 0;
-stInitData.ModelParameters.Logic_table_i[13] := 0;
-stInitData.ModelParameters.Logic_table_i[14] := 0;
-stInitData.ModelParameters.Logic_table_i[15] := 0;
-stInitData.ModelParameters.Logic_table_pn[0] := 0;
-stInitData.ModelParameters.Logic_table_pn[1] := 1;
-stInitData.ModelParameters.Logic_table_pn[2] := 0;
-stInitData.ModelParameters.Logic_table_pn[3] := 0;
-stInitData.ModelParameters.Logic_table_pn[4] := 1;
-stInitData.ModelParameters.Logic_table_pn[5] := 1;
-stInitData.ModelParameters.Logic_table_pn[6] := 0;
-stInitData.ModelParameters.Logic_table_pn[7] := 0;
-stInitData.ModelParameters.Logic_table_pn[8] := 1;
-stInitData.ModelParameters.Logic_table_pn[9] := 0;
-stInitData.ModelParameters.Logic_table_pn[10] := 1;
-stInitData.ModelParameters.Logic_table_pn[11] := 1;
-stInitData.ModelParameters.Logic_table_pn[12] := 0;
-stInitData.ModelParameters.Logic_table_pn[13] := 0;
-stInitData.ModelParameters.Logic_table_pn[14] := 0;
-stInitData.ModelParameters.Logic_table_pn[15] := 0;
-stInitData.ModelParameters.Logic_table_h[0] := 0;
-stInitData.ModelParameters.Logic_table_h[1] := 1;
-stInitData.ModelParameters.Logic_table_h[2] := 0;
-stInitData.ModelParameters.Logic_table_h[3] := 0;
-stInitData.ModelParameters.Logic_table_h[4] := 1;
-stInitData.ModelParameters.Logic_table_h[5] := 1;
-stInitData.ModelParameters.Logic_table_h[6] := 0;
-stInitData.ModelParameters.Logic_table_h[7] := 0;
-stInitData.ModelParameters.Logic_table_h[8] := 1;
-stInitData.ModelParameters.Logic_table_h[9] := 0;
-stInitData.ModelParameters.Logic_table_h[10] := 1;
-stInitData.ModelParameters.Logic_table_h[11] := 1;
-stInitData.ModelParameters.Logic_table_h[12] := 0;
-stInitData.ModelParameters.Logic_table_h[13] := 0;
-stInitData.ModelParameters.Logic_table_h[14] := 0;
-stInitData.ModelParameters.Logic_table_h[15] := 0;
-stInitData.ModelParameters.Logic_table_e[0] := 0;
-stInitData.ModelParameters.Logic_table_e[1] := 1;
-stInitData.ModelParameters.Logic_table_e[2] := 0;
-stInitData.ModelParameters.Logic_table_e[3] := 0;
-stInitData.ModelParameters.Logic_table_e[4] := 1;
-stInitData.ModelParameters.Logic_table_e[5] := 1;
-stInitData.ModelParameters.Logic_table_e[6] := 0;
-stInitData.ModelParameters.Logic_table_e[7] := 0;
-stInitData.ModelParameters.Logic_table_e[8] := 1;
-stInitData.ModelParameters.Logic_table_e[9] := 0;
-stInitData.ModelParameters.Logic_table_e[10] := 1;
-stInitData.ModelParameters.Logic_table_e[11] := 1;
-stInitData.ModelParameters.Logic_table_e[12] := 0;
-stInitData.ModelParameters.Logic_table_e[13] := 0;
-stInitData.ModelParameters.Logic_table_e[14] := 0;
-stInitData.ModelParameters.Logic_table_e[15] := 0;
-stInitData.ModelParameters.Logic_table_cl[0] := 0;
-stInitData.ModelParameters.Logic_table_cl[1] := 1;
-stInitData.ModelParameters.Logic_table_cl[2] := 0;
-stInitData.ModelParameters.Logic_table_cl[3] := 0;
-stInitData.ModelParameters.Logic_table_cl[4] := 1;
-stInitData.ModelParameters.Logic_table_cl[5] := 1;
-stInitData.ModelParameters.Logic_table_cl[6] := 0;
-stInitData.ModelParameters.Logic_table_cl[7] := 0;
-stInitData.ModelParameters.Logic_table_cl[8] := 1;
-stInitData.ModelParameters.Logic_table_cl[9] := 0;
-stInitData.ModelParameters.Logic_table_cl[10] := 1;
-stInitData.ModelParameters.Logic_table_cl[11] := 1;
-stInitData.ModelParameters.Logic_table_cl[12] := 0;
-stInitData.ModelParameters.Logic_table_cl[13] := 0;
-stInitData.ModelParameters.Logic_table_cl[14] := 0;
-stInitData.ModelParameters.Logic_table_cl[15] := 0;
-stInitData.ModelParameters.Constant_Value_ja := 0;
-stInitData.ModelParameters.UnitDelay1_InitialCondition := 0;
-stInitData.ModelParameters.Constant_Value_f0 := 0;
-stInitData.ModelParameters.UnitDelay1_InitialCondition_k := 0;
-stInitData.ModelParameters.Constant_Value_n := 0;
-stInitData.ModelParameters.UnitDelay1_InitialCondition_i := 0;
-stInitData.ModelParameters.UnitDelay2_InitialCondition_ca := 0;
-stInitData.ModelParameters.Logic_table_le[0] := 0;
-stInitData.ModelParameters.Logic_table_le[1] := 1;
-stInitData.ModelParameters.Logic_table_le[2] := 0;
-stInitData.ModelParameters.Logic_table_le[3] := 0;
-stInitData.ModelParameters.Logic_table_le[4] := 1;
-stInitData.ModelParameters.Logic_table_le[5] := 1;
-stInitData.ModelParameters.Logic_table_le[6] := 0;
-stInitData.ModelParameters.Logic_table_le[7] := 0;
-stInitData.ModelParameters.Logic_table_le[8] := 1;
-stInitData.ModelParameters.Logic_table_le[9] := 0;
-stInitData.ModelParameters.Logic_table_le[10] := 1;
-stInitData.ModelParameters.Logic_table_le[11] := 1;
-stInitData.ModelParameters.Logic_table_le[12] := 0;
-stInitData.ModelParameters.Logic_table_le[13] := 0;
-stInitData.ModelParameters.Logic_table_le[14] := 0;
-stInitData.ModelParameters.Logic_table_le[15] := 0;
-stInitData.ModelParameters.Logic_table_o[0] := 0;
-stInitData.ModelParameters.Logic_table_o[1] := 1;
-stInitData.ModelParameters.Logic_table_o[2] := 0;
-stInitData.ModelParameters.Logic_table_o[3] := 0;
-stInitData.ModelParameters.Logic_table_o[4] := 1;
-stInitData.ModelParameters.Logic_table_o[5] := 1;
-stInitData.ModelParameters.Logic_table_o[6] := 0;
-stInitData.ModelParameters.Logic_table_o[7] := 0;
-stInitData.ModelParameters.Logic_table_o[8] := 1;
-stInitData.ModelParameters.Logic_table_o[9] := 0;
-stInitData.ModelParameters.Logic_table_o[10] := 1;
-stInitData.ModelParameters.Logic_table_o[11] := 1;
-stInitData.ModelParameters.Logic_table_o[12] := 0;
-stInitData.ModelParameters.Logic_table_o[13] := 0;
-stInitData.ModelParameters.Logic_table_o[14] := 0;
-stInitData.ModelParameters.Logic_table_o[15] := 0;
-stInitData.ModelParameters.UnitDelay1_InitialCondition_l := 0;
-stInitData.ModelParameters.Constant_Value_fx := 0;
-stInitData.ModelParameters.Constant_Value_hor := 0;
-stInitData.ModelParameters.Logic_table_iw[0] := 0;
-stInitData.ModelParameters.Logic_table_iw[1] := 1;
-stInitData.ModelParameters.Logic_table_iw[2] := 0;
-stInitData.ModelParameters.Logic_table_iw[3] := 0;
-stInitData.ModelParameters.Logic_table_iw[4] := 1;
-stInitData.ModelParameters.Logic_table_iw[5] := 1;
-stInitData.ModelParameters.Logic_table_iw[6] := 0;
-stInitData.ModelParameters.Logic_table_iw[7] := 0;
-stInitData.ModelParameters.Logic_table_iw[8] := 1;
-stInitData.ModelParameters.Logic_table_iw[9] := 0;
-stInitData.ModelParameters.Logic_table_iw[10] := 1;
-stInitData.ModelParameters.Logic_table_iw[11] := 1;
-stInitData.ModelParameters.Logic_table_iw[12] := 0;
-stInitData.ModelParameters.Logic_table_iw[13] := 0;
-stInitData.ModelParameters.Logic_table_iw[14] := 0;
-stInitData.ModelParameters.Logic_table_iw[15] := 0;
+stInitData.ModelParameters.Constant_Value := 2500.4563289;
 stInitData.ContextInfoArr_0_TaskOidHdr.indexGroup := 0;
 stInitData.ContextInfoArr_0_TaskOidHdr.indexOffset := 16#03002060;
 stInitData.ContextInfoArr_0_TaskOidHdr.cbData := SIZEOF(stInitData.ContextInfoArr_0_TaskOid);
@@ -2431,17 +1989,12 @@ stInitData.Header.uiElmCnt := 10;
 SetInitDataInfo(ADR(stInitData));
 
 // set DataArea information
-SetDataAreaInfo(ADR(arrDataAreas),2);
+SetDataAreaInfo(ADR(arrDataAreas),1);
 arrDataAreas[1].nDataAreaId := 0;
-arrDataAreas[1].nSize := SIZEOF(stInput);
-arrDataAreas[1].pPlcVar := ADR(stInput);
+arrDataAreas[1].nSize := SIZEOF(stOutput);
+arrDataAreas[1].pPlcVar := ADR(stOutput);
 arrDataAreas[1].pModuleProcImg := 0;
-arrDataAreas[1].eDataAreaType := E_TcMatSimDataAreaType.InputDst;
-arrDataAreas[2].nDataAreaId := 1;
-arrDataAreas[2].nSize := SIZEOF(stOutput);
-arrDataAreas[2].pPlcVar := ADR(stOutput);
-arrDataAreas[2].pModuleProcImg := 0;
-arrDataAreas[2].eDataAreaType := E_TcMatSimDataAreaType.OutputSrc;
+arrDataAreas[1].eDataAreaType := E_TcMatSimDataAreaType.OutputSrc;
 
 
 // initialize basic interface pointers and return
@@ -2467,7 +2020,7 @@ IF (SUCCEEDED(hResult)) THEN
 END_IF
 
 	// update DataArea information
-SetDataAreaInfo(ADR(arrDataAreas),2);
+SetDataAreaInfo(ADR(arrDataAreas),1);
 	
 	// call base method
 Execute := SUPER^.Execute();
@@ -2527,7 +2080,7 @@ END_IF
             <Property name="InitData">
               <interface>
                 <returnType>
-                  <derived name="ST_Gewerk3_Simulinkmodell_2017_10_09_Twincat_InitData" />
+                  <derived name="ST_DummyTest_InitData" />
                 </returnType>
               </interface>
               <SetAccessor>

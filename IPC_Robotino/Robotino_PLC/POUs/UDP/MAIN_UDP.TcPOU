@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
-  <POU Name="MAIN" Id="{83da6505-1eb3-48a2-b593-db0aa655616f}" SpecialFunc="None">
-    <Declaration><![CDATA[PROGRAM MAIN
+  <POU Name="MAIN_UDP" Id="{b6e4ea55-b300-41b8-8a89-a1df4d8038ad}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN_UDP
 VAR
+	//sPaketinhalt	: LREAL;
+	//nPaketlaenge	: UDINT;
+	
+	x	  AT%Q*	: ARRAY[1..4] OF LREAL;
+	y	  AT%Q*	: ARRAY[1..4] OF LREAL;
+	theta AT%Q*	: ARRAY[1..4] OF LREAL;
 	udp1 : UDPConnect;
 END_VAR
 ]]></Declaration>
@@ -10,7 +16,7 @@ END_VAR
       <ST><![CDATA[udp1();
 ]]></ST>
     </Implementation>
-    <LineIds Name="MAIN">
+    <LineIds Name="MAIN_UDP">
       <LineId Id="2" Count="0" />
       <LineId Id="7" Count="0" />
     </LineIds>

@@ -197,16 +197,16 @@ HRESULT CvelocityConverterToCartesian::CycleUpdate(ITcTask* ipTask, ITcUnknown* 
 % longitudinal, lateral & rotational velocity for every motor   %
 */
 
-	v0 = -m_Inputs.velocityMotor0;//Konvertierung auf Umrechnungsformeln
-	v1 = -m_Inputs.velocityMotor1;//Konvertierung auf Umrechnungsformeln
-	v2 = -m_Inputs.velocityMotor2;//Konvertierung auf Umrechnungsformeln
+	v0 = -m_Inputs.velocityFromMotor1;//Konvertierung auf Umrechnungsformeln
+	v1 = -m_Inputs.velocityFromMotor2;//Konvertierung auf Umrechnungsformeln
+	v2 = -m_Inputs.velocityFromMotor3;//Konvertierung auf Umrechnungsformeln
 /*
 % conversion from three separate motor velocities to longitudinal,
 % lateral & rotational velocity
 */
-		m_Outputs.velocityX = (v2 - v0) / (2.0 * cosdg_(30.0));     //in mm / s
-		m_Outputs.velocityY= (v0 - 2.0 * v1 + v2) / 3.0;            //in mm / s
-		m_Outputs.theta= (v0 + v1 + v2) / (3.0 * 135.0);			//in rad / s
+		m_Outputs.vXCartesianFromMotors = (v2 - v0) / (2.0 * cosdg_(30.0));     //in mm / s
+		m_Outputs.vYCartesianFromMotors= (v0 - 2.0 * v1 + v2) / 3.0;            //in mm / s
+		m_Outputs.thetaCartesianFromMotors= (v0 + v1 + v2) / (3.0 * 135.0);			//in rad / s
 
 	return hr;
 }

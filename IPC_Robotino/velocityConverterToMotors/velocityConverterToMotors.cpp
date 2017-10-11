@@ -202,25 +202,25 @@ HRESULT CvelocityConverterToMotors::CycleUpdate(ITcTask* ipTask, ITcUnknown* ipC
 	*/
 
 	//Maximal Speed
-	if (m_Inputs.velocityX > 500) {
+	if (m_Inputs.vXCartesianToMotors > 500) {
 		vX = 500;
 	}
 	else {
-		vX = m_Inputs.velocityX;
+		vX = m_Inputs.vXCartesianToMotors;
 	}
 	
-	if (m_Inputs.velocityY > 500) {
+	if (m_Inputs.vYCartesianToMotors > 500) {
 		vY = 500;
 	}
 	else{
-		vY = m_Inputs.velocityY;
+		vY = m_Inputs.vYCartesianToMotors;
 	}
 	
-	if (m_Inputs.theta > 3.14) {
+	if (m_Inputs.thetaCartesianToMotors > 3.14) {
 		vTheta =3.14;
 	}
 	else {
-		vTheta = m_Inputs.theta;
+		vTheta = m_Inputs.thetaCartesianToMotors;
 	}
 
 
@@ -234,30 +234,30 @@ HRESULT CvelocityConverterToMotors::CycleUpdate(ITcTask* ipTask, ITcUnknown* ipC
 	% direction
 	*/
 	if (v0 < 0) {
-		m_Outputs.directionMotor0 = 1;
-		m_Outputs.velocityMotor0 = -v0;
+		m_Outputs.directionToMotors1 = 1;
+		m_Outputs.velocityToMotors1 = -v0;
 	}
 	else {
-		m_Outputs.directionMotor0 = 3;
-		m_Outputs.velocityMotor0 = v0;
+		m_Outputs.directionToMotors1 = 3;
+		m_Outputs.velocityToMotors1 = v0;
 	}
 
 	if (v1 < 0) {
-		m_Outputs.directionMotor1 = 1;
-		m_Outputs.velocityMotor1 = -v1;
+		m_Outputs.directionToMotors2 = 1;
+		m_Outputs.velocityToMotors2 = -v1;
 	}
 	else {
-		m_Outputs.directionMotor1 = 3;
-		m_Outputs.velocityMotor1 = v1;
+		m_Outputs.directionToMotors2 = 3;
+		m_Outputs.velocityToMotors2 = v1;
 	}
 
 	if (v2 < 0) {
-		m_Outputs.directionMotor2 = 1;
-		m_Outputs.velocityMotor2 = -v2;
+		m_Outputs.directionToMotors3 = 1;
+		m_Outputs.velocityToMotors3 = -v2;
 	}
 	else {
-		m_Outputs.directionMotor2 = 3;
-		m_Outputs.velocityMotor2 = v2;
+		m_Outputs.directionToMotors3 = 3;
+		m_Outputs.velocityToMotors3 = v2;
 	}
 	return hr;
 }

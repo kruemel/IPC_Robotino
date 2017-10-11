@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
-  <POU Name="UDPConnect" Id="{908d85d7-bdec-44b4-8e91-5a81c664be5d}" SpecialFunc="None">
+  <POU Name="UDPConnect" Id="{0c365c5a-6fb3-46a3-ae3a-5b982dafe0da}" SpecialFunc="None">
     <Declaration><![CDATA[{attribute 'c++_compatible'}
 FUNCTION_BLOCK UDPConnect IMPLEMENTS ITcIoUdpProtocolRecv
 VAR_INPUT
@@ -24,7 +24,7 @@ END_IF
 
 ]]></ST>
     </Implementation>
-    <Method Name="FB_exit" Id="{91b28bdb-201a-42a2-b295-09a526170ca2}">
+    <Method Name="FB_exit" Id="{997b0ac2-d102-4797-b926-27b6301eea11}">
       <Declaration><![CDATA[METHOD FB_exit : BOOL
 VAR_INPUT
 	bInCopyCode : BOOL; // if TRUE, the exit method is called for exiting an instance that is copied afterwards (online change).
@@ -40,7 +40,7 @@ ELSE
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_init" Id="{19d8cb2a-8a20-40d0-a961-90faf7633758}">
+    <Method Name="FB_init" Id="{77af14ae-5592-44a6-8329-965bc9495811}">
       <Declaration><![CDATA[METHOD FB_init : BOOL
 VAR_INPUT
 	bInitRetains : BOOL; // if TRUE, the retain variables are initialized (warm start / cold start)
@@ -69,7 +69,7 @@ END_VAR]]></Declaration>
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="FB_reinit" Id="{588a6fca-6d41-460a-bd5f-3d6027e559d1}">
+    <Method Name="FB_reinit" Id="{d542cc40-7b89-46c5-8a38-fd7bb17018cd}">
       <Declaration><![CDATA[METHOD FB_reinit : BOOL
 VAR_INPUT
 END_VAR
@@ -80,7 +80,7 @@ END_VAR
 END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="ReceiveData" Id="{2f7b2000-e86c-4728-a38c-c65fb7de05f5}">
+    <Method Name="ReceiveData" Id="{06058c88-ed69-411e-a276-845434b9f95e}">
       <Declaration><![CDATA[{attribute 'object_name' := 'ReceiveData'}
 {attribute 'c++_compatible'}
 {attribute 'signature_flag' := '33554688'}
@@ -103,16 +103,16 @@ END_VAR
 ]]></Declaration>
       <Implementation>
         <ST><![CDATA[nReceivedPakets := nReceivedPakets+1;
-UDP.nPaketlaenge := nData;
+//MAIN_UDP.nPaketlaenge := nData;
 
 FOR i := 0 TO 3 DO
-	memcpy(ADR(UDP.x[i+1]),pData+((i*3)*8),8);
-	memcpy(ADR(UDP.y[i+1]),pData+((i*3+1)*8),8);
-	memcpy(ADR(UDP.theta[i+1]),pData+((i*3+2)*8),8);
+	memcpy(ADR(MAIN_UDP.x[i+1]),pData+((i*3)*8),8);
+	memcpy(ADR(MAIN_UDP.y[i+1]),pData+((i*3+1)*8),8);
+	memcpy(ADR(MAIN_UDP.theta[i+1]),pData+((i*3+2)*8),8);
 END_FOR;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="TcAddRef" Id="{b7e7da53-14ba-4e6a-a78f-5c64e2c860c5}">
+    <Method Name="TcAddRef" Id="{7fb25988-4644-4e7d-a2e6-5bd6becfd6b9}">
       <Declaration><![CDATA[{attribute 'c++_compatible'}
 {attribute 'minimal_input_size' := '4'}
 {attribute 'pack_mode' := '4'}
@@ -123,7 +123,7 @@ METHOD TcAddRef : UDINT
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <Method Name="TcQueryInterface" Id="{1dc1e3ec-099e-424e-819e-fbd704054bd6}">
+    <Method Name="TcQueryInterface" Id="{cb6e55c1-4806-42f3-bd2b-464a845188e3}">
       <Declaration><![CDATA[{attribute 'c++_compatible'}
 {attribute 'minimal_input_size' := '4'}
 {attribute 'pack_mode' := '4'}
@@ -138,7 +138,7 @@ END_VAR
         <ST><![CDATA[]]></ST>
       </Implementation>
     </Method>
-    <Method Name="TcRelease" Id="{ecb6da5d-4b5e-4d06-b69f-01dc1b87874f}">
+    <Method Name="TcRelease" Id="{f2d2f7fa-5831-4a43-a4e2-3ca95dcc74fd}">
       <Declaration><![CDATA[{attribute 'c++_compatible'}
 {attribute 'minimal_input_size' := '4'}
 {attribute 'pack_mode' := '4'}

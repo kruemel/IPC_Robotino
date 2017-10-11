@@ -3,9 +3,15 @@
   <Task Name="PlcTask" Id="{46f7bf45-dc7e-430d-ab85-1f71f2231b07}">
     <!--CycleTime in micro seconds.-->
     <CycleTime>5000</CycleTime>
-    <Priority>2</Priority>
+    <Priority>1</Priority>
     <PouCall>
-      <Name>MAIN</Name>
+      <Name>MAIN_Motoransteuerung</Name>
+    </PouCall>
+    <PouCall>
+      <Name>MAIN_Shutdown</Name>
+    </PouCall>
+    <PouCall>
+      <Name>MAIN_UDP</Name>
     </PouCall>
     <TaskFBGuid>{aa615ac9-a803-44df-8f08-140586fadbe4}</TaskFBGuid>
     <Fb_init>{eb3fffee-0fe9-4c8d-8841-766209bc8a8a}</Fb_init>
