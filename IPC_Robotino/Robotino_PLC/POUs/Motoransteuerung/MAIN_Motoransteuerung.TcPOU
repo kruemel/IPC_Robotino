@@ -38,15 +38,28 @@ VAR
 	state:EnumState		:=EnumState.init;
 	switchDrive:INT		:=0;
 	
-	delay:TON;
+	//Umgerechnete Werte
+	vX:		LREAL:=0;
+	vY:		LREAL:=0;
+	vTheta:	LREAL:=0;
+	v0:		LREAL:=0;
+	v1:		LREAL:=0;
+	v2:		LREAL:=0;
 	
-	//Inputs
-	velocityToMotors1 AT%I*: LREAL;
-	velocityToMotors2 AT%I*: LREAL;
-	velocityToMotors3 AT%I*: LREAL;
-	directionToMotors1 AT%I*: INT;
-	directionToMotors2 AT%I*: INT;
-	directionToMotors3 AT%I*: INT;
+	//Fahrbefehle für Motor MC_DRIVEVELOCITY
+	velocityToMotor1: LREAL;
+	velocityToMotor2: LREAL;
+	velocityToMotor3: LREAL;
+	directionToMotor1: INT;
+	directionToMotor2: INT;
+	directionToMotor3: INT;
+	
+	//Inputs: CartesianToMotors + Bumper
+	
+	vXCartesianToMotors 	AT%I*:LREAL;
+	vYCartesianToMotors 	AT%I*:LREAL;
+	vThetaCartesianToMotors AT%I*:LREAL;
+	
 	bumper	   AT%I*: BOOL;
 END_VAR
 ]]></Declaration>
@@ -55,13 +68,77 @@ END_VAR
 axis2.ReadStatus();
 axis3.ReadStatus();
 
-//Zu Ersetzen mit SwitchCase
-//powerAxis1(Axis:=axis1,Enable:=enableControl,Enable_Positive:=enablePos,Enable_Negative:=enableNeg,Override:=override);
-//IF powerAxis1.Status THEN
-//	moveAxis1(Axis:=axis1,Velocity:=250,Direction:=MC_Positive_Direction,Execute:=1,BufferMode:=MC_Buffered);
-//END_IF
-//Zu Ersetzen mit SwitchCase
+// Konverzierung ToMotors Anfang********************************************************
 
+//	  conversion from positive and / or negative longitudinal, lateral and
+//	  rotational velocities(in milimeters per second) to three separate
+//	  positive motor velocities(resolution: 1Byte) and their rotation
+//    direction
+//inputs:  	velocityX (longitudinal velocity in milimeters per second)
+//         	velocityY (lateral velocity in milimeters per second)
+//			theta     (rotational velocity in milimeters per second)
+//outputs : velocityMotor0	
+//			velocityMotor1
+//			velocityMotor2
+//		directionMotor0 (rotating direction of motor1, 1 := positiveDirection, 3 := negartiveDirection)
+//		directionMotor1 (rotating direction of motor2, 1 := positiveDirection, 3 := negartiveDirection)
+//		directionMotor2 (rotating direction of motor3, 1 := positiveDirection, 3 := negartiveDirection)
+//conversion from longitudinal, lateral & rotational velocity to the
+//three separate motor velocities
+
+
+//Maximal Speed
+IF 	vXCartesianToMotors > 500	THEN
+	vX := 500;
+ELSE
+	vX := vXCartesianToMotors;
+END_IF
+
+IF	vYCartesianToMotors > 500	THEN
+	vY := 500;
+ELSE
+	vY :=vYCartesianToMotors;
+END_IF
+	
+IF vThetaCartesianToMotors > 3.14 THEN
+	vTheta:=3.14;
+ELSE
+	vTheta:= vThetaCartesianToMotors;
+END_IF
+
+v0 := (-vX * COS(30.0*PI/180))	+ (vY * COS(60.0*PI/180))	+ (vTheta * 135.0);
+v1 := 0.0						+ (-vY)						+ (vTheta * 135.0);
+v2 := (vX * COS(30.0*PI/180))	+ (vY * COS(60.0*PI/180))	+ (vTheta * 135.0);
+	
+//division OF motor velocities into absolute velocity AND rotating
+//direction
+IF v0 < 0 THEN
+	directionToMotor1 := 1;
+	velocityToMotor1 := -v0;
+ELSE
+	directionToMotor1:= 3;
+	velocityToMotor1:= v0;
+END_IF
+
+IF v1 < 0 THEN
+	directionToMotor2:= 1;
+	velocityToMotor2:= -v1;
+ELSE
+	directionToMotor2:= 3;
+	velocityToMotor2:= v1;
+END_IF
+
+IF(v2 < 0)THEN
+	directionToMotor3 := 1;
+	velocityToMotor3  := -v2;
+ELSE
+	directionToMotor3 := 3;
+	velocityToMotor3  := v2;
+END_IF
+// Konverzierung ToMotors ENDE********************************************************
+
+
+//START STATE MACHINE MOTORANSTEUERUNG
 CASE state OF
 	EnumState.init:
 		enableControl:=1;
@@ -82,10 +159,9 @@ CASE state OF
 		
 	EnumState.drive1:
 	
-		driveAxis1(Axis:=axis1,Velocity:=velocityToMotors1,Direction:=directionToMotors1,Execute:=driveExecute,BufferMode:=MC_Aborting);
-		driveAxis2(Axis:=axis2,Velocity:=velocityToMotors2,Direction:=directionToMotors2,Execute:=driveExecute,BufferMode:=MC_Aborting);
-		driveAxis3(Axis:=axis3,Velocity:=velocityToMotors3,Direction:=directionToMotors3,Execute:=driveExecute,BufferMode:=MC_Aborting);
-		//delay(IN:=1,PT:=T#500MS);
+		driveAxis1(Axis:=axis1,Velocity:=velocityToMotor1,Direction:=directionToMotor1,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis2(Axis:=axis2,Velocity:=velocityToMotor2,Direction:=directionToMotor2,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis3(Axis:=axis3,Velocity:=velocityToMotor3,Direction:=directionToMotor3,Execute:=driveExecute,BufferMode:=MC_Aborting);
 		switchDrive:=switchDrive+1;
 		
 		IF (switchDrive=2) THEN
@@ -96,7 +172,6 @@ CASE state OF
 			driveAxis2(Axis:=axis2,Execute:=driveExecute);
 			driveAxis3(Axis:=axis3,Execute:=driveExecute);
 			driveExecute:=1;
-			delay(IN:=0);
 		END_IF
 		
 		IF (powerAxis1.Error OR powerAxis2.Error OR powerAxis3.Error) THEN
@@ -105,10 +180,9 @@ CASE state OF
 		
 	EnumState.drive2:
 	
-		driveAxis1(Axis:=axis1,Velocity:=velocityToMotors1,Direction:=directionToMotors1,Execute:=driveExecute,BufferMode:=MC_Aborting);
-		driveAxis2(Axis:=axis2,Velocity:=velocityToMotors2,Direction:=directionToMotors2,Execute:=driveExecute,BufferMode:=MC_Aborting);
-		driveAxis3(Axis:=axis3,Velocity:=velocityToMotors3,Direction:=directionToMotors3,Execute:=driveExecute,BufferMode:=MC_Aborting);
-		//delay(IN:=1,PT:=T#500MS);
+		driveAxis1(Axis:=axis1,Velocity:=velocityToMotor1,Direction:=directionToMotor1,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis2(Axis:=axis2,Velocity:=velocityToMotor2,Direction:=directionToMotor2,Execute:=driveExecute,BufferMode:=MC_Aborting);
+		driveAxis3(Axis:=axis3,Velocity:=velocityToMotor3,Direction:=directionToMotor3,Execute:=driveExecute,BufferMode:=MC_Aborting);
 		switchDrive:=switchDrive+1;
 		
 		IF (switchDrive=2) THEN
@@ -119,7 +193,6 @@ CASE state OF
 			driveAxis2(Axis:=axis2,Execute:=driveExecute);
 			driveAxis3(Axis:=axis3,Execute:=driveExecute);
 			driveExecute:=1;
-			//delay(IN:=0);
 		END_IF
 		IF (powerAxis1.Error OR powerAxis2.Error OR powerAxis3.Error OR bumper) THEN
 			nextState:=EnumState.reset;
@@ -149,13 +222,33 @@ state:=nextState;]]></ST>
       <LineId Id="2" Count="0" />
       <LineId Id="124" Count="0" />
       <LineId Id="174" Count="0" />
-      <LineId Id="239" Count="0" />
-      <LineId Id="375" Count="0" />
-      <LineId Id="215" Count="0" />
-      <LineId Id="254" Count="0" />
-      <LineId Id="241" Count="0" />
-      <LineId Id="166" Count="0" />
-      <LineId Id="369" Count="0" />
+      <LineId Id="723" Count="1" />
+      <LineId Id="643" Count="4" />
+      <LineId Id="649" Count="2" />
+      <LineId Id="653" Count="2" />
+      <LineId Id="657" Count="2" />
+      <LineId Id="662" Count="1" />
+      <LineId Id="725" Count="0" />
+      <LineId Id="664" Count="0" />
+      <LineId Id="666" Count="1" />
+      <LineId Id="747" Count="1" />
+      <LineId Id="671" Count="4" />
+      <LineId Id="677" Count="1" />
+      <LineId Id="746" Count="0" />
+      <LineId Id="680" Count="3" />
+      <LineId Id="685" Count="1" />
+      <LineId Id="688" Count="4" />
+      <LineId Id="695" Count="1" />
+      <LineId Id="698" Count="2" />
+      <LineId Id="702" Count="2" />
+      <LineId Id="706" Count="0" />
+      <LineId Id="754" Count="0" />
+      <LineId Id="707" Count="3" />
+      <LineId Id="712" Count="7" />
+      <LineId Id="721" Count="1" />
+      <LineId Id="638" Count="1" />
+      <LineId Id="642" Count="0" />
+      <LineId Id="756" Count="0" />
       <LineId Id="362" Count="0" />
       <LineId Id="357" Count="0" />
       <LineId Id="363" Count="0" />
@@ -175,7 +268,6 @@ state:=nextState;]]></ST>
       <LineId Id="419" Count="0" />
       <LineId Id="421" Count="0" />
       <LineId Id="548" Count="0" />
-      <LineId Id="434" Count="0" />
       <LineId Id="566" Count="0" />
       <LineId Id="527" Count="0" />
       <LineId Id="557" Count="0" />
@@ -184,7 +276,6 @@ state:=nextState;]]></ST>
       <LineId Id="532" Count="2" />
       <LineId Id="547" Count="0" />
       <LineId Id="546" Count="0" />
-      <LineId Id="526" Count="0" />
       <LineId Id="524" Count="0" />
       <LineId Id="475" Count="0" />
       <LineId Id="437" Count="1" />
@@ -194,14 +285,12 @@ state:=nextState;]]></ST>
       <LineId Id="466" Count="0" />
       <LineId Id="463" Count="1" />
       <LineId Id="461" Count="0" />
-      <LineId Id="549" Count="0" />
       <LineId Id="567" Count="0" />
       <LineId Id="536" Count="0" />
       <LineId Id="559" Count="0" />
       <LineId Id="537" Count="0" />
       <LineId Id="539" Count="3" />
       <LineId Id="550" Count="1" />
-      <LineId Id="543" Count="0" />
       <LineId Id="467" Count="0" />
       <LineId Id="471" Count="0" />
       <LineId Id="468" Count="0" />

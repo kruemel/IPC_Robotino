@@ -13,12 +13,10 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[udp1();
-]]></ST>
+      <ST><![CDATA[udp1();]]></ST>
     </Implementation>
     <LineIds Name="MAIN_UDP">
       <LineId Id="2" Count="0" />
-      <LineId Id="7" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

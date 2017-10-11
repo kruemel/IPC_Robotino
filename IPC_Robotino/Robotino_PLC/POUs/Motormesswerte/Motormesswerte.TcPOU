@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+  <POU Name="Motormesswerte" Id="{98ef246c-4a5c-421c-b909-7664c31975fe}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Motormesswerte
+VAR
+	v0:LREAL:=0;
+	v1:LREAL:=0;
+	v2:LREAL:=0;
+	
+//INPUTS
+velocityFromMotor1 AT%I* :LREAL;
+velocityFromMotor2 AT%I* :LREAL;
+velocityFromMotor3 AT%I* :LREAL;
+
+//OUTPUTS
+vXCartesianFromMotors AT%Q*:LREAL;
+vYCartesianFromMotors AT%Q*:LREAL;
+vthetaCartesianFromMotors AT%Q*:LREAL;
+
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[v0:=-velocityFromMotor1;
+v1:=-velocityFromMotor2;
+v2:=-velocityFromMotor3;
+
+vXCartesianFromMotors:=(v2 - v0) / (2.0 * COS(30.0*PI/180));  //in mm / s
+vYCartesianFromMotors:=(v0 - 2.0 * v1 + v2) / 3.0;            //in mm / s
+vThetaCartesianFromMotors:=(v0 + v1 + v2) / (3.0 * 135.0);    //in rad / s]]></ST>
+    </Implementation>
+    <LineIds Name="Motormesswerte">
+      <LineId Id="5" Count="0" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="26" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

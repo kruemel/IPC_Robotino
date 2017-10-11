@@ -24,6 +24,9 @@
     <Compile Include="POUs\Motoransteuerung\MAIN_Motoransteuerung.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Motormesswerte\Motormesswerte.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\Shutdown\MAIN_Shutdown.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -41,6 +44,7 @@
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
     <Folder Include="POUs\Motoransteuerung" />
+    <Folder Include="POUs\Motormesswerte" />
     <Folder Include="POUs\Shutdown" />
     <Folder Include="POUs\UDP" />
     <Folder Include="VISUs" />
