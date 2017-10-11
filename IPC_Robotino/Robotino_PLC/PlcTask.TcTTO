@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.12">
   <Task Name="PlcTask" Id="{46f7bf45-dc7e-430d-ab85-1f71f2231b07}">
     <!--CycleTime in micro seconds.-->
     <CycleTime>5000</CycleTime>
-    <Priority>1</Priority>
+    <Priority>2</Priority>
     <PouCall>
       <Name>MAIN_Motoransteuerung</Name>
     </PouCall>
