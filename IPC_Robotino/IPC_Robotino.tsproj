@@ -3360,7 +3360,7 @@ External Setpoint Generation:
 		<ImageData Id="1006">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1007">424de6000000000000007600000028000000100000000e000000010004000000000070000000000000000000000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00ffffffffffffffffff788833338887ffff78883bb38887ffffffff3bb3ffffffffffff8778fffffffffffffffffffffffffffffffff999ffff78f78fffffffffff78f78ffff999ffff78f7888fffffffff78f78f78f999ffff78f78f78ffffffff78f7888ff999ffffffffffffffffff</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{65F7B117-B92E-4F3E-9321-4DD532767F50}" Target64Bit="true" RelativeTargetNetId="true" RelativeIpAddresses="true" ShowHideConfigurations="#x106">
+	<Project ProjectGUID="{65F7B117-B92E-4F3E-9321-4DD532767F50}" TargetNetId="5.49.201.214.1.1" Target64Bit="true" RelativeTargetNetId="true" RelativeIpAddresses="true" ShowHideConfigurations="#x106">
 		<System>
 			<Settings MaxCpus="2" NonWinCpus="1">
 				<Cpu BaseTime="5000"/>
@@ -3390,9 +3390,9 @@ External Setpoint Generation:
 				<Module Id="#x01010040" KeepUnrestoredLinks="2">
 					<Name>Object1 (Gewerk3_Simulink_Regler)</Name>
 					<ImageId>1000</ImageId>
-					<TmcDesc GUID="{AFDCFE58-8263-41EA-B939-202E12EE27CA}">
+					<TmcDesc GUID="{39502021-BA54-4451-A2D3-BB69072E023D}">
 						<Name>Gewerk3_Simulink_Regler</Name>
-						<CLSID ClassFactory="Gewerk3_Simulink_Regler">{AFDCFE58-8263-41EA-B939-202E12EE27CA}</CLSID>
+						<CLSID ClassFactory="Gewerk3_Simulink_Regler">{39502021-BA54-4451-A2D3-BB69072E023D}</CLSID>
 						<Info>
 							<TabExtension GUID="{BB6DDFDC-900F-473F-83FC-D83513217B55}"/>
 						</Info>
@@ -6887,11 +6887,11 @@ External Setpoint Generation:
 							</Value>
 							<Value>
 								<Name>ModelParameters.K_1</Name>
-								<Value>0.2</Value>
+								<Value>8</Value>
 							</Value>
 							<Value>
 								<Name>ModelParameters.K_2</Name>
-								<Value>-0.6</Value>
+								<Value>0.6</Value>
 							</Value>
 							<Value>
 								<Name>ModelParameters.L</Name>
@@ -6899,11 +6899,11 @@ External Setpoint Generation:
 							</Value>
 							<Value>
 								<Name>ModelParameters.N</Name>
-								<Value>0.2</Value>
+								<Value>8</Value>
 							</Value>
 							<Value>
 								<Name>ModelParameters.T_R</Name>
-								<Value>0.2</Value>
+								<Value>0.08</Value>
 							</Value>
 							<Value>
 								<Name>ModelParameters.T_SP</Name>
@@ -6911,11 +6911,11 @@ External Setpoint Generation:
 							</Value>
 							<Value>
 								<Name>ModelParameters.accuracy_R</Name>
-								<Value>1</Value>
+								<Value>6</Value>
 							</Value>
 							<Value>
 								<Name>ModelParameters.accuracy_Theta</Name>
-								<Value>0.0174532925199433</Value>
+								<Value>0.0872664625997165</Value>
 							</Value>
 							<Value>
 								<Name>ModelParameters.omega_max</Name>
@@ -7303,19 +7303,19 @@ External Setpoint Generation:
 							</Value>
 							<Value>
 								<Name>ModelParameters.Saturation1_UpperSat</Name>
-								<Value>500</Value>
+								<Value>0.5</Value>
 							</Value>
 							<Value>
 								<Name>ModelParameters.Saturation1_LowerSat</Name>
-								<Value>-500</Value>
+								<Value>-0.5</Value>
 							</Value>
 							<Value>
 								<Name>ModelParameters.Saturation2_UpperSat</Name>
-								<Value>3</Value>
+								<Value>3.14</Value>
 							</Value>
 							<Value>
 								<Name>ModelParameters.Saturation2_LowerSat</Name>
-								<Value>-3</Value>
+								<Value>-3.14</Value>
 							</Value>
 							<Value>
 								<Name>ModelParameters.Constant_Value_e</Name>

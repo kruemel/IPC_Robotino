@@ -88,20 +88,26 @@ axis3.ReadStatus();
 
 
 //Maximal Speed
-IF 	vXCartesianToMotors > 500	THEN
+IF 	vXCartesianToMotors > 500 	THEN
 	vX := 500;
+ELSIF vXCartesianToMotors < -500 THEN
+	vX := -500;
 ELSE
 	vX := vXCartesianToMotors;
 END_IF
 
 IF	vYCartesianToMotors > 500	THEN
 	vY := 500;
+ELSIF vYCartesianToMotors < -500 THEN
+	vY := -500;
 ELSE
 	vY :=vYCartesianToMotors;
 END_IF
 	
 IF vThetaCartesianToMotors > 3.14 THEN
 	vTheta:=3.14;
+ELSIF vThetaCartesianToMotors < -3.14 THEN
+	vTheta:=-3.14;	
 ELSE
 	vTheta:= vThetaCartesianToMotors;
 END_IF
@@ -232,10 +238,18 @@ state:=nextState;]]></ST>
       <LineId Id="664" Count="0" />
       <LineId Id="666" Count="1" />
       <LineId Id="747" Count="1" />
+      <LineId Id="819" Count="0" />
+      <LineId Id="818" Count="0" />
       <LineId Id="671" Count="4" />
-      <LineId Id="677" Count="1" />
+      <LineId Id="677" Count="0" />
+      <LineId Id="823" Count="0" />
+      <LineId Id="822" Count="0" />
+      <LineId Id="678" Count="0" />
       <LineId Id="746" Count="0" />
-      <LineId Id="680" Count="3" />
+      <LineId Id="680" Count="2" />
+      <LineId Id="825" Count="0" />
+      <LineId Id="827" Count="0" />
+      <LineId Id="683" Count="0" />
       <LineId Id="685" Count="1" />
       <LineId Id="688" Count="4" />
       <LineId Id="695" Count="1" />
