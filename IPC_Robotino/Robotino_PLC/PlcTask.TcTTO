@@ -13,6 +13,9 @@
     <PouCall>
       <Name>MAIN_UDP</Name>
     </PouCall>
+    <PouCall>
+      <Name>MAIN_COE_Auswertung</Name>
+    </PouCall>
     <TaskFBGuid>{aa615ac9-a803-44df-8f08-140586fadbe4}</TaskFBGuid>
     <Fb_init>{eb3fffee-0fe9-4c8d-8841-766209bc8a8a}</Fb_init>
     <Fb_exit>{8b601f5a-93f0-4a67-b3ce-3de174f4828b}</Fb_exit>
