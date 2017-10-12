@@ -2,7 +2,7 @@
 <!-- Beckhoff Automation GmbH & Co. KG -->
 <!-- TwinCAT Target for MATLAB/Simulink 1.2.1229.0-->
 <project xmlns="http://www.plcopen.org/xml/tc6_0200">
-  <fileHeader companyName="Beckhoff Automation GmbH &amp; Co. KG" companyURL="www.beckhoff.com" productName="TwinCAT 3 Function - TE1400" productVersion="1.2.1229" creationDateTime="2017-10-11T18:06:35" />
+  <fileHeader companyName="Beckhoff Automation GmbH &amp; Co. KG" companyURL="www.beckhoff.com" productName="TwinCAT 3 Function - TE1400" productVersion="1.2.1229" creationDateTime="2017-10-12T09:06:21" />
   <contentHeader name="TC3_TE1400_GeneratedModule_Gewerk3_Simulink_Regler_FB">
     <coordinateInfo>
       <fbd>
@@ -1962,17 +1962,17 @@ SaveOnlineParametersForInit := SUPER^.SaveOnlineParametersForInit();
 bParametersVerified := false;
                     
 // set module class id for compatibility check
-clsId.Data1 := 16#39502021;
-clsId.Data2 := 16#ba54;
-clsId.Data3 := 16#4451;
+clsId.Data1 := 16#438f4498;
+clsId.Data2 := 16#5b28;
+clsId.Data3 := 16#4f93;
 clsId.Data4[0] := 16#a2;
-clsId.Data4[1] := 16#d3;
-clsId.Data4[2] := 16#bb;
-clsId.Data4[3] := 16#69;
-clsId.Data4[4] := 16#07;
-clsId.Data4[5] := 16#2e;
-clsId.Data4[6] := 16#02;
-clsId.Data4[7] := 16#3d;
+clsId.Data4[1] := 16#21;
+clsId.Data4[2] := 16#98;
+clsId.Data4[3] := 16#07;
+clsId.Data4[4] := 16#de;
+clsId.Data4[5] := 16#68;
+clsId.Data4[6] := 16#a5;
+clsId.Data4[7] := 16#d2;
 
 AssignClassId(clsId);
                     
@@ -1996,14 +1996,14 @@ stInitData.ExecuteModelCode := 1;
 stInitData.ModelParametersHdr.indexGroup := 0;
 stInitData.ModelParametersHdr.indexOffset := 16#83000000;
 stInitData.ModelParametersHdr.cbData := SIZEOF(stInitData.ModelParameters);
-stInitData.ModelParameters.K_1 := 0.001;
-stInitData.ModelParameters.K_2 := -0.98;
+stInitData.ModelParameters.K_1 := 12;
+stInitData.ModelParameters.K_2 := 0.2;
 stInitData.ModelParameters.L := 1;
-stInitData.ModelParameters.N := 0.001;
-stInitData.ModelParameters.T_R := 0.1;
+stInitData.ModelParameters.N := 12;
+stInitData.ModelParameters.T_R := 0.03;
 stInitData.ModelParameters.T_SP := 0.25;
-stInitData.ModelParameters.accuracy_R := 6;
-stInitData.ModelParameters.accuracy_Theta := 0.08726646259971647;
+stInitData.ModelParameters.accuracy_R := 1;
+stInitData.ModelParameters.accuracy_Theta := 0.0174532925199433;
 stInitData.ModelParameters.omega_max := 2;
 stInitData.ModelParameters.t_cam := 0.15;
 stInitData.ModelParameters.t_cycle := 0.005;
@@ -2098,12 +2098,6 @@ stInitData.ModelParameters.cameradeadtime_InitOutput := 0;
 stInitData.ModelParameters.Constant1_Value_oh[0] := 0;
 stInitData.ModelParameters.Constant1_Value_oh[1] := 0;
 stInitData.ModelParameters.Constant1_Value_oh[2] := 0;
-stInitData.ModelParameters.Saturation_UpperSat := 500;
-stInitData.ModelParameters.Saturation_LowerSat := -500;
-stInitData.ModelParameters.Saturation1_UpperSat := 0.5;
-stInitData.ModelParameters.Saturation1_LowerSat := -0.5;
-stInitData.ModelParameters.Saturation2_UpperSat := 3.14;
-stInitData.ModelParameters.Saturation2_LowerSat := -3.14;
 stInitData.ModelParameters.Constant_Value_e := 0;
 stInitData.ModelParameters.Constant4_Value_p := 0;
 stInitData.ModelParameters.cameradeadtime_InitOutput_e := 0;

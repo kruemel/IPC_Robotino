@@ -8,14 +8,14 @@ VAR
 	v2:LREAL:=0;
 	
 //INPUTS
-velocityFromMotor1 AT%I* :LREAL;
-velocityFromMotor2 AT%I* :LREAL;
-velocityFromMotor3 AT%I* :LREAL;
+velocityFromMotor1 AT%I* :LREAL:=0;
+velocityFromMotor2 AT%I* :LREAL:=0;
+velocityFromMotor3 AT%I* :LREAL:=0;
 
 //OUTPUTS
-vXCartesianFromMotors AT%Q*:LREAL;
-vYCartesianFromMotors AT%Q*:LREAL;
-vthetaCartesianFromMotors AT%Q*:LREAL;
+vXCartesianFromMotors AT%Q*:LREAL:=0;
+vYCartesianFromMotors AT%Q*:LREAL:=0;
+vthetaCartesianFromMotors AT%Q*:LREAL:=0;
 
 END_VAR]]></Declaration>
     <Implementation>

@@ -47,20 +47,24 @@ VAR
 	v2:		LREAL:=0;
 	
 	//Fahrbefehle für Motor MC_DRIVEVELOCITY
-	velocityToMotor1: LREAL;
-	velocityToMotor2: LREAL;
-	velocityToMotor3: LREAL;
-	directionToMotor1: INT;
-	directionToMotor2: INT;
-	directionToMotor3: INT;
+	velocityToMotor1: LREAL:=0;
+	velocityToMotor2: LREAL:=0;
+	velocityToMotor3: LREAL:=0;
+	directionToMotor1: INT:=0;
+	directionToMotor2: INT:=0;
+	directionToMotor3: INT:=0;
+	
+	// Skalierung auf maximale Geschwindigkeit
+	vMax:LREAL:=942;
+	velocityToMotorsTf:LREAL:=0;
 	
 	//Inputs: CartesianToMotors + Bumper
 	
-	vXCartesianToMotors 	AT%I*:LREAL;
-	vYCartesianToMotors 	AT%I*:LREAL;
-	vThetaCartesianToMotors AT%I*:LREAL;
+	vXCartesianToMotors 	AT%I*:LREAL:=0;
+	vYCartesianToMotors 	AT%I*:LREAL:=0;
+	vThetaCartesianToMotors AT%I*:LREAL:=0;
 	
-	bumper	   AT%I*: BOOL;
+	bumper	   AT%I*: BOOL:=0;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -86,31 +90,32 @@ axis3.ReadStatus();
 //conversion from longitudinal, lateral & rotational velocity to the
 //three separate motor velocities
 
-
 //Maximal Speed
-IF 	vXCartesianToMotors > 500 	THEN
-	vX := 500;
-ELSIF vXCartesianToMotors < -500 THEN
-	vX := -500;
-ELSE
-	vX := vXCartesianToMotors;
-END_IF
+//IF 	vXCartesianToMotors > 500 	THEN
+//	vX := 500;
+  
+//	vX := vXCartesianToMotors;
+//END_IF
 
-IF	vYCartesianToMotors > 500	THEN
-	vY := 500;
-ELSIF vYCartesianToMotors < -500 THEN
-	vY := -500;
-ELSE
-	vY :=vYCartesianToMotors;
-END_IF
+//IF	vYCartesianToMotors > 500	THEN
+//	vY := 500;
+//ELSIF vYCartesianToMotors < -500 THEN
+//	vY := -500;
+//ELSE
+//	vY :=vYCartesianToMotors;
+//END_IF
 	
-IF vThetaCartesianToMotors > 3.14 THEN
-	vTheta:=3.14;
-ELSIF vThetaCartesianToMotors < -3.14 THEN
-	vTheta:=-3.14;	
-ELSE
-	vTheta:= vThetaCartesianToMotors;
-END_IF
+//IF vThetaCartesianToMotors > 3.14 THEN
+//	vTheta:=3.14;
+//ELSIF vThetaCartesianToMotors < -3.14 THEN
+//	vTheta:=-3.14;	
+//ELSE
+//	vTheta:= vThetaCartesianToMotors;
+//END_IF
+
+vX:=vXCartesianToMotors;
+vY:=vYCartesianToMotors;
+vTheta:=vThetaCartesianToMotors;
 
 v0 := (-vX * COS(30.0*PI/180))	+ (vY * COS(60.0*PI/180))	+ (vTheta * 135.0);
 v1 := 0.0						+ (-vY)						+ (vTheta * 135.0);
@@ -140,6 +145,31 @@ IF(v2 < 0)THEN
 ELSE
 	directionToMotor3 := 3;
 	velocityToMotor3  := v2;
+END_IF
+
+
+IF velocityToMotor1 > vMax THEN
+    velocityToMotorsTf:= velocityToMotor1;
+    
+    velocityToMotor1:= vMax;
+    velocityToMotor2:= vMax * velocityToMotor2 / velocityToMotorsTf;
+    velocityToMotor3:= vMax * velocityToMotor3 / velocityToMotorsTf;
+END_IF
+
+IF velocityToMotor2 > vMax THEN
+    velocityToMotorsTf:= velocityToMotor2;
+    
+    velocityToMotor1:= vMax * velocityToMotor1 / velocityToMotorsTf;
+    velocityToMotor2:= vMax;
+    velocityToMotor3:= vMax * velocityToMotor3 / velocityToMotorsTf;
+END_IF
+
+IF velocityToMotor3 > vMax THEN
+    velocityToMotorsTf:= velocityToMotor3;
+    
+    velocityToMotor1:= vMax * velocityToMotor1 / velocityToMotorsTf;
+    velocityToMotor2:= vMax * velocityToMotor2 / velocityToMotorsTf;
+    velocityToMotor3:= vMax;
 END_IF
 // Konverzierung ToMotors ENDE********************************************************
 
@@ -233,12 +263,9 @@ state:=nextState;]]></ST>
       <LineId Id="649" Count="2" />
       <LineId Id="653" Count="2" />
       <LineId Id="657" Count="2" />
-      <LineId Id="662" Count="1" />
-      <LineId Id="725" Count="0" />
-      <LineId Id="664" Count="0" />
+      <LineId Id="662" Count="2" />
       <LineId Id="666" Count="1" />
-      <LineId Id="747" Count="1" />
-      <LineId Id="819" Count="0" />
+      <LineId Id="747" Count="0" />
       <LineId Id="818" Count="0" />
       <LineId Id="671" Count="4" />
       <LineId Id="677" Count="0" />
@@ -251,6 +278,9 @@ state:=nextState;]]></ST>
       <LineId Id="827" Count="0" />
       <LineId Id="683" Count="0" />
       <LineId Id="685" Count="1" />
+      <LineId Id="941" Count="0" />
+      <LineId Id="940" Count="0" />
+      <LineId Id="942" Count="1" />
       <LineId Id="688" Count="4" />
       <LineId Id="695" Count="1" />
       <LineId Id="698" Count="2" />
@@ -260,7 +290,14 @@ state:=nextState;]]></ST>
       <LineId Id="707" Count="3" />
       <LineId Id="712" Count="7" />
       <LineId Id="721" Count="1" />
-      <LineId Id="638" Count="1" />
+      <LineId Id="638" Count="0" />
+      <LineId Id="893" Count="0" />
+      <LineId Id="897" Count="7" />
+      <LineId Id="924" Count="6" />
+      <LineId Id="905" Count="0" />
+      <LineId Id="932" Count="6" />
+      <LineId Id="931" Count="0" />
+      <LineId Id="639" Count="0" />
       <LineId Id="642" Count="0" />
       <LineId Id="756" Count="0" />
       <LineId Id="362" Count="0" />
