@@ -5,15 +5,6 @@
     <CycleTime>5000</CycleTime>
     <Priority>2</Priority>
     <PouCall>
-      <Name>MAIN_Motoransteuerung</Name>
-    </PouCall>
-    <PouCall>
-      <Name>MAIN_Shutdown</Name>
-    </PouCall>
-    <PouCall>
-      <Name>MAIN_UDP</Name>
-    </PouCall>
-    <PouCall>
       <Name>MAIN_COE_Auswertung</Name>
     </PouCall>
     <TaskFBGuid>{aa615ac9-a803-44df-8f08-140586fadbe4}</TaskFBGuid>

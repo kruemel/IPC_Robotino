@@ -7,20 +7,22 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	MotorstromAchse1: FB_EcCoESdoRead;
-	Achse1Motorspannung: LREAL;
-	Achse2Motorspannung: LREAL;
-	Achse3Motorspannung: LREAL;
-	
-	Achse1Motorstrom: LREAL;
-	Achse2Motorstrom: LREAL;
-	Achse3Motorstrom: LREAL;
-	
+	MotorstromAchse1: FB_EcCoESdoRead;	
 	MotorspannungAchse1: FB_EcCoESdoRead;
 	MotorstromAchse2: FB_EcCoESdoRead;
 	MotorspannungAchse2: FB_EcCoESdoRead;
 	MotorspannungAchse3: FB_EcCoESdoRead;
 	MotorstromAchse3: FB_EcCoESdoRead;
+	
+	Achse1Geschwindigkeit: INT;
+	Achse2Geschwindigkeit: INT;
+	Achse3Geschwindigkeit: INT;
+	
+	Achse1Motorstrom: INT;
+	Achse2Motorstrom: INT;
+	Achse3Motorstrom: INT;
+	
+	trigger: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -105,8 +107,8 @@ END_VAR
                       <l2 n="InputItems">
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"'192.168.0.211.2.1'"</v>
-                            <v n="Type">"STRING(INT#17)"</v>
+                            <v n="Operand">"'5.49.201.214.2.1'"</v>
+                            <v n="Type">"STRING(INT#16)"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
                             <v n="Address">""</v>
@@ -143,7 +145,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"11"</v>
+                            <v n="Operand">"16#11"</v>
                             <v n="Type">"INT"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -211,8 +213,8 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"Achse1Motorspannung"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Operand">"Achse1Geschwindigkeit"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -281,8 +283,8 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"Achse1Motorspannung"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Operand">"Achse1Geschwindigkeit"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -321,7 +323,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"TRUE"</v>
+                            <v n="Operand">"trigger"</v>
                             <v n="Type">"BOOL"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -340,7 +342,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">""</v>
+                            <v n="Operand">"T#0.5ms"</v>
                             <v n="Type">"TIME"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -478,8 +480,8 @@ END_VAR
                       <l2 n="InputItems">
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"'192.168.0.211.2.1'"</v>
-                            <v n="Type">"STRING(INT#17)"</v>
+                            <v n="Operand">"'5.49.201.214.2.1'"</v>
+                            <v n="Type">"STRING(INT#16)"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
                             <v n="Address">""</v>
@@ -516,7 +518,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"12"</v>
+                            <v n="Operand">"16#12"</v>
                             <v n="Type">"INT"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -585,7 +587,7 @@ END_VAR
                             <o>
                               <o n="Operand" t="Operand">
                                 <v n="Operand">"Achse1Motorstrom"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -655,7 +657,7 @@ END_VAR
                             <o>
                               <o n="Operand" t="Operand">
                                 <v n="Operand">"Achse1Motorstrom"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -713,7 +715,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">""</v>
+                            <v n="Operand">"T#0.5ms"</v>
                             <v n="Type">"TIME"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -851,8 +853,8 @@ END_VAR
                       <l2 n="InputItems">
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"'192.168.0.211.2.1'"</v>
-                            <v n="Type">"STRING(INT#17)"</v>
+                            <v n="Operand">"'5.49.201.214.2.1'"</v>
+                            <v n="Type">"STRING(INT#16)"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
                             <v n="Address">""</v>
@@ -889,7 +891,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"11"</v>
+                            <v n="Operand">"16#11"</v>
                             <v n="Type">"INT"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -957,8 +959,8 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"Achse2Motorspannung"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Operand">"Achse2Geschwindigkeit"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -1027,8 +1029,8 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"Achse2Motorspannung"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Operand">"Achse2Geschwindigkeit"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -1086,7 +1088,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">""</v>
+                            <v n="Operand">"T#0.5ms"</v>
                             <v n="Type">"TIME"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -1224,8 +1226,8 @@ END_VAR
                       <l2 n="InputItems">
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"'192.168.0.211.2.1'"</v>
-                            <v n="Type">"STRING(INT#17)"</v>
+                            <v n="Operand">"'5.49.201.214.2.1'"</v>
+                            <v n="Type">"STRING(INT#16)"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
                             <v n="Address">""</v>
@@ -1262,7 +1264,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"12"</v>
+                            <v n="Operand">"16#12"</v>
                             <v n="Type">"INT"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -1331,7 +1333,7 @@ END_VAR
                             <o>
                               <o n="Operand" t="Operand">
                                 <v n="Operand">"Achse2Motorstrom"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -1401,7 +1403,7 @@ END_VAR
                             <o>
                               <o n="Operand" t="Operand">
                                 <v n="Operand">"Achse2Motorstrom"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -1459,7 +1461,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">""</v>
+                            <v n="Operand">"T#0.5ms"</v>
                             <v n="Type">"TIME"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -1597,8 +1599,8 @@ END_VAR
                       <l2 n="InputItems">
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"'192.168.0.211.2.1'"</v>
-                            <v n="Type">"STRING(INT#17)"</v>
+                            <v n="Operand">"'5.49.201.214.2.1'"</v>
+                            <v n="Type">"STRING(INT#16)"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
                             <v n="Address">""</v>
@@ -1635,7 +1637,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"11"</v>
+                            <v n="Operand">"16#11"</v>
                             <v n="Type">"INT"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -1703,8 +1705,8 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"Achse3Motorspannung"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Operand">"Achse3Geschwindigkeit"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -1773,8 +1775,8 @@ END_VAR
                           <l2 n="InputItems" cet="BoxTreeOperand">
                             <o>
                               <o n="Operand" t="Operand">
-                                <v n="Operand">"Achse3Motorspannung"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Operand">"Achse3Geschwindigkeit"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -1832,7 +1834,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">""</v>
+                            <v n="Operand">"T#0.5ms"</v>
                             <v n="Type">"TIME"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -1970,8 +1972,8 @@ END_VAR
                       <l2 n="InputItems">
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"'192.168.0.211.2.1'"</v>
-                            <v n="Type">"STRING(INT#17)"</v>
+                            <v n="Operand">"'5.49.201.214.2.1'"</v>
+                            <v n="Type">"STRING(INT#16)"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
                             <v n="Address">""</v>
@@ -2008,7 +2010,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">"12"</v>
+                            <v n="Operand">"16#12"</v>
                             <v n="Type">"INT"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
@@ -2077,7 +2079,7 @@ END_VAR
                             <o>
                               <o n="Operand" t="Operand">
                                 <v n="Operand">"Achse3Motorstrom"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -2147,7 +2149,7 @@ END_VAR
                             <o>
                               <o n="Operand" t="Operand">
                                 <v n="Operand">"Achse3Motorstrom"</v>
-                                <v n="Type">"LREAL"</v>
+                                <v n="Type">"INT"</v>
                                 <v n="Comment">""</v>
                                 <v n="SymbolComment">""</v>
                                 <v n="Address">""</v>
@@ -2205,7 +2207,7 @@ END_VAR
                         </o>
                         <o t="BoxTreeOperand">
                           <o n="Operand" t="Operand">
-                            <v n="Operand">""</v>
+                            <v n="Operand">"T#0.5ms"</v>
                             <v n="Type">"TIME"</v>
                             <v n="Comment">""</v>
                             <v n="SymbolComment">""</v>
